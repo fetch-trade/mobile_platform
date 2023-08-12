@@ -81,13 +81,6 @@ class _SignUpState extends State<SignUp> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // logo
-                const RectangularTile(
-                  imagePath: 'assets/images/logo.svg',
-                ),
-
-                const SizedBox(height: 50),
-
                 // create account for TeensNext!
                 const Text(
                   'New? Create an account!',
@@ -172,13 +165,13 @@ class _SignUpState extends State<SignUp> {
                     // google button
                     SquareTile(
                         onTap: () => AuthService().signInWithGoogle(),
-                        imagePath: 'assets/images/google.svg'),
+                        imagePath: 'assets/imgs/google.svg'),
 
                     const SizedBox(width: 25),
 
                     // apple button
                     SquareTile(
-                        onTap: () => {}, imagePath: 'assets/images/apple.svg'),
+                        onTap: () => {}, imagePath: 'assets/imgs/apple.svg'),
                   ],
                 ),
 

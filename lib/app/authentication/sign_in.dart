@@ -167,7 +167,7 @@ class _SignInState extends State<SignIn> {
                     // google button
                     SquareTile(
                       onTap: () => AuthService().signInWithGoogle(),
-                      imagePath: 'assets/images/google.svg'
+                      imagePath: 'assets/imgs/google.svg'
                     ),
 
                     const SizedBox(width: 25),
@@ -175,7 +175,7 @@ class _SignInState extends State<SignIn> {
                     // apple button
                     SquareTile(
                       onTap: () => {},
-                      imagePath: 'assets/images/apple.svg'
+                      imagePath: 'assets/imgs/apple.svg'
                     ),
                   ],
                 ),
