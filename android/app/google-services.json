@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "535275923261",
+    "project_id": "teens-next-6c767",
+    "storage_bucket": "teens-next-6c767.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:535275923261:android:11f71443e03849ad8d0754",
+        "android_client_info": {
+          "package_name": "com.example.teens_next"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "535275923261-bttvkb39hf88ik7k4qbnq5nkb5lei1d3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYK52PewzQbHi9_PQLYB_BgOFQFXswmhU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "535275923261-bttvkb39hf88ik7k4qbnq5nkb5lei1d3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
