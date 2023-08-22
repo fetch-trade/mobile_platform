@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class InputField extends StatelessWidget {
+class MessageInputField extends StatelessWidget {
   final controller;
   final String hintText;
   final bool obscureText;
 
-  const InputField({
+  const MessageInputField({
     super.key,
     required this.controller,
     required this.hintText,
@@ -15,13 +15,15 @@ class InputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: const EdgeInsets.only(top: 24, bottom: 24, left: 20),
       child: TextField(
         controller: controller,
         obscureText: obscureText,
+        maxLines: null,
         decoration: InputDecoration(
-            enabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.white),
+            enabledBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.white),
+              borderRadius: BorderRadius.circular(12)
             ),
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey.shade400),

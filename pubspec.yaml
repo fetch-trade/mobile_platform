@@ -40,6 +40,7 @@ dependencies:
   google_sign_in: ^6.1.4
   iconsax: ^0.0.8
   cloud_firestore: ^4.8.4
+  provider: ^6.0.5
 
 dev_dependencies:
   flutter_test:
@@ -70,7 +71,7 @@ flutter:
   assets:
     - assets/imgs/apple.svg
     - assets/imgs/google.svg
-    - assets/imgs/logo.svg
+    - assets/imgs/tn_logo.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -97,3 +98,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: Capriola
+      fonts:
+        - asset: fonts/Capriola-Regular.ttf
+    - family: REM
+      fonts:
+        - asset: fonts/REM-Regular.ttf

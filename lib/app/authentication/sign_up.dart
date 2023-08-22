@@ -1,7 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:teens_next/components/components.dart';
-import 'package:teens_next/providers/google_auth_provider.dart';
+import 'package:teens_next/providers/gauth_provider.dart';
+import 'package:teens_next/services/auth_service.dart';
 
 class SignUp extends StatefulWidget {
   final Function()? onTap;
@@ -20,42 +21,41 @@ class _SignUpState extends State<SignUp> {
 
   // sign user up method
   void signUserUp() async {
-    // buffering circle
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const Center(
-          child: CircularProgressIndicator(
-            color: Color(0x00fff864),
-          ),
-        );
-      },
-    );
+    if (passwordController.text != confirmPasswordController.text) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text(
+        "Passwords do not match!",
+        style: TextStyle(
+          decoration: TextDecoration.none,
+          fontFamily: 'Capriola',
+          fontSize: 12,
+        ),
+      )));
+      return;
+    }
 
-    // try signin
+    final authService = Provider.of<AuthService>(context, listen: false);
+
     try {
-      // check if the password is confirmed
-      if (passwordController.text == confirmPasswordController.text) {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: emailController.text,
-          password: passwordController.text,
-        );
-      } else {
-        //show error message, passwords do not match
-        showErrorMessage("Passwords don't match");
-      }
-      // pop the buffering circle
-      // ignore: use_build_context_synchronously
-      Navigator.pop(context);
-    } on FirebaseAuthException catch (e) {
-      // pop the buffering circle
-      Navigator.pop(context);
-      // show error message
-      showErrorMessage(e.code);
+      await authService.signUpWithEmailAndPassword(
+          emailController.text, passwordController.text);
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            e.toString(),
+            style: const TextStyle(
+              fontFamily: 'Capriola',
+              fontSize: 12,
+            ),
+          )
+        )
+      );
     }
   }
 
   // error message popup
+  /*
   void showErrorMessage(String message) {
     showDialog(
       context: context,
@@ -70,6 +70,7 @@ class _SignUpState extends State<SignUp> {
       },
     );
   }
+  */
 
   @override
   Widget build(BuildContext context) {
@@ -86,12 +87,12 @@ class _SignUpState extends State<SignUp> {
                   'New? Create an account!',
                   style: TextStyle(
                     color: Colors.black,
-                    fontFamily: 'Bree Serif',
+                    fontFamily: 'Capriola',
                     fontSize: 24,
                   ),
                 ),
 
-                const SizedBox(height: 25),
+                const SizedBox(height: 48),
 
                 // email textfield
                 InputField(
@@ -100,7 +101,7 @@ class _SignUpState extends State<SignUp> {
                   obscureText: false,
                 ),
 
-                const SizedBox(height: 10),
+                const SizedBox(height: 12),
 
                 // password textfield
                 InputField(
@@ -109,7 +110,7 @@ class _SignUpState extends State<SignUp> {
                   obscureText: true,
                 ),
 
-                const SizedBox(height: 10),
+                const SizedBox(height: 12),
 
                 // confirm password textfield
                 InputField(
@@ -118,7 +119,7 @@ class _SignUpState extends State<SignUp> {
                   obscureText: true,
                 ),
 
-                const SizedBox(height: 25),
+                const SizedBox(height: 24),
 
                 // sign up button
                 EnterButton(
@@ -126,11 +127,11 @@ class _SignUpState extends State<SignUp> {
                   onTap: signUserUp,
                 ),
 
-                const SizedBox(height: 50),
+                const SizedBox(height: 48),
 
                 // or continue with
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   child: Row(
                     children: [
                       Expanded(
@@ -140,7 +141,7 @@ class _SignUpState extends State<SignUp> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
                         child: Text(
                           'Or continue with',
                           style: TextStyle(color: Colors.grey[700]),
@@ -156,7 +157,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
 
-                const SizedBox(height: 50),
+                const SizedBox(height: 48),
 
                 // google + apple sign in buttons
                 Row(
@@ -164,10 +165,10 @@ class _SignUpState extends State<SignUp> {
                   children: [
                     // google button
                     SquareTile(
-                        onTap: () => AuthService().signInWithGoogle(),
+                        onTap: () => GAuthProvider().signInWithGoogle(),
                         imagePath: 'assets/imgs/google.svg'),
 
-                    const SizedBox(width: 25),
+                    const SizedBox(width: 24),
 
                     // apple button
                     SquareTile(
@@ -175,7 +176,7 @@ class _SignUpState extends State<SignUp> {
                   ],
                 ),
 
-                const SizedBox(height: 50),
+                const SizedBox(height: 48),
 
                 // already a member? sign in now
                 Row(

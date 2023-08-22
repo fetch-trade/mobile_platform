@@ -2,18 +2,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:teens_next/app/screens/screens.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeScreenState extends State<HomeScreen> {
   var screens = [
-    const FeedsPage(),
-    const FriendsPage(),
-    const NotificationsPage()
+    const FeedsScreen(),
+    const FriendsScreen(),
+    const NotificationsScreen(
+      receiverUid: '', 
+      receiverUserEmail: '',
+    )
   ];
 
   @override

@@ -1,3 +1,3 @@
-export 'feeds_page.dart';
-export 'friends_page.dart';
-export 'notifications_page.dart';
+export 'feeds_screen.dart';
+export 'friends_screen.dart';
+export 'notifications_screen.dart';

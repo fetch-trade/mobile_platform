@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:teens_next/app/authentication/toggle_page.dart';
-import 'package:teens_next/app/screens/home_page.dart';
-
+import 'package:teens_next/app/screens/home_screen.dart';
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
 
@@ -14,7 +13,7 @@ class AuthPage extends StatelessWidget {
         builder: (context, snapshot) {
           // user is signed in
           if (snapshot.hasData) {
-            return const HomePage();
+            return const HomeScreen();
           }
           
           //user is not signed in

@@ -1,7 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:teens_next/app/authentication/forgot_password.dart';
 import 'package:teens_next/components/components.dart';
-import 'package:teens_next/providers/google_auth_provider.dart';
+import 'package:teens_next/providers/gauth_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:teens_next/services/auth_service.dart';
 
 // ignore: must_be_immutable
 class SignIn extends StatefulWidget {
@@ -19,52 +22,45 @@ class _SignInState extends State<SignIn> {
   final passwordController = TextEditingController();
 
   // sign user in method
-  signUserIn() async {
-    // buffering circle
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const Center(
-          child: CircularProgressIndicator(
-            color: Color(0x00fff864),
-          ),
-        );
-      },
-    );
+  void signUserIn() async {
+    final authService = Provider.of<AuthService>(context, listen: false);
 
-    // try signin
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
+      await authService.signInWithEmailAndPassword(
+          emailController.text, passwordController.text);
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            e.toString(), 
+            style: const TextStyle(
+              decoration: TextDecoration.none,
+              fontFamily: 'Capriola',
+              fontSize: 12,
+            ),
+          )
+        ),
       );
-      // pop the buffering circle
-      // ignore: use_build_context_synchronously
-      Navigator.pop(context);
-    } on FirebaseAuthException catch (e) {
-      // pop the buffering circle
-      Navigator.pop(context);
-      // show error message
-      showErrorMessage(e.code);
     }
   }
 
   // error message popup
+  /*
   void showErrorMessage(String message) {
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
             title: Center(
-              child: Text(
-              message,
-              style: const TextStyle(),
-            ),
-          )
-        );
+          child: Text(
+            message,
+            style: const TextStyle(),
+          ),
+        ));
       },
     );
   }
+  */
 
   @override
   Widget build(BuildContext context) {
@@ -81,18 +77,18 @@ class _SignInState extends State<SignIn> {
                   'Sign in to TeensNext',
                   style: TextStyle(
                     color: Colors.black,
-                    fontFamily: 'Bree Serif',
+                    fontFamily: 'Capriola',
                     fontSize: 24,
                   ),
                 ),
 
-                const SizedBox(height: 24),
+                const SizedBox(height: 48),
 
                 // email textfield
                 InputField(
                   controller: emailController,
                   hintText: 'Email',
-                  obscureText: false, 
+                  obscureText: false,
                 ),
 
                 const SizedBox(height: 12),
@@ -101,20 +97,29 @@ class _SignInState extends State<SignIn> {
                 InputField(
                   controller: passwordController,
                   hintText: 'Password',
-                  obscureText: true, 
+                  obscureText: true,
                 ),
 
                 const SizedBox(height: 12),
 
                 // forgot password?
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        'Forgot Password?',
-                        style: TextStyle(color: Colors.grey[600]),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                  builder: (context) =>
+                                      const ForgotPassword()));
+                        },
+                        child: Text(
+                          'Forgot Password?',
+                          style: TextStyle(color: Colors.grey[600]),
+                        ),
                       ),
                     ],
                   ),
@@ -158,7 +163,7 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
 
-                const SizedBox(height: 50),
+                const SizedBox(height: 48),
 
                 // google + apple sign in buttons
                 Row(
@@ -166,17 +171,14 @@ class _SignInState extends State<SignIn> {
                   children: [
                     // google button
                     SquareTile(
-                      onTap: () => AuthService().signInWithGoogle(),
-                      imagePath: 'assets/imgs/google.svg'
-                    ),
+                        onTap: () => GAuthProvider().signInWithGoogle(),
+                        imagePath: 'assets/imgs/google.svg'),
 
-                    const SizedBox(width: 25),
+                    const SizedBox(width: 24),
 
                     // apple button
                     SquareTile(
-                      onTap: () => {},
-                      imagePath: 'assets/imgs/apple.svg'
-                    ),
+                        onTap: () => {}, imagePath: 'assets/imgs/apple.svg'),
                   ],
                 ),
 
