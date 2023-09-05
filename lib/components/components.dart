@@ -1,4 +1,11 @@
 export 'enter_button.dart';
 export 'input_field.dart';
+export 'logo.dart';
+export '../app/messaging/components/message_bubble.dart';
+export '../app/messaging/components/message_input_field.dart';
+export '../app/feeds/components/post_input_field.dart';
 export 'rectangular_tile.dart';
+export 'splash_screen_scaffold.dart';
 export 'square_tile.dart';
+export 'start_button.dart';
+export 'username_input_field.dart';

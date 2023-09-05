@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:teens_next/components/message_bubble.dart';
-import 'package:teens_next/components/message_input_field.dart';
+import 'package:teens_next/app/messaging/components/message_bubble.dart';
+import 'package:teens_next/app/messaging/components/message_input_field.dart';
 import 'package:teens_next/services/messaging_service.dart';
 
 class MessagesScreen extends StatefulWidget {

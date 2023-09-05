@@ -1,8 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:teens_next/app/messaging/messages_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:teens_next/services/auth_service.dart';
 
 class FriendsScreen extends StatefulWidget {
   const FriendsScreen({super.key});
@@ -12,72 +11,58 @@ class FriendsScreen extends StatefulWidget {
 }
 
 class _FriendsScreenState extends State<FriendsScreen> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  void signOut() {
+    final authService = Provider.of<AuthService>(context, listen: false);
+
+    authService.signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: const CupertinoNavigationBar(
-        middle: Text(
-          "Friends",
-          style: TextStyle(fontFamily: 'Capriola', fontSize: 24),
+      child: CustomScrollView(
+        slivers: <Widget>[
+          const CupertinoSliverNavigationBar(
+            automaticallyImplyLeading: false,
+            largeTitle: Text("Friends",
+              style: TextStyle(
+                color: Colors.black,
+                fontFamily: 'Capriola',
+                fontSize: 24
+              ),
+            ),    
+          ),
+          SliverFillRemaining(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              "User Friends",
+              style: TextStyle(
+                decoration: TextDecoration.none,
+                color: Colors.black,
+                fontFamily: 'Capriola',
+                fontSize: 24,
+              ),
+            ),
+            const SizedBox(height: 24),
+            CupertinoButton.filled(
+              onPressed: signOut,
+              child: const Text(
+                "Sign out",
+                style: TextStyle(
+                  decoration: TextDecoration.none,
+                  color: Colors.white,
+                  fontFamily: 'Capriola',
+                  fontSize: 24,
+                ),
+              ),
+            )
+          ],
         ),
+          )
+        ],      
       ),
-      child: _buildUserList(),
     );
-  }
-
-  Widget _buildUserList() {
-    return StreamBuilder<QuerySnapshot>(
-      stream: FirebaseFirestore.instance.collection('users').snapshots(),
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return const Text(
-            "Error",
-            style: TextStyle(
-              fontFamily: 'Capriola', 
-              fontSize: 24
-            ),
-          );
-        }
-
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Text(
-            "Loading",
-            style: TextStyle(
-              fontFamily: 'Capriola', 
-              fontSize: 24
-            ),
-          );
-        }
-
-        return ListView(
-          children: snapshot.data!.docs
-              .map<Widget>((doc) => _buildUserListItem(doc))
-              .toList(),
-        );
-      },
-    );
-  }
-
-  Widget _buildUserListItem(DocumentSnapshot document) {
-    Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
-    if (_auth.currentUser!.email != data['email']) {
-      return ListTile(
-        title: Text(data['email']),
-        onTap: () {
-          // pass the clicked user's UID
-          Navigator.push(
-              context,
-              CupertinoPageRoute(
-                  builder: (context) => MessagesScreen(
-                        receiverUserEmail: data['email'],
-                        receiverUid: data['uid'], 
-                      )));
-        },
-      );
-    } else {
-      return Container();
-    }
   }
 }

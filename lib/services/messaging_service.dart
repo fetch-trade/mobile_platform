@@ -13,12 +13,14 @@ class MessagingService extends ChangeNotifier {
     // get user info
     final String currentUserId = _firebaseAuth.currentUser!.uid;
     final String currentUserEmail = _firebaseAuth.currentUser!.email.toString();
+    final String currentUserName = _firebaseAuth.currentUser!.displayName.toString();
     final Timestamp timestamp = Timestamp.now();
 
     // create new message
     Message newMessage = Message(
         senderId: currentUserId,
         senderEmail: currentUserEmail,
+        senderName: currentUserName,
         receiverId: receiverId,
         message: message,
         timestamp: timestamp
@@ -48,7 +50,7 @@ class MessagingService extends ChangeNotifier {
         .collection('chat_rooms')
         .doc(chatRoomId)
         .collection('messages')
-        .orderBy('timestamp', descending: false)
+        .orderBy('timestamp', descending: true)
         .snapshots();
   }
 }

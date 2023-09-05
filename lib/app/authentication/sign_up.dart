@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:teens_next/app/authentication/user_name.dart';
 import 'package:teens_next/components/components.dart';
 import 'package:teens_next/providers/gauth_provider.dart';
 import 'package:teens_next/services/auth_service.dart';
@@ -37,40 +39,23 @@ class _SignUpState extends State<SignUp> {
     final authService = Provider.of<AuthService>(context, listen: false);
 
     try {
-      await authService.signUpWithEmailAndPassword(
-          emailController.text, passwordController.text);
+      await authService
+          .signUpWithEmailAndPassword(
+              emailController.text, passwordController.text)
+          .then((value) {
+        Navigator.push(context, CupertinoPageRoute(builder: (context) => const UserName()));
+      });
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
-            e.toString(),
-            style: const TextStyle(
-              fontFamily: 'Capriola',
-              fontSize: 12,
-            ),
-          )
-        )
-      );
+        e.toString(),
+        style: const TextStyle(
+          fontFamily: 'Capriola',
+          fontSize: 12,
+        ),
+      )));
     }
   }
-
-  // error message popup
-  /*
-  void showErrorMessage(String message) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-            title: Center(
-          child: Text(
-            message,
-            style: const TextStyle(),
-          ),
-        ));
-      },
-    );
-  }
-  */
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +108,7 @@ class _SignUpState extends State<SignUp> {
 
                 // sign up button
                 EnterButton(
-                  text: "Sign Up",
+                  text: "Sign up",
                   onTap: signUserUp,
                 ),
 

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:teens_next/app/feeds/feeds_screen.dart';
 import 'package:teens_next/app/screens/screens.dart';
 
 class HomeScreen extends StatefulWidget {

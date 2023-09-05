@@ -129,7 +129,7 @@ class _SignInState extends State<SignIn> {
 
                 // sign in button
                 EnterButton(
-                  text: "Sign In",
+                  text: "Sign in",
                   onTap: signUserIn,
                 ),
 

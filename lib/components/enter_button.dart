@@ -25,6 +25,7 @@ class EnterButton extends StatelessWidget {
           child: Text(
             text,
             style: const TextStyle(
+              decoration: TextDecoration.none,
               color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: 16,
