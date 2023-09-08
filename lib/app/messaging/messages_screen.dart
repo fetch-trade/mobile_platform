@@ -7,12 +7,12 @@ import 'package:teens_next/app/messaging/components/message_input_field.dart';
 import 'package:teens_next/services/messaging_service.dart';
 
 class MessagesScreen extends StatefulWidget {
-  final String receiverUserEmail;
+  final String receiverUserName;
   final String receiverUid;
 
   const MessagesScreen({
     super.key,
-    required this.receiverUserEmail,
+    required this.receiverUserName,
     required this.receiverUid,
   });
 
@@ -40,7 +40,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        middle: Text(widget.receiverUserEmail),
+        middle: Text(widget.receiverUserName),
       ),
       child: Column(
         children: [
@@ -58,7 +58,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
           Expanded(
               child: MessageInputField(
             controller: _messageController,
-            hintText: 'Enter Message',
+            hintText: "Enter Message",
             obscureText: false,
           )),
           IconButton(
@@ -99,7 +99,8 @@ class _MessagesScreenState extends State<MessagesScreen> {
                     ? MainAxisAlignment.end
                     : MainAxisAlignment.start,
             children: [
-              MessageBubble(text: data['message'], isCurrentUser: isCurrentUser),
+              MessageBubble(
+                  text: data['message'], isCurrentUser: isCurrentUser),
             ]),
       ),
     );

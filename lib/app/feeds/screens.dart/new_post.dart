@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:teens_next/app/feeds/components/post_input_field.dart';
+import 'package:teens_next/app/feeds/components/post_title_input_field.dart';
+import 'package:teens_next/components/components.dart';
 import 'package:teens_next/services/posting_service.dart';
 
 class NewPost extends StatefulWidget {
@@ -13,6 +15,7 @@ class NewPost extends StatefulWidget {
 
 class _NewPostState extends State<NewPost> {
   final _postController = TextEditingController();
+  final _postTitleController = TextEditingController();
   final currentUser = FirebaseAuth.instance.currentUser!;
   final PostingService _postingService = PostingService();
 
@@ -33,12 +36,19 @@ class _NewPostState extends State<NewPost> {
             child: Column(
               children: [
                 Material(
+                  child: PostTitleInputField(
+                    controller: _postTitleController,
+                    hintText: "Give this post a name",
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Material(
                   child: PostInputField(
                       controller: _postController,
                       hintText: "What's there to do?",
                       hintTextStyle: TextStyle(
                           color: Colors.grey[400],
-                          fontFamily: 'Capriola',
+                          fontFamily: 'REM',
                           fontSize: 18),
                       obscureText: false),
                 ),
@@ -50,7 +60,8 @@ class _NewPostState extends State<NewPost> {
                         borderRadius: BorderRadius.circular(12),
                         color: const Color.fromARGB(255, 100, 105, 255),
                         onPressed: () {
-                          _postingService.sendPost(_postController.text);
+                          _postingService.sendPost(
+                              _postTitleController.text, _postController.text);
                           Navigator.pop(context);
                         },
                         child: const Text(

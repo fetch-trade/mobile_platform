@@ -4,17 +4,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:teens_next/app/feeds/model/post.dart';
 
 class PostingService extends ChangeNotifier {
-  final postTextController = TextEditingController();
   final currentUser = FirebaseAuth.instance.currentUser!;
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final timestamp = Timestamp.now();
 
-  Future<void> sendPost(String message) async {
+  Future<void> sendPost(String title, String message) async {
     final String currentUserName = _firebaseAuth.currentUser!.displayName.toString();
 
     Post newPost =
-        Post(senderName: currentUserName, message: message, timestamp: timestamp);
+        Post(title: title, senderName: currentUserName, message: message, timestamp: timestamp);
 
     await FirebaseFirestore.instance
         .collection('user_posts')
@@ -24,7 +23,7 @@ class PostingService extends ChangeNotifier {
   Stream<QuerySnapshot> getPosts() {
     return _firebaseFirestore
         .collection('user_posts')
-        .orderBy('timestamp', descending: false)
+        .orderBy('timestamp', descending: true)
         .snapshots();
   }
 }

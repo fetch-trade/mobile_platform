@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:teens_next/app/feeds/components/post_card.dart';
-import 'package:teens_next/app/feeds/new_post.dart';
+import 'package:teens_next/app/feeds/screens.dart/new_comment.dart';
+import 'package:teens_next/app/feeds/screens.dart/new_post.dart';
+import 'package:teens_next/app/screens/screens.dart';
 import 'package:teens_next/services/posting_service.dart';
 
 class FeedsScreen extends StatefulWidget {
@@ -50,14 +52,12 @@ class _FeedsScreenState extends State<FeedsScreen> {
                 ),
               ),
             ),
-            Expanded(
-                child: _buildPostList()
-            ),
+            Expanded(child: _buildPostList()),
           ],
         ),
       ),
       floatingActionButton: Padding(
-        padding: const EdgeInsets.only(right: 8, bottom: 68),
+        padding: const EdgeInsets.only(right: 6, bottom: 66),
         child: SpeedDial(
           icon: Iconsax.edit,
           shape: ContinuousRectangleBorder(
@@ -74,7 +74,12 @@ class _FeedsScreenState extends State<FeedsScreen> {
                     color: Colors.white, fontFamily: 'Capriola', fontSize: 12),
                 foregroundColor: const Color.fromARGB(255, 100, 105, 255),
                 labelBackgroundColor: const Color.fromARGB(255, 100, 105, 255),
-                onTap: () {}),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                          builder: (context) => const FriendsScreen()));
+                }),
             SpeedDialChild(
               child: const Icon(Iconsax.note),
               label: "New Post",
@@ -96,15 +101,35 @@ class _FeedsScreenState extends State<FeedsScreen> {
   Widget _buildPostItem(DocumentSnapshot document) {
     Map<String, dynamic> data = document.data() as Map<String, dynamic>;
 
-    return Container(
-      alignment: Alignment.center,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            PostCard(postMessage: data['message'])
-          ],
-        ),
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: Column(
+        children: [
+          PostCard(
+              title: data['title'],
+              sender: data['name'],
+              body: data['message'],
+              iconButtons: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context, CupertinoPageRoute(builder: (context) => const NewComment()));
+                  },
+                  padding: const EdgeInsets.only(right: 84),
+                  icon: const Icon(Iconsax.messages_2),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  padding: const EdgeInsets.only(right: 84),
+                  icon: const Icon(Iconsax.like_1),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  // need to change this icon to something more meaningful
+                  icon: const Icon(Iconsax.activity),
+                )
+              ])
+        ],
       ),
     );
   }
@@ -132,7 +157,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
               decoration: TextDecoration.none,
               color: Colors.black,
               fontFamily: 'Capriola',
-              fontSize: 24,
+              fontSize: 16,
             ),
           );
         }
@@ -144,5 +169,5 @@ class _FeedsScreenState extends State<FeedsScreen> {
         );
       },
     );
-  }  
+  }
 }

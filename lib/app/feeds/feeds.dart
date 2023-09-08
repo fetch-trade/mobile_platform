@@ -1,3 +1,2 @@
-export 'components/feed_post.dart';
-export 'feeds_screen.dart';
-export 'new_post.dart';
+export 'screens.dart/feeds_screen.dart';
+export 'screens.dart/new_post.dart';

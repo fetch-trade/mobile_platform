@@ -44,24 +44,6 @@ class _SignInState extends State<SignIn> {
     }
   }
 
-  // error message popup
-  /*
-  void showErrorMessage(String message) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-            title: Center(
-          child: Text(
-            message,
-            style: const TextStyle(),
-          ),
-        ));
-      },
-    );
-  }
-  */
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

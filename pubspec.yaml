@@ -107,3 +107,6 @@ flutter:
     - family: REM
       fonts:
         - asset: fonts/REM-Regular.ttf
+    - family: Unbuntu
+      fonts: 
+        - asset: fonts/Ubuntu-Regular.ttf

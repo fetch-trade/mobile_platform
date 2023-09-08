@@ -1,34 +1,26 @@
 import 'package:flutter/material.dart';
 
-class PostInputField extends StatelessWidget {
+class PostTitleInputField extends StatelessWidget {
   final controller;
   final String hintText;
-  final bool obscureText;
-  final TextStyle hintTextStyle;
 
-  const PostInputField({
-    super.key,
-    required this.controller,
-    required this.hintText,
-    required this.obscureText, 
-    required this.hintTextStyle,
-  });
+  const PostTitleInputField(
+      {super.key,
+      required this.controller,
+      required this.hintText,});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 12, left: 12, right: 12),
       child: SizedBox(
-        width: 600,
-        height: 300,
         child: TextField(
-          autocorrect: true,
-          maxLength: 300,
-          maxLines: 11,
           controller: controller,
-          obscureText: obscureText,
+          maxLength: 35,
+          maxLines: 1,
           style: const TextStyle(
-              color: Colors.black, fontFamily: 'Capriola', fontSize: 18),
+            color: Colors.black, fontFamily: 'REM', fontSize: 18
+          ),
           decoration: InputDecoration(
               enabledBorder: OutlineInputBorder(
                   borderSide: const BorderSide(color: Colors.white),
@@ -39,7 +31,8 @@ class PostInputField extends StatelessWidget {
               fillColor: Colors.grey.shade200,
               filled: true,
               hintText: hintText,
-              hintStyle: hintTextStyle),
+              hintStyle: TextStyle(
+                  color: Colors.grey[500], fontFamily: 'REM', fontSize: 18)),
         ),
       ),
     );

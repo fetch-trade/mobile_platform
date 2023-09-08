@@ -33,33 +33,6 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
     );
   }
 
-  Widget _buildUserList() {
-    return StreamBuilder<QuerySnapshot>(
-      stream: FirebaseFirestore.instance.collection('users').snapshots(),
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return const Text(
-            "Error",
-            style: TextStyle(fontFamily: 'Capriola', fontSize: 24),
-          );
-        }
-
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Text(
-            "Loading",
-            style: TextStyle(fontFamily: 'Capriola', fontSize: 24),
-          );
-        }
-
-        return ListView(
-          children: snapshot.data!.docs
-              .map<Widget>((doc) => _buildUserListItem(doc))
-              .toList(),
-        );
-      },
-    );
-  }
-
   Widget _buildUserListItem(DocumentSnapshot document) {
     Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
 
@@ -94,12 +67,11 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               .get()
               .then((QuerySnapshot snapshot) {
             for (var document in chatDocuments) {
-              
               /*
-              * document value not used
-              * value returned is Future reference
-              * treat as error
-              */
+                * document value not used
+                * value returned is Future reference
+                * treat as error
+                */
 
               FirebaseFirestore.instance
                   .collection('chat_rooms')
@@ -117,7 +89,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                     context,
                     CupertinoPageRoute(
                         builder: (context) => MessagesScreen(
-                              receiverUserEmail: data['email'],
+                              receiverUserName: data['name'],
                               receiverUid: data['uid'],
                             )));
               },
@@ -127,5 +99,32 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
     } else {
       return Container();
     }
+  }
+
+  Widget _buildUserList() {
+    return StreamBuilder<QuerySnapshot>(
+      stream: FirebaseFirestore.instance.collection('users').snapshots(),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return const Text(
+            "Error",
+            style: TextStyle(fontFamily: 'Capriola', fontSize: 24),
+          );
+        } 
+        
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Text(
+            "Loading",
+            style: TextStyle(fontFamily: 'Capriola', fontSize: 24),
+          );
+        }
+
+        return ListView(
+          children: snapshot.data!.docs
+              .map<Widget>((doc) => _buildUserListItem(doc))
+              .toList(),
+        );
+      },
+    );
   }
 }
