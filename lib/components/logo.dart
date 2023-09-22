@@ -12,10 +12,9 @@ class Logo extends StatelessWidget {
     return Container(
       width: 300,
       height: 300,
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(50)),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(50)),
         shape: BoxShape.rectangle,
-        color: Colors.white.withOpacity(0.7),
       ),
       child: const Padding(
         padding: EdgeInsets.all(12.0),

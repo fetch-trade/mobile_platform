@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:teens_next/app/feeds/screens.dart/post_detail_screen.dart';
+import 'package:teens_next/app/feeds/screens/post_detail_screen.dart';
 import 'package:teens_next/components/profile_gradient.dart';
 
-class PostCard extends StatelessWidget {
+class PostCard extends StatefulWidget {
   final String title;
   final String sender;
   final String body;
@@ -17,12 +17,22 @@ class PostCard extends StatelessWidget {
       required this.iconButtons});
 
   @override
+  State<PostCard> createState() => _PostCardState();
+}
+
+class _PostCardState extends State<PostCard> {
+  @override
   Widget build(BuildContext context) {
     return Card(
       shape: ContinuousRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: GestureDetector(
-        onTap: () => Navigator.push(context,
-            CupertinoPageRoute(builder: (context) => const PostDetailScreen())),
+        onTap: () {
+          Navigator.push(
+              context,
+              CupertinoPageRoute(
+                  builder: (context) => const PostDetailScreen()));
+          
+        },
         child: Flex(
           direction: Axis.vertical,
           children: [
@@ -43,7 +53,7 @@ class PostCard extends StatelessWidget {
                               alignment: Alignment.centerLeft,
                               margin: const EdgeInsets.only(right: 8, top: 8),
                               child: Text(
-                                title,
+                                widget.title,
                                 softWrap: true,
                                 style: const TextStyle(
                                     color: Colors.black,
@@ -55,7 +65,7 @@ class PostCard extends StatelessWidget {
                             Container(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                sender,
+                                widget.sender,
                                 style: const TextStyle(
                                     color: Colors.black,
                                     fontFamily: 'Capriola',
@@ -72,7 +82,7 @@ class PostCard extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 42),
                     margin: const EdgeInsets.all(12),
                     child: Text(
-                      body,
+                      widget.body,
                       softWrap: true,
                       style: const TextStyle(
                           color: Colors.black,
@@ -87,7 +97,7 @@ class PostCard extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 64, top: 16, bottom: 16),
-                  child: Row(children: iconButtons),
+                  child: Row(children: widget.iconButtons),
                 ),
               ],
             ),

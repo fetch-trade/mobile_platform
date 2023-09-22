@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:teens_next/app/feeds/components/post_input_field.dart';
 import 'package:teens_next/app/feeds/components/post_title_input_field.dart';
-import 'package:teens_next/components/components.dart';
 import 'package:teens_next/services/posting_service.dart';
 
 class NewPost extends StatefulWidget {

@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:teens_next/app/authentication/components/components.dart';
 import 'package:teens_next/app/screens/home_screen.dart';
-import 'package:teens_next/components/components.dart';
 
 class UserName extends StatefulWidget {
   const UserName({super.key});

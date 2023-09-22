@@ -1,59 +1,47 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:teens_next/app/authentication/user_name.dart';
+import 'package:teens_next/app/authentication/components/components.dart';
+import 'package:teens_next/app/authentication/screens/forgot_password.dart';
 import 'package:teens_next/components/components.dart';
 import 'package:teens_next/providers/gauth_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:teens_next/services/auth_service.dart';
 
-class SignUp extends StatefulWidget {
+// ignore: must_be_immutable
+class SignIn extends StatefulWidget {
   final Function()? onTap;
 
-  const SignUp({super.key, required this.onTap});
+  const SignIn({super.key, required this.onTap});
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<SignIn> createState() => _SignInState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _SignInState extends State<SignIn> {
   // text editing controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final confirmPasswordController = TextEditingController();
 
-  // sign user up method
-  void signUserUp() async {
-    if (passwordController.text != confirmPasswordController.text) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text(
-        "Passwords do not match!",
-        style: TextStyle(
-          decoration: TextDecoration.none,
-          fontFamily: 'Capriola',
-          fontSize: 12,
-        ),
-      )));
-      return;
-    }
-
+  // sign user in method
+  void signUserIn() async {
     final authService = Provider.of<AuthService>(context, listen: false);
 
     try {
-      await authService
-          .signUpWithEmailAndPassword(
-              emailController.text, passwordController.text)
-          .then((value) {
-        Navigator.push(context, CupertinoPageRoute(builder: (context) => const UserName()));
-      });
+      await authService.signInWithEmailAndPassword(
+          emailController.text, passwordController.text);
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
           content: Text(
-        e.toString(),
-        style: const TextStyle(
-          fontFamily: 'Capriola',
-          fontSize: 12,
+            e.toString(), 
+            style: const TextStyle(
+              decoration: TextDecoration.none,
+              fontFamily: 'Capriola',
+              fontSize: 12,
+            ),
+          )
         ),
-      )));
+      );
     }
   }
 
@@ -69,51 +57,57 @@ class _SignUpState extends State<SignUp> {
               children: [
                 // create account for TeensNext!
                 const Text(
-                  'New? Create an account!',
+                  'Sign in to TeensNext',
                   style: TextStyle(
                     color: Colors.black,
                     fontFamily: 'Capriola',
                     fontSize: 24,
                   ),
                 ),
-
                 const SizedBox(height: 48),
-
                 // email textfield
                 InputField(
                   controller: emailController,
                   hintText: 'Email',
                   obscureText: false,
                 ),
-
                 const SizedBox(height: 12),
-
                 // password textfield
                 InputField(
                   controller: passwordController,
                   hintText: 'Password',
                   obscureText: true,
                 ),
-
                 const SizedBox(height: 12),
-
-                // confirm password textfield
-                InputField(
-                  controller: confirmPasswordController,
-                  hintText: 'Confirm Password',
-                  obscureText: true,
+                // forgot password?
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                  builder: (context) =>
+                                      const ForgotPassword()));
+                        },
+                        child: Text(
+                          'Forgot Password?',
+                          style: TextStyle(color: Colors.grey[600]),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-
                 const SizedBox(height: 24),
-
-                // sign up button
+                // sign in button
                 EnterButton(
-                  text: "Sign up",
-                  onTap: signUserUp,
+                  text: "Sign in",
+                  onTap: signUserIn,
                 ),
-
                 const SizedBox(height: 48),
-
                 // or continue with
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -160,22 +154,21 @@ class _SignUpState extends State<SignUp> {
                         onTap: () => {}, imagePath: 'assets/imgs/apple.svg'),
                   ],
                 ),
-
-                const SizedBox(height: 48),
-
-                // already a member? sign in now
+                const SizedBox(height: 50),
+                // not a member? register now
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Already a member?',
+                      'Not a member?',
                       style: TextStyle(color: Colors.grey[700]),
                     ),
                     const SizedBox(width: 4),
                     GestureDetector(
+                      // Error detected here
                       onTap: widget.onTap,
                       child: const Text(
-                        'Sign in now',
+                        'Register now',
                         style: TextStyle(
                           color: Colors.blue,
                           fontWeight: FontWeight.bold,

@@ -1,13 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:expandable_search_bar/expandable_search_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:teens_next/app/feeds/components/post_card.dart';
-import 'package:teens_next/app/feeds/screens.dart/new_comment.dart';
-import 'package:teens_next/app/feeds/screens.dart/new_post.dart';
-import 'package:teens_next/app/screens/screens.dart';
+import 'package:provider/provider.dart';
+import 'package:teens_next/app/authentication/components/components.dart';
+import 'package:teens_next/app/authentication/screens/user_profile.dart';
+import 'package:teens_next/app/feeds/feeds.dart';
+import 'package:teens_next/app/screens/contacts_list.dart';
+import 'package:teens_next/services/auth_service.dart';
 import 'package:teens_next/services/posting_service.dart';
 
 class FeedsScreen extends StatefulWidget {
@@ -20,20 +23,103 @@ class FeedsScreen extends StatefulWidget {
 class _FeedsScreenState extends State<FeedsScreen> {
   final currentUser = FirebaseAuth.instance.currentUser!;
   final PostingService _postingService = PostingService();
+  final TextEditingController searchController = TextEditingController();
+
+  void signOut() {
+    final authService = Provider.of<AuthService>(context, listen: false);
+
+    authService.signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.grey[200]?.withOpacity(0.5),
       appBar: AppBar(
-        title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Image.asset(
-            'assets/imgs/tn_logo.svg',
-            fit: BoxFit.contain,
-            width: 90,
-            height: 90,
-          ),
-        ]),
+        elevation: 1,
+        leading: MenuAnchor(
+          alignmentOffset: const Offset(14, 0),
+          menuChildren: [
+            Row(
+              children: [
+                MenuItemButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const UserProfile()));
+                  },
+                  leadingIcon: const Icon(Iconsax.profile_2user),
+                  child: const Center(
+                    child: Text(
+                      "User profile",
+                      style: TextStyle(
+                          decoration: TextDecoration.none,
+                          fontFamily: 'Capriola',
+                          color: Colors.black,
+                          fontSize: 16),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                MenuItemButton(
+                  onPressed: () {
+                    signOut();
+                  },
+                  leadingIcon: const Icon(Iconsax.logout_14),
+                  child: const Center(
+                    child: Text(
+                      "Sign out",
+                      style: TextStyle(
+                          decoration: TextDecoration.none,
+                          fontFamily: 'Capriola',
+                          color: Colors.black,
+                          fontSize: 16),
+                    ),
+                  ),
+                ),
+              ],
+            )
+          ],
+          builder: (context, controller, child) {
+            return GestureDetector(
+              onTap: () {
+                if (controller.isOpen) {
+                  controller.close();
+                } else {
+                  controller.open();
+                }
+              },
+              child: const LargerProfileGradient(),
+            );
+          },
+        ),
+        title: const Text(
+          "Feeds",
+          style: TextStyle(
+              decoration: TextDecoration.none,
+              fontFamily: 'Capriola',
+              color: Colors.black,
+              fontSize: 24),
+        ),
+        actions: [
+          CircleTile(
+            icon: const Icon(
+              Iconsax.search_normal,
+              color: Colors.black,
+              weight: 60,
+            ),
+            onTap: () {
+              ExpandableSearchBar(
+                  onTap: () => print(searchController.text.toString()),
+                  hintText: "Search something",
+                  editTextController: searchController);
+            },
+          )
+        ],
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
       ),
@@ -78,7 +164,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
                   Navigator.push(
                       context,
                       CupertinoPageRoute(
-                          builder: (context) => const FriendsScreen()));
+                          builder: (context) => const ContactsList()));
                 }),
             SpeedDialChild(
               child: const Icon(Iconsax.note),
@@ -100,6 +186,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
 
   Widget _buildPostItem(DocumentSnapshot document) {
     Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+    // int likeCounter = 0;
 
     return Padding(
       padding: const EdgeInsets.all(4.0),
@@ -113,15 +200,33 @@ class _FeedsScreenState extends State<FeedsScreen> {
                 IconButton(
                   onPressed: () {
                     Navigator.push(
-                        context, CupertinoPageRoute(builder: (context) => const NewComment()));
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => const NewComment()));
                   },
                   padding: const EdgeInsets.only(right: 84),
                   icon: const Icon(Iconsax.messages_2),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // likeCounter++;
+                  },
                   padding: const EdgeInsets.only(right: 84),
-                  icon: const Icon(Iconsax.like_1),
+                  icon: const Row(children: [
+                    Icon(Iconsax.like_1),
+                    // SizedBox(width: 8),
+                    /*
+                      Text(
+                        likeCounter.toString(),
+                        style: const TextStyle(
+                          decoration: TextDecoration.none,
+                          fontFamily: 'Capriola',
+                          color: Colors.black,
+                          fontSize: 14
+                        ),
+                      )
+                      */
+                  ]),
                 ),
                 IconButton(
                   onPressed: () {},

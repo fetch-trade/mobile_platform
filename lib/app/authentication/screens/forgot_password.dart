@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:teens_next/app/authentication/auth_page.dart';
+import 'package:teens_next/app/authentication/screens/auth_page.dart';
 
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({super.key});

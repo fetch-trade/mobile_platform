@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:teens_next/app/authentication/auth_page.dart';
+import 'package:teens_next/app/authentication/components/splash_screen_scaffold.dart';
+import 'package:teens_next/app/authentication/screens/auth_page.dart';
 import 'package:teens_next/components/components.dart';
 
 class SplashScreen extends StatefulWidget {
