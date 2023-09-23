@@ -71,7 +71,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                 * document value not used
                 * value returned is Future reference
                 * treat as error
-                */
+              */
 
               FirebaseFirestore.instance
                   .collection('chat_rooms')

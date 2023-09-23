@@ -1,4 +1,3 @@
-import 'package:expandable_search_bar/expandable_search_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';

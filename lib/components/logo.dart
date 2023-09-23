@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class Logo extends StatelessWidget {
   const Logo({Key? key, required this.width, required this.height, required this.radius})
@@ -16,11 +17,12 @@ class Logo extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(50)),
         shape: BoxShape.rectangle,
       ),
-      child: const Padding(
-        padding: EdgeInsets.all(12.0),
-        child: Image(
-          image: AssetImage('assets/imgs/tn_logo.svg'),
-          fit: BoxFit.fitWidth,
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: SvgPicture.asset(
+          'assets/imgs/tn_logo.svg',
+          width: 300,
+          height: 300,
         ),
       ),
     );

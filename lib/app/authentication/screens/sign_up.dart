@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:teens_next/app/authentication/components/components.dart';
-import 'package:teens_next/app/authentication/user_name.dart';
+import 'package:teens_next/app/authentication/screens/user_name.dart';
 import 'package:teens_next/components/components.dart';
 import 'package:teens_next/providers/gauth_provider.dart';
 import 'package:teens_next/services/auth_service.dart';

@@ -6,8 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
-import 'package:teens_next/app/authentication/components/components.dart';
-import 'package:teens_next/app/authentication/screens/user_profile.dart';
+import 'package:teens_next/app/authentication/authentication.dart';
 import 'package:teens_next/app/feeds/feeds.dart';
 import 'package:teens_next/app/screens/contacts_list.dart';
 import 'package:teens_next/services/auth_service.dart';
@@ -127,7 +126,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8),
               child: Center(
                 child: Text(
                   "Logged in as: ${currentUser.displayName}",
@@ -186,16 +185,114 @@ class _FeedsScreenState extends State<FeedsScreen> {
 
   Widget _buildPostItem(DocumentSnapshot document) {
     Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+    String userId = data['senderUid'];
     // int likeCounter = 0;
 
+    return FutureBuilder<DocumentSnapshot>(
+      future: FirebaseFirestore.instance.collection('users').doc(userId).get(),
+      builder:
+          (BuildContext context, AsyncSnapshot<DocumentSnapshot> userSnapshot) {
+        if (userSnapshot.hasError) {
+          return Text(
+            "Error${userSnapshot.error}",
+            style: const TextStyle(
+              decoration: TextDecoration.none,
+              color: Colors.black,
+              fontFamily: 'Capriola',
+              fontSize: 24,
+            ),
+          );
+        }
+
+        if (userSnapshot.connectionState == ConnectionState.waiting) {
+          return const Text(
+            "Loading",
+            style: TextStyle(
+              decoration: TextDecoration.none,
+              color: Colors.black,
+              fontFamily: 'Capriola',
+              fontSize: 16,
+            ),
+          );
+        }
+
+        Map<String, dynamic> userData =
+            userSnapshot.data!.data() as Map<String, dynamic>;
+        Color userColorOne = Color(userData['user_color_one']);
+        Color userColorTwo = Color(userData['user_color_two']);
+
+        // Build the post-related elements
+        Widget postContent = Padding(
+          padding: const EdgeInsets.all(4),
+          child: Column(
+            children: [
+              PostCard(
+                title: data['title'],
+                sender: data['name'],
+                body: data['message'],
+                userColors: [userColorOne, userColorTwo],
+                iconButtons: [
+                  IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                          builder: (context) => const NewComment(),
+                        ),
+                      );
+                    },
+                    padding: const EdgeInsets.only(right: 84),
+                    icon: const Icon(Iconsax.messages_2),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      // likeCounter++;
+                    },
+                    padding: const EdgeInsets.only(right: 84),
+                    icon: const Row(children: [
+                      Icon(Iconsax.like_1),
+                      // SizedBox(width: 8),
+                      /*
+                      Text(
+                        likeCounter.toString(),
+                        style: const TextStyle(
+                          decoration: TextDecoration.none,
+                          fontFamily: 'Capriola',
+                          color: Colors.black,
+                          fontSize: 14
+                        ),
+                      )
+                      */
+                    ]),
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    // need to change this icon to something more meaningful
+                    icon: const Icon(Iconsax.activity),
+                  )
+                ],
+              ),
+            ],
+          ),
+        );
+
+        return postContent;
+      },
+    );
+
+    /*
     return Padding(
-      padding: const EdgeInsets.all(4.0),
+      padding: const EdgeInsets.all(4),
       child: Column(
         children: [
           PostCard(
               title: data['title'],
               sender: data['name'],
               body: data['message'],
+              userColors: [
+                userColorOne,
+                userColorTwo
+              ],
               iconButtons: [
                 IconButton(
                   onPressed: () {
@@ -237,12 +334,14 @@ class _FeedsScreenState extends State<FeedsScreen> {
         ],
       ),
     );
+    */
   }
 
   Widget _buildPostList() {
     return StreamBuilder(
       stream: _postingService.getPosts(),
       builder: (context, snapshot) {
+        // print("Snapshot data: ${snapshot.data}");
         if (snapshot.hasError) {
           return Text(
             "Error${snapshot.error}",
@@ -267,11 +366,25 @@ class _FeedsScreenState extends State<FeedsScreen> {
           );
         }
 
-        return ListView(
-          children: snapshot.data!.docs
+        // Check if the snapshot data is not null and contains documents
+        if (snapshot.data != null && snapshot.data!.docs.isNotEmpty) {
+          return ListView(
+            children: snapshot.data!.docs
               .map((document) => _buildPostItem(document))
               .toList(),
-        );
+          );
+        } else {
+          // Handle the case where there are no posts
+          return const Text(
+            "No posts available",
+            style: TextStyle(
+              decoration: TextDecoration.none,
+              color: Colors.black,
+              fontFamily: 'Capriola',
+              fontSize: 16,
+            ),
+          );
+        }
       },
     );
   }

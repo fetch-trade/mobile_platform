@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:teens_next/app/feeds/screens/post_detail_screen.dart';
 import 'package:teens_next/components/profile_gradient.dart';
 
-class PostCard extends StatefulWidget {
+class PostCard extends StatelessWidget {
   final String title;
   final String sender;
   final String body;
+  final List<Color> userColors;
   final List<IconButton> iconButtons;
 
   const PostCard(
@@ -14,13 +15,9 @@ class PostCard extends StatefulWidget {
       required this.title,
       required this.sender,
       required this.body,
-      required this.iconButtons});
+      required this.iconButtons,
+      required this.userColors});
 
-  @override
-  State<PostCard> createState() => _PostCardState();
-}
-
-class _PostCardState extends State<PostCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -31,7 +28,6 @@ class _PostCardState extends State<PostCard> {
               context,
               CupertinoPageRoute(
                   builder: (context) => const PostDetailScreen()));
-          
         },
         child: Flex(
           direction: Axis.vertical,
@@ -43,7 +39,7 @@ class _PostCardState extends State<PostCard> {
                 children: [
                   Row(
                     children: [
-                      const ProfileGradient(),
+                      ProfileGradient(userColors: userColors),
                       const SizedBox(width: 16),
                       Flexible(
                         child: Column(
@@ -53,7 +49,7 @@ class _PostCardState extends State<PostCard> {
                               alignment: Alignment.centerLeft,
                               margin: const EdgeInsets.only(right: 8, top: 8),
                               child: Text(
-                                widget.title,
+                                title,
                                 softWrap: true,
                                 style: const TextStyle(
                                     color: Colors.black,
@@ -65,7 +61,7 @@ class _PostCardState extends State<PostCard> {
                             Container(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                widget.sender,
+                                sender,
                                 style: const TextStyle(
                                     color: Colors.black,
                                     fontFamily: 'Capriola',
@@ -82,7 +78,7 @@ class _PostCardState extends State<PostCard> {
                     padding: const EdgeInsets.only(left: 42),
                     margin: const EdgeInsets.all(12),
                     child: Text(
-                      widget.body,
+                      body,
                       softWrap: true,
                       style: const TextStyle(
                           color: Colors.black,
@@ -97,7 +93,7 @@ class _PostCardState extends State<PostCard> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 64, top: 16, bottom: 16),
-                  child: Row(children: widget.iconButtons),
+                  child: Row(children: iconButtons),
                 ),
               ],
             ),

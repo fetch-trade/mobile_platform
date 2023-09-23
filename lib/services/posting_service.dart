@@ -10,10 +10,16 @@ class PostingService extends ChangeNotifier {
   final timestamp = Timestamp.now();
 
   Future<void> sendPost(String title, String message) async {
-    final String currentUserName = _firebaseAuth.currentUser!.displayName.toString();
+    final String currentUserName =
+        _firebaseAuth.currentUser!.displayName.toString();
+    final String uid = _firebaseAuth.currentUser!.uid;
 
-    Post newPost =
-        Post(title: title, senderName: currentUserName, message: message, timestamp: timestamp);
+    Post newPost = Post(
+        title: title,
+        senderName: currentUserName,
+        message: message,
+        senderUid: uid,
+        timestamp: timestamp);
 
     await FirebaseFirestore.instance
         .collection('user_posts')
@@ -25,25 +31,5 @@ class PostingService extends ChangeNotifier {
         .collection('user_posts')
         .orderBy('timestamp', descending: true)
         .snapshots();
-  }
-
-
-
-  Future<DocumentSnapshot?> fetchPost(String searchField, dynamic searchValue) async {
-    // Collection reference
-    final CollectionReference userPosts = _firebaseFirestore.collection('user_posts');
-    
-    try {
-      QuerySnapshot querySnapshot = await userPosts.where(searchField, isEqualTo: searchValue).get();
-
-      if (querySnapshot.docs.isNotEmpty) {
-        return querySnapshot.docs.first;
-      } else {
-        return null;
-      }
-    } catch (e) {
-      // print("Error finding document: $e");
-      return null;
-    }
   }
 }

@@ -9,7 +9,7 @@ class LargerProfileGradient extends StatelessWidget {
     final gradientColors = GetGradientColors();
 
     return FutureBuilder(
-        future: gradientColors.getColors(),
+        future: gradientColors.getCurrentUserColors(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Text(
@@ -35,18 +35,19 @@ class LargerProfileGradient extends StatelessWidget {
             );
           }
 
-          return Padding(
-            padding: const EdgeInsets.only(left: 20, bottom: 2),
-            child: Container(
-              height: 100,
-              width: 100,
-              decoration: BoxDecoration(
+          return Row(
+            children: [
+              const SizedBox(width: 16),
+              Container(
+                height: 40,
+                width: 40,
+                decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   gradient: LinearGradient(
                       colors: snapshot.data as List<Color>,
                       begin: Alignment.topRight,
                       end: Alignment.bottomLeft)),
-            ),
+            ),]
           );
         });
   }
