@@ -8,7 +8,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 import 'package:teens_next/app/authentication/authentication.dart';
 import 'package:teens_next/app/feeds/feeds.dart';
-import 'package:teens_next/app/screens/contacts_list.dart';
+import 'package:teens_next/app/messaging/screens/contacts_list.dart';
 import 'package:teens_next/services/auth_service.dart';
 import 'package:teens_next/services/posting_service.dart';
 
@@ -279,62 +279,6 @@ class _FeedsScreenState extends State<FeedsScreen> {
         return postContent;
       },
     );
-
-    /*
-    return Padding(
-      padding: const EdgeInsets.all(4),
-      child: Column(
-        children: [
-          PostCard(
-              title: data['title'],
-              sender: data['name'],
-              body: data['message'],
-              userColors: [
-                userColorOne,
-                userColorTwo
-              ],
-              iconButtons: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                            builder: (context) => const NewComment()));
-                  },
-                  padding: const EdgeInsets.only(right: 84),
-                  icon: const Icon(Iconsax.messages_2),
-                ),
-                IconButton(
-                  onPressed: () {
-                    // likeCounter++;
-                  },
-                  padding: const EdgeInsets.only(right: 84),
-                  icon: const Row(children: [
-                    Icon(Iconsax.like_1),
-                    // SizedBox(width: 8),
-                    /*
-                      Text(
-                        likeCounter.toString(),
-                        style: const TextStyle(
-                          decoration: TextDecoration.none,
-                          fontFamily: 'Capriola',
-                          color: Colors.black,
-                          fontSize: 14
-                        ),
-                      )
-                      */
-                  ]),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  // need to change this icon to something more meaningful
-                  icon: const Icon(Iconsax.activity),
-                )
-              ])
-        ],
-      ),
-    );
-    */
   }
 
   Widget _buildPostList() {

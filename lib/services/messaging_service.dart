@@ -13,7 +13,8 @@ class MessagingService extends ChangeNotifier {
     // get user info
     final String currentUserId = _firebaseAuth.currentUser!.uid;
     final String currentUserEmail = _firebaseAuth.currentUser!.email.toString();
-    final String currentUserName = _firebaseAuth.currentUser!.displayName.toString();
+    final String currentUserName =
+        _firebaseAuth.currentUser!.displayName.toString();
     final Timestamp timestamp = Timestamp.now();
 
     // create new message
@@ -23,8 +24,7 @@ class MessagingService extends ChangeNotifier {
         senderName: currentUserName,
         receiverId: receiverId,
         message: message,
-        timestamp: timestamp
-    );
+        timestamp: timestamp);
 
     // construct chat room id from from current user and receiver id (sorted)
     List<String> ids = [currentUserId, receiverId];
@@ -52,5 +52,23 @@ class MessagingService extends ChangeNotifier {
         .collection('messages')
         .orderBy('timestamp', descending: true)
         .snapshots();
+  }
+
+  // GET most recent message
+  Future<Map<String, dynamic>> getLastMessageSent(String userId, String altUserId) async {
+    try {
+      Stream<QuerySnapshot> messagesStream = getMessages(userId, altUserId);
+
+      var snapshot = await messagesStream.first;
+
+      if (snapshot.docs.isNotEmpty) {
+        DocumentSnapshot lastMessageDocument = snapshot.docs.first;
+        return lastMessageDocument.data() as Map<String, dynamic>;
+      } else {
+        return {};
+      }
+    } catch (e) {
+      return {};
+    }
   }
 }

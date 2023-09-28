@@ -3,7 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:teens_next/app/messaging/messages_screen.dart';
+import 'package:teens_next/app/messaging/screens/messages_screen.dart';
+import 'package:teens_next/services/messaging_service.dart';
 
 class NotificationsScreen extends StatefulWidget {
   final String receiverUserEmail;
@@ -17,7 +18,9 @@ class NotificationsScreen extends StatefulWidget {
 }
 
 class _NotificationsScreenState extends State<NotificationsScreen> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  // final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final String currentUserUid = FirebaseAuth.instance.currentUser!.uid;
+  final MessagingService _messagingService = MessagingService();
 
   @override
   Widget build(BuildContext context) {
@@ -36,53 +39,64 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   Widget _buildUserListItem(DocumentSnapshot document) {
     Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
 
-    var chatDocuments = [];
+    return FutureBuilder(
+      future: _messagingService.getLastMessageSent(data['receiverId'], data['senderId']),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return Text(
+            "Error${snapshot.error}",
+            style: const TextStyle(
+              decoration: TextDecoration.none,
+              color: Colors.black,
+              fontFamily: 'Capriola',
+              fontSize: 24,
+            ),
+          );
+        }
 
-    FirebaseFirestore.instance
-        .collection('chat_rooms')
-        .doc('documentId')
-        .collection('messages')
-        .where(_auth.currentUser!.uid, isEqualTo: true)
-        .snapshots()
-        .listen((QuerySnapshot snapshot) {
-      chatDocuments = snapshot.docs.map((DocumentSnapshot document) {
-        Map<String, dynamic> data = document.data() as Map<String, dynamic>;
-        Map<String, dynamic> names = data['name'];
-        names.remove(_auth.currentUser);
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Text(
+            "Loading",
+            style: TextStyle(
+              decoration: TextDecoration.none,
+              color: Colors.black,
+              fontFamily: 'Capriola',
+              fontSize: 16,
+            ),
+          );
+        }
 
-        return {'documentId': document.id, 'name': names.values.first};
-      }).toList();
-    });
+        final lastMessageData = snapshot.data!;
+        final lastMessageText = lastMessageData['message'];
 
-    if (_auth.currentUser!.email != data['email']) {
+        return Material(
+            child: ListTile(
+          title: Text(data['name']),
+          subtitle: Text(lastMessageText),
+          trailing: IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                        builder: (context) => MessagesScreen(
+                              receiverUserName: data['name'],
+                              receiverUid: data['receiverId'],
+                            )));
+              },
+              icon: const Icon(Iconsax.rotate_left)),
+        ));
+      },
+    );
+
+    /*
+    if (_firebaseAuth.currentUser!.email != data['email']) {
       return Material(
         child: ListTile(
           title: Text(data['name']),
-          subtitle: Text(FirebaseFirestore.instance
-              .collection('chat_rooms')
-              .doc('documentId')
-              .collection('messages')
-              .orderBy('timestamp', descending: true)
-              .limit(1)
-              .get()
-              .then((QuerySnapshot snapshot) {
-            for (var document in chatDocuments) {
-              /*
-                * document value not used
-                * value returned is Future reference
-                * treat as error
-              */
-
-              FirebaseFirestore.instance
-                  .collection('chat_rooms')
-                  .doc('documentId')
-                  .collection('messages')
-                  .orderBy('timestamp', descending: true)
-                  .limit(1)
-                  .snapshots()
-                  .listen((QuerySnapshot snapshot) {});
-            }
-          }).toString()),
+          subtitle: Text(_messagingService
+              .getLastMessageSent(
+                data['uid'], currentUserUid)
+              .toString()),
           trailing: IconButton(
               onPressed: () {
                 Navigator.push(
@@ -99,6 +113,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
     } else {
       return Container();
     }
+    */
   }
 
   Widget _buildUserList() {
@@ -110,8 +125,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             "Error",
             style: TextStyle(fontFamily: 'Capriola', fontSize: 24),
           );
-        } 
-        
+        }
+
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Text(
             "Loading",
