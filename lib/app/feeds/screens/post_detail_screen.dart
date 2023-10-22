@@ -35,47 +35,45 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
             Row(
               children: [
                 MenuItemButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const UserProfile()));
-                    },
-                    leadingIcon: const Icon(Iconsax.profile_2user),
-                    child: const Padding(
-                      padding: EdgeInsets.only(left: 8, right: 20),
-                      child: Text(
-                        "User profile",
-                        style: TextStyle(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const UserProfile()));
+                  },
+                  leadingIcon: const Icon(Iconsax.profile_2user),
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 8, right: 20),
+                    child: Text(
+                      "User profile",
+                      style: TextStyle(
                           decoration: TextDecoration.none,
                           fontFamily: 'Capriola',
                           color: Colors.black,
-                          fontSize: 16
-                        ),
-                      ),
-                    ),    
+                          fontSize: 16),
+                    ),
+                  ),
                 ),
               ],
             ),
             Row(
               children: [
                 MenuItemButton(
-                    onPressed: () {
-                      signOut();
-                    },
-                    leadingIcon: const Icon(Iconsax.logout_14),
-                    child: const Padding(
-                      padding: EdgeInsets.only(left: 8, right: 20),
-                      child: Text(
-                        "Sign out",
-                        style: TextStyle(
+                  onPressed: () {
+                    signOut();
+                  },
+                  leadingIcon: const Icon(Iconsax.logout_14),
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 8, right: 20),
+                    child: Text(
+                      "Sign out",
+                      style: TextStyle(
                           decoration: TextDecoration.none,
                           fontFamily: 'Capriola',
                           color: Colors.black,
-                          fontSize: 16
-                        ),
-                      ),
+                          fontSize: 16),
                     ),
+                  ),
                 ),
               ],
             )
@@ -108,16 +106,16 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
         ),
         actions: [
           CircleTile(
-              icon: const Icon(
+            icon: const Icon(
               Iconsax.search_normal,
               color: Colors.black,
               weight: 60,
             ),
             onTap: () {
               ExpandableSearchBar(
-                onTap: () => print(searchController.text.toString()),
-                hintText: "Search something",
-                editTextController: searchController);
+                  onTap: () => print(searchController.text.toString()),
+                  hintText: "Search something",
+                  editTextController: searchController);
             },
           )
         ],
@@ -129,20 +127,20 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
         children: [
           Center(
             child: CupertinoButton.filled(
-              child: const Text(
-                "Return to previous screen",
-                style: TextStyle(
-                  decoration: TextDecoration.none,
-                  fontFamily: 'Capriola',
-                  color: Colors.white,
-                  fontSize: 18),
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              }),
-            )
-          ],
-        ),
+                child: const Text(
+                  "Return to previous screen",
+                  style: TextStyle(
+                      decoration: TextDecoration.none,
+                      fontFamily: 'Capriola',
+                      color: Colors.white,
+                      fontSize: 18),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                }),
+          )
+        ],
+      ),
     );
   }
 }

@@ -43,12 +43,12 @@ class _MessagesScreenState extends State<MessagesScreen> {
       navigationBar: CupertinoNavigationBar(
         padding: const EdgeInsetsDirectional.only(bottom: 2),
         leading: MaterialButton(
-            onPressed: () => Navigator.pop(context),
-            shape: const CircleBorder(),
-            child: const Icon(
-              CupertinoIcons.chevron_back,
-              color: Color.fromARGB(255, 100, 105, 255),
-            ),
+          onPressed: () => Navigator.pop(context),
+          shape: const CircleBorder(),
+          child: const Icon(
+            CupertinoIcons.chevron_back,
+            color: Color.fromARGB(255, 100, 105, 255),
+          ),
         ),
         middle: Text(widget.receiverUserName),
       ),
@@ -135,11 +135,8 @@ class _MessagesScreenState extends State<MessagesScreen> {
 
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
-            child: LoadingAnimationWidget.staggeredDotsWave(
-              color: const Color.fromARGB(255, 100, 105, 255), 
-              size: 100
-            )
-          );
+              child: LoadingAnimationWidget.staggeredDotsWave(
+                  color: const Color.fromARGB(255, 100, 105, 255), size: 100));
         }
 
         return ListView(

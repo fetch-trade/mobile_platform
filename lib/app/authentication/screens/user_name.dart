@@ -71,8 +71,8 @@ class _UserNameState extends State<UserName> {
                 // String userDisplayName = _nameController.text;
 
                 // look into this please
-                FirebaseAuth.instance.currentUser!.updateDisplayName(
-                    _nameController.text); 
+                FirebaseAuth.instance.currentUser!
+                    .updateDisplayName(_nameController.text);
 
                 Navigator.push(
                     context,

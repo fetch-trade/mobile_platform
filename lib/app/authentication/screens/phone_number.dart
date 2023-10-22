@@ -72,8 +72,8 @@ class _PhoneNumberState extends State<PhoneNumber> {
                 // String userDisplayName = _nameController.text;
 
                 // look into this please
-                FirebaseAuth.instance.currentUser!.updateDisplayName(
-                    _numberController.text); 
+                FirebaseAuth.instance.currentUser!
+                    .updateDisplayName(_numberController.text);
 
                 Navigator.push(
                     context,

@@ -43,8 +43,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         .collection('messages')
         .where(_auth.currentUser!.uid, isEqualTo: true)
         .snapshots()
-        .listen((QuerySnapshot snapshot) {
-    });
+        .listen((QuerySnapshot snapshot) {});
 
     if (_auth.currentUser!.email != data['email']) {
       return Material(
@@ -77,8 +76,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             "Error",
             style: TextStyle(fontFamily: 'Capriola', fontSize: 24),
           );
-        } 
-        
+        }
+
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
               child: LoadingAnimationWidget.staggeredDotsWave(

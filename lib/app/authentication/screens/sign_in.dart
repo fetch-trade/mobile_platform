@@ -34,15 +34,14 @@ class _SignInState extends State<SignIn> {
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(
-            e.toString(), 
-            style: const TextStyle(
-              decoration: TextDecoration.none,
-              fontFamily: 'Capriola',
-              fontSize: 12,
-            ),
-          )
-        ),
+            content: Text(
+          e.toString(),
+          style: const TextStyle(
+            decoration: TextDecoration.none,
+            fontFamily: 'Capriola',
+            fontSize: 12,
+          ),
+        )),
       );
     }
   }
@@ -79,25 +78,23 @@ class _SignInState extends State<SignIn> {
                   align: TextAlign.left,
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   textStyle: const TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'REM',
-                      fontSize: 18),
+                      color: Colors.black, fontFamily: 'REM', fontSize: 18),
                   inputDecoration: InputDecoration(
-                      counterText: "",
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(8)),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade400),
-                      ),
-                      fillColor: Colors.grey.shade200,
-                      filled: true,
-                      hintText: "Email",
-                      hintStyle: TextStyle(
-                          color: Colors.grey[400],
-                          fontFamily: 'REM',
-                          fontSize: 18),
+                    counterText: "",
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(8)),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade400),
                     ),
+                    fillColor: Colors.grey.shade200,
+                    filled: true,
+                    hintText: "Email",
+                    hintStyle: TextStyle(
+                        color: Colors.grey[400],
+                        fontFamily: 'REM',
+                        fontSize: 18),
+                  ),
                 ),
 
                 // password textfield
@@ -112,25 +109,23 @@ class _SignInState extends State<SignIn> {
                   align: TextAlign.left,
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   textStyle: const TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'REM',
-                      fontSize: 18),
+                      color: Colors.black, fontFamily: 'REM', fontSize: 18),
                   inputDecoration: InputDecoration(
-                      counterText: "",
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(8)),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade400),
-                      ),
-                      fillColor: Colors.grey.shade200,
-                      filled: true,
-                      hintText: "Password",
-                      hintStyle: TextStyle(
-                          color: Colors.grey[400],
-                          fontFamily: 'REM',
-                          fontSize: 18),
+                    counterText: "",
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(8)),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade400),
                     ),
+                    fillColor: Colors.grey.shade200,
+                    filled: true,
+                    hintText: "Password",
+                    hintStyle: TextStyle(
+                        color: Colors.grey[400],
+                        fontFamily: 'REM',
+                        fontSize: 18),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -205,7 +200,7 @@ class _SignInState extends State<SignIn> {
                   ],
                 ),
                 const SizedBox(height: 50),
-                
+
                 // not a member? register now
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

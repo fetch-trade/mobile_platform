@@ -46,7 +46,8 @@ class _SignUpState extends State<SignUp> {
           .signUpWithEmailAndPassword(
               emailController.text, passwordController.text)
           .then((value) {
-        Navigator.push(context, CupertinoPageRoute(builder: (context) => const UserName()));
+        Navigator.push(context,
+            CupertinoPageRoute(builder: (context) => const UserName()));
       });
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -93,25 +94,23 @@ class _SignUpState extends State<SignUp> {
                   align: TextAlign.left,
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   textStyle: const TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'REM',
-                      fontSize: 18),
+                      color: Colors.black, fontFamily: 'REM', fontSize: 18),
                   inputDecoration: InputDecoration(
-                      counterText: "",
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(8)),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade400),
-                      ),
-                      fillColor: Colors.grey.shade200,
-                      filled: true,
-                      hintText: "Email",
-                      hintStyle: TextStyle(
-                          color: Colors.grey[400],
-                          fontFamily: 'REM',
-                          fontSize: 18),
+                    counterText: "",
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(8)),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade400),
                     ),
+                    fillColor: Colors.grey.shade200,
+                    filled: true,
+                    hintText: "Email",
+                    hintStyle: TextStyle(
+                        color: Colors.grey[400],
+                        fontFamily: 'REM',
+                        fontSize: 18),
+                  ),
                 ),
 
                 // password textfield
@@ -126,25 +125,23 @@ class _SignUpState extends State<SignUp> {
                   align: TextAlign.left,
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   textStyle: const TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'REM',
-                      fontSize: 18),
+                      color: Colors.black, fontFamily: 'REM', fontSize: 18),
                   inputDecoration: InputDecoration(
-                      counterText: "",
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(8)),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade400),
-                      ),
-                      fillColor: Colors.grey.shade200,
-                      filled: true,
-                      hintText: "Password",
-                      hintStyle: TextStyle(
-                          color: Colors.grey[400],
-                          fontFamily: 'REM',
-                          fontSize: 18),
+                    counterText: "",
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(8)),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade400),
                     ),
+                    fillColor: Colors.grey.shade200,
+                    filled: true,
+                    hintText: "Password",
+                    hintStyle: TextStyle(
+                        color: Colors.grey[400],
+                        fontFamily: 'REM',
+                        fontSize: 18),
+                  ),
                 ),
 
                 // confirm password textfield
@@ -159,25 +156,23 @@ class _SignUpState extends State<SignUp> {
                   align: TextAlign.left,
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   textStyle: const TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'REM',
-                      fontSize: 18),
+                      color: Colors.black, fontFamily: 'REM', fontSize: 18),
                   inputDecoration: InputDecoration(
-                      counterText: "",
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(8)),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade400),
-                      ),
-                      fillColor: Colors.grey.shade200,
-                      filled: true,
-                      hintText: "Confirm password",
-                      hintStyle: TextStyle(
-                          color: Colors.grey[400],
-                          fontFamily: 'REM',
-                          fontSize: 18),
+                    counterText: "",
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(8)),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade400),
                     ),
+                    fillColor: Colors.grey.shade200,
+                    filled: true,
+                    hintText: "Confirm password",
+                    hintStyle: TextStyle(
+                        color: Colors.grey[400],
+                        fontFamily: 'REM',
+                        fontSize: 18),
+                  ),
                 ),
                 const SizedBox(height: 24),
 
@@ -233,7 +228,7 @@ class _SignUpState extends State<SignUp> {
                   ],
                 ),
                 const SizedBox(height: 48),
-                
+
                 // already a member? sign in now
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

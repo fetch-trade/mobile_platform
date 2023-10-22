@@ -4,10 +4,7 @@ class CircleTile extends StatelessWidget {
   final Function()? onTap;
   final Icon? icon;
 
-  const CircleTile(
-      {super.key,
-      required this.onTap,
-      required this.icon});
+  const CircleTile({super.key, required this.onTap, required this.icon});
 
   @override
   Widget build(BuildContext context) {

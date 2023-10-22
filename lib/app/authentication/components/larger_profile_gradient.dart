@@ -31,7 +31,8 @@ class LargerProfileGradient extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
                 child: LoadingAnimationWidget.inkDrop(
-                    color: const Color.fromARGB(255, 100, 105, 255), size: width));
+                    color: const Color.fromARGB(255, 100, 105, 255),
+                    size: width));
           }
 
           return Container(

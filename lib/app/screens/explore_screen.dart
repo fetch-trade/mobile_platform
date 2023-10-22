@@ -196,7 +196,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                       center: mapLocation,
                       zoom: currentZoom,
                     ),
-                    children: [    
+                    children: [
                       TileLayer(
                         urlTemplate:
                             "https://api.tomtom.com/map/1/tile/basic/main/"
@@ -210,9 +210,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     left: 18,
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8)
-                      ),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8)),
                       child: Column(
                         children: [
                           IconButton(
@@ -249,8 +248,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   color: Colors.white, fontFamily: 'Capriola', fontSize: 12),
               foregroundColor: const Color.fromARGB(255, 100, 105, 255),
               labelBackgroundColor: const Color.fromARGB(255, 100, 105, 255),
-              onTap: () {
-              },
+              onTap: () {},
             ),
             SpeedDialChild(
               child: const Icon(Iconsax.global_search),
@@ -259,8 +257,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   color: Colors.white, fontFamily: 'Capriola', fontSize: 12),
               foregroundColor: const Color.fromARGB(255, 100, 105, 255),
               labelBackgroundColor: const Color.fromARGB(255, 100, 105, 255),
-              onTap: () {
-              },
+              onTap: () {},
             ),
           ],
         ),

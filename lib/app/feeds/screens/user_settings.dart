@@ -23,7 +23,7 @@ class UserSettings extends StatelessWidget {
               children: [
                 const SizedBox(height: 24),
                 CupertinoButton.filled(
-                  onPressed:() => Navigator.pop(context),
+                  onPressed: () => Navigator.pop(context),
                   child: const Text(
                     "Go back",
                     style: TextStyle(

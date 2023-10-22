@@ -52,7 +52,7 @@ class _NewPostState extends State<NewPost> {
                           borderSide: const BorderSide(color: Colors.white),
                           borderRadius: BorderRadius.circular(12)),
                       focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderSide: BorderSide(color: Colors.grey.shade400),
                       ),
                       fillColor: Colors.grey.shade200,
                       filled: true,
@@ -67,18 +67,21 @@ class _NewPostState extends State<NewPost> {
                 const SizedBox(height: 8),
                 Material(
                   child: InputField(
-                      controller: _postController,
-                      width: 600,
-                      height: 300,
-                      maxLines: 11,
-                      maxLength: 300,
-                      autocorrect: true,
-                      obscureText: false,
-                      align: TextAlign.left,  // check this value
-                      padding: const EdgeInsets.only(top: 12, left: 12, right: 12), 
-                      textStyle: const TextStyle(
-                        color: Colors.black, fontFamily: 'Capriola', fontSize: 18),
-                      inputDecoration: InputDecoration(
+                    controller: _postController,
+                    width: 600,
+                    height: 300,
+                    maxLines: 11,
+                    maxLength: 300,
+                    autocorrect: true,
+                    obscureText: false,
+                    align: TextAlign.left, // check this value
+                    padding:
+                        const EdgeInsets.only(top: 12, left: 12, right: 12),
+                    textStyle: const TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'Capriola',
+                        fontSize: 18),
+                    inputDecoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                           borderSide: const BorderSide(color: Colors.white),
                           borderRadius: BorderRadius.circular(12)),

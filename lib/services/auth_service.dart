@@ -28,14 +28,11 @@ class AuthService extends ChangeNotifier {
       UserCredential userCredential = await _firebaseAuth
           .signInWithEmailAndPassword(email: email, password: password);
       // merge document if neccesary
-      _firebaseFirestore
-          .collection('users')
-          .doc(userCredential.user!.uid)
-          .set({
-            'uid':    userCredential.user?.uid,
-            'name':   userCredential.user?.displayName,
-            'email':  email,
-          }, SetOptions(merge: true));
+      _firebaseFirestore.collection('users').doc(userCredential.user!.uid).set({
+        'uid': userCredential.user?.uid,
+        'name': userCredential.user?.displayName,
+        'email': email,
+      }, SetOptions(merge: true));
 
       return userCredential;
     } on FirebaseAuthException catch (e) {
@@ -51,9 +48,9 @@ class AuthService extends ChangeNotifier {
           .createUserWithEmailAndPassword(email: email, password: password);
 
       AppUser user = AppUser(
-          uid:          userCredential.user?.uid,
-          name:         userCredential.user?.displayName,
-          email:        email,
+          uid: userCredential.user?.uid,
+          name: userCredential.user?.displayName,
+          email: email,
           userColorOne: userColorOne,
           userColorTwo: userColorTwo);
 

@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class Logo extends StatelessWidget {
-  const Logo({Key? key, required this.width, required this.height, required this.radius})
-      : super(key: key);
   final double width;
   final double height;
   final double radius;
+
+  const Logo(
+      {super.key,
+      required this.width,
+      required this.height,
+      required this.radius});
 
   @override
   Widget build(BuildContext context) {

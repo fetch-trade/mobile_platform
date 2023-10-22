@@ -28,7 +28,7 @@ class _TogglePageState extends State<TogglePage> {
       );
     } else {
       return SignUp(
-        onTap: togglePages,    
+        onTap: togglePages,
       );
     }
   }

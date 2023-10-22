@@ -13,10 +13,7 @@ class ForgotPassword extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(CupertinoIcons.chevron_back),
           onPressed: () {
-            Navigator.pop(
-              context,
-              const AuthPage()
-            );
+            Navigator.pop(context, const AuthPage());
           },
         ),
       ),

@@ -26,7 +26,7 @@ class _UserProfileState extends State<UserProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+        backgroundColor: Colors.white,
         appBar: AppBar(
           leading: MaterialButton(
             onPressed: () => Navigator.pop(context),
@@ -60,10 +60,7 @@ class _UserProfileState extends State<UserProfile> {
               },
             )
             */
-            IconButton(
-              onPressed: signOut, 
-              icon: const Icon(Iconsax.logout_14)
-            )
+            IconButton(onPressed: signOut, icon: const Icon(Iconsax.logout_14))
           ],
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
@@ -95,75 +92,73 @@ class _UserProfileState extends State<UserProfile> {
                 width: 440,
                 height: 500,
                 child: DefaultTabController(
-                  initialIndex: 0,
-                  length: 3, 
-                  child: Scaffold(
-                    backgroundColor: Colors.white,
-                    appBar: AppBar(
-                      elevation: 0,
-                      toolbarHeight: 4,
+                    initialIndex: 0,
+                    length: 3,
+                    child: Scaffold(
                       backgroundColor: Colors.white,
-                      automaticallyImplyLeading: false,
-                      bottom: const TabBar(
-                        indicatorColor: Color.fromARGB(255, 100, 105, 255),
-                        tabs: <Widget>[
-                          Tab(
-                            icon: Icon(
-                              Iconsax.activity,
-                              color: Colors.black,
-                            ),
-                          ),
-                          Tab(
-                            icon: Icon(
-                              Iconsax.note_25,
-                              color: Colors.black,
-                            ),
-                          ),
-                          Tab(
-                            icon: Icon(
-                              Iconsax.profile_2user,
-                              color: Colors.black,
-                            ),
-                          )
-                        ]
+                      appBar: AppBar(
+                        elevation: 0,
+                        toolbarHeight: 4,
+                        backgroundColor: Colors.white,
+                        automaticallyImplyLeading: false,
+                        bottom: const TabBar(
+                            indicatorColor: Color.fromARGB(255, 100, 105, 255),
+                            tabs: <Widget>[
+                              Tab(
+                                icon: Icon(
+                                  Iconsax.activity,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              Tab(
+                                icon: Icon(
+                                  Iconsax.note_25,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              Tab(
+                                icon: Icon(
+                                  Iconsax.profile_2user,
+                                  color: Colors.black,
+                                ),
+                              )
+                            ]),
                       ),
-                    ),
-                    body: const TabBarView(
-                      children: <Widget>[
-                        Center(
-                          child: Text(
-                            "Posts",
-                            style: TextStyle(
+                      body: const TabBarView(
+                        children: <Widget>[
+                          Center(
+                            child: Text(
+                              "Posts",
+                              style: TextStyle(
                                   decoration: TextDecoration.none,
                                   fontFamily: 'Capriola',
                                   color: Colors.black,
                                   fontSize: 18),
+                            ),
                           ),
-                        ),
-                        Center(
-                          child: Text(
-                            "Drafts",
-                            style: TextStyle(
+                          Center(
+                            child: Text(
+                              "Drafts",
+                              style: TextStyle(
                                   decoration: TextDecoration.none,
                                   fontFamily: 'Capriola',
                                   color: Colors.black,
                                   fontSize: 18),
+                            ),
                           ),
-                        ),
-                        Center(
-                          child: Text(
-                            "Friends",
-                            style: TextStyle(
+                          Center(
+                            child: Text(
+                              "Friends",
+                              style: TextStyle(
                                   decoration: TextDecoration.none,
                                   fontFamily: 'Capriola',
                                   color: Colors.black,
                                   fontSize: 18),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  )
-                ),
+                        ],
+                      ),
+                    )),
               ),
             ],
           ),

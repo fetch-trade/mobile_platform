@@ -22,9 +22,8 @@ class MessageInputField extends StatelessWidget {
         maxLines: null,
         decoration: InputDecoration(
             enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.white),
-              borderRadius: BorderRadius.circular(12)
-            ),
+                borderSide: const BorderSide(color: Colors.white),
+                borderRadius: BorderRadius.circular(12)),
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey.shade400),
             ),

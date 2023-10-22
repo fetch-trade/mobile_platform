@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 class ProfileGradient extends StatelessWidget {
   final List<Color> userColors;
 
-  const ProfileGradient({
-    super.key,
-    required this.userColors
-  });
+  const ProfileGradient({super.key, required this.userColors});
 
   @override
   Widget build(BuildContext context) {

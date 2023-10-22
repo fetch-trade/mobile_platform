@@ -55,7 +55,8 @@ class MessagingService extends ChangeNotifier {
   }
 
   // GET most recent message
-  Future<Map<String, dynamic>> getLastMessageSent(String userId, String altUserId) async {
+  Future<Map<String, dynamic>> getLastMessageSent(
+      String userId, String altUserId) async {
     try {
       Stream<QuerySnapshot> messagesStream = getMessages(userId, altUserId);
 

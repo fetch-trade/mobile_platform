@@ -11,10 +11,10 @@ class StartButton extends StatelessWidget {
       height: 96,
       width: 96,
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.white),
-          borderRadius: BorderRadius.circular(32),
-          color: Colors.grey[200],
-        ),
+        border: Border.all(color: Colors.white),
+        borderRadius: BorderRadius.circular(32),
+        color: Colors.grey[200],
+      ),
       child: CupertinoButton(
         onPressed: onPressed,
         child: const Row(
