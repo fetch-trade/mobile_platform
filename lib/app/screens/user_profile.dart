@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
-import 'package:teens_next/app/authentication/components/larger_profile_gradient.dart';
+import 'package:teens_next/components/profile_gradient.dart';
 import 'package:teens_next/services/auth_service.dart';
 
 class UserProfile extends StatefulWidget {
@@ -73,7 +73,7 @@ class _UserProfileState extends State<UserProfile> {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(top: 24),
-                    child: LargerProfileGradient(width: 140, height: 140),
+                    child: ProfileGradient(width: 140, height: 140),
                   ),
                 ],
               ),

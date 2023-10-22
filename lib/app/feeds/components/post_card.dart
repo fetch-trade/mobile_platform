@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:teens_next/app/feeds/screens/post_detail_screen.dart';
 import 'package:teens_next/components/profile_gradient.dart';
+import 'package:teens_next/app/feeds/screens/post_detail_screen.dart';
 
 class PostCard extends StatelessWidget {
   final String title;
@@ -39,7 +39,13 @@ class PostCard extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      ProfileGradient(userColors: userColors),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 4, left: 4),
+                        child: ProfileGradient(
+                          width: 30,
+                          height: 30,
+                        ),
+                      ),
                       const SizedBox(width: 16),
                       Flexible(
                         child: Column(

@@ -6,11 +6,11 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
-import 'package:teens_next/app/authentication/authentication.dart';
 import 'package:teens_next/app/feeds/feeds.dart';
 import 'package:teens_next/app/feeds/screens/user_settings.dart';
 import 'package:teens_next/app/messaging/screens/contacts_list.dart';
 import 'package:teens_next/app/screens/user_profile.dart';
+import 'package:teens_next/components/profile_gradient.dart';
 import 'package:teens_next/services/services.dart';
 
 class FeedsScreen extends StatefulWidget {
@@ -123,7 +123,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
               child: const Row(
                 children: [
                   SizedBox(width: 16),
-                  LargerProfileGradient(width: 40, height: 40),
+                  ProfileGradient(width: 40, height: 40),
                 ],
               ),
             );

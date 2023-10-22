@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:teens_next/app/authentication/components/components.dart';
+import 'package:teens_next/components/profile_gradient.dart';
 
 class ContactsList extends StatefulWidget {
   const ContactsList({super.key});
@@ -22,7 +23,7 @@ class _ContactsListState extends State<ContactsList> {
           leading: const Row(
             children: [
               SizedBox(width: 16),
-              LargerProfileGradient(width: 40, height: 40),
+              ProfileGradient(width: 40, height: 40),
             ],
           ),
           title: const Text(

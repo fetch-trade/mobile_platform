@@ -4,9 +4,9 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:provider/provider.dart';
-import 'package:teens_next/app/authentication/components/components.dart';
 import 'package:teens_next/app/feeds/screens/user_settings.dart';
 import 'package:teens_next/app/screens/user_profile.dart';
+import 'package:teens_next/components/profile_gradient.dart';
 import 'package:teens_next/services/auth_service.dart';
 
 class ExploreScreen extends StatefulWidget {
@@ -131,7 +131,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
               child: const Row(
                 children: [
                   SizedBox(width: 16),
-                  LargerProfileGradient(width: 40, height: 40),
+                  ProfileGradient(width: 40, height: 40),
                 ],
               ),
             );
