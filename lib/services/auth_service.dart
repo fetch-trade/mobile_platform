@@ -32,9 +32,9 @@ class AuthService extends ChangeNotifier {
           .collection('users')
           .doc(userCredential.user!.uid)
           .set({
-            'uid': userCredential.user?.uid,
-            'name': userCredential.user?.displayName,
-            'email': email,
+            'uid':    userCredential.user?.uid,
+            'name':   userCredential.user?.displayName,
+            'email':  email,
           }, SetOptions(merge: true));
 
       return userCredential;
@@ -51,9 +51,9 @@ class AuthService extends ChangeNotifier {
           .createUserWithEmailAndPassword(email: email, password: password);
 
       AppUser user = AppUser(
-          uid: userCredential.user?.uid,
-          name: userCredential.user?.displayName,
-          email: email,
+          uid:          userCredential.user?.uid,
+          name:         userCredential.user?.displayName,
+          email:        email,
           userColorOne: userColorOne,
           userColorTwo: userColorTwo);
 
@@ -74,6 +74,13 @@ class AuthService extends ChangeNotifier {
       throw Exception(e.code);
     }
   }
+
+  // please look into the code directly below
+  /*
+  Future<UserCredential> fetchUserCredentials() async {
+
+  }
+  */
 
   // sign user out
   Future<void> signOut() async {

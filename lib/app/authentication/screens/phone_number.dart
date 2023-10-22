@@ -1,19 +1,20 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:teens_next/app/authentication/components/components.dart';
-import 'package:teens_next/app/authentication/screens/phone_number.dart';
+import 'package:teens_next/app/authentication/components/enter_button.dart';
+import 'package:teens_next/app/screens/home_screen.dart';
 import 'package:teens_next/components/input_field.dart';
 
-class UserName extends StatefulWidget {
-  const UserName({super.key});
+class PhoneNumber extends StatefulWidget {
+  const PhoneNumber({Key? key}) : super(key: key);
 
   @override
-  State<UserName> createState() => _UserNameState();
+  State<PhoneNumber> createState() => _PhoneNumberState();
 }
 
-class _UserNameState extends State<UserName> {
-  final _nameController = TextEditingController();
+class _PhoneNumberState extends State<PhoneNumber> {
+  final currentUser = FirebaseAuth.instance.currentUser!;
+  final TextEditingController _numberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class _UserNameState extends State<UserName> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-            "Choose a username",
+            "Enter your phone number",
             style: TextStyle(
                 decoration: TextDecoration.none,
                 color: Colors.black,
@@ -34,7 +35,7 @@ class _UserNameState extends State<UserName> {
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 48),
               child: InputField(
-                controller: _nameController,
+                controller: _numberController,
                 width: 440,
                 height: 80,
                 maxLines: 1,
@@ -58,7 +59,7 @@ class _UserNameState extends State<UserName> {
                   ),
                   fillColor: Colors.grey.shade200,
                   filled: true,
-                  hintText: "Enter username",
+                  hintText: "Phone number",
                   hintStyle: TextStyle(
                       color: Colors.grey[400], fontFamily: 'REM', fontSize: 18),
                 ),
@@ -72,12 +73,12 @@ class _UserNameState extends State<UserName> {
 
                 // look into this please
                 FirebaseAuth.instance.currentUser!.updateDisplayName(
-                    _nameController.text); 
+                    _numberController.text); 
 
                 Navigator.push(
                     context,
                     CupertinoPageRoute(
-                        builder: (context) => const PhoneNumber()));
+                        builder: (context) => const HomeScreen()));
               })
         ],
       ),

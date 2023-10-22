@@ -1,12 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:teens_next/app/feeds/components/post_input_field.dart';
-import 'package:teens_next/app/feeds/components/post_title_input_field.dart';
+import 'package:teens_next/components/input_field.dart';
 import 'package:teens_next/services/posting_service.dart';
 
 class NewPost extends StatefulWidget {
-  const NewPost({Key? key}) : super(key: key);
+  const NewPost({super.key});
 
   @override
   State<NewPost> createState() => _NewPostState();
@@ -35,21 +34,66 @@ class _NewPostState extends State<NewPost> {
             child: Column(
               children: [
                 Material(
-                  child: PostTitleInputField(
+                  child: InputField(
                     controller: _postTitleController,
-                    hintText: "Give this post a name",
+                    width: 600,
+                    height: 80,
+                    maxLines: 1,
+                    maxLength: 35,
+                    autocorrect: true,
+                    obscureText: false,
+                    align: TextAlign.left, // check this value
+                    padding:
+                        const EdgeInsets.only(top: 12, left: 12, right: 12),
+                    textStyle: const TextStyle(
+                        color: Colors.black, fontFamily: 'REM', fontSize: 18),
+                    inputDecoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(12)),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey.shade400),
+                      ),
+                      fillColor: Colors.grey.shade200,
+                      filled: true,
+                      hintText: "Give this post a name",
+                      hintStyle: TextStyle(
+                          color: Colors.grey[400],
+                          fontFamily: 'REM',
+                          fontSize: 18),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 8),
                 Material(
-                  child: PostInputField(
+                  child: InputField(
                       controller: _postController,
+                      width: 600,
+                      height: 300,
+                      maxLines: 11,
+                      maxLength: 300,
+                      autocorrect: true,
+                      obscureText: false,
+                      align: TextAlign.left,  // check this value
+                      padding: const EdgeInsets.only(top: 12, left: 12, right: 12), 
+                      textStyle: const TextStyle(
+                        color: Colors.black, fontFamily: 'Capriola', fontSize: 18),
+                      inputDecoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(12)),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey.shade400),
+                      ),
+                      fillColor: Colors.grey.shade200,
+                      filled: true,
                       hintText: "What's there to do?",
-                      hintTextStyle: TextStyle(
+                      hintStyle: TextStyle(
                           color: Colors.grey[400],
                           fontFamily: 'REM',
                           fontSize: 18),
-                      obscureText: false),
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(12),

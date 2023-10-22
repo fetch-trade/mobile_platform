@@ -19,7 +19,12 @@ class _ContactsListState extends State<ContactsList> {
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-          leading: const LargerProfileGradient(),
+          leading: const Row(
+            children: [
+              SizedBox(width: 16),
+              LargerProfileGradient(width: 40, height: 40),
+            ],
+          ),
           title: const Text(
             "Friends",
             style: TextStyle(

@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   var screens = [
     const FeedsScreen(),
-    const FriendsScreen(),
+    const ExploreScreen(),
     const NotificationsScreen(
       receiverUid: '',
       receiverUserEmail: '',
@@ -43,7 +43,9 @@ class _HomeScreenState extends State<HomeScreen> {
               BottomNavigationBarItem(
                 icon: Icon(Iconsax.home_2),
               ),
-              BottomNavigationBarItem(icon: Icon(Iconsax.people)),
+              BottomNavigationBarItem(
+                icon: Icon(Iconsax.profile_2user)
+              ),
               BottomNavigationBarItem(
                 icon: Icon(Iconsax.notification),
               ),

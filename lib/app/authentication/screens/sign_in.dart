@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:teens_next/app/authentication/components/components.dart';
@@ -57,7 +59,7 @@ class _SignInState extends State<SignIn> {
               children: [
                 // create account for TeensNext!
                 const Text(
-                  'Sign in to TeensNext',
+                  "Sign in to TeensNext",
                   style: TextStyle(
                     color: Colors.black,
                     fontFamily: 'Capriola',
@@ -68,18 +70,68 @@ class _SignInState extends State<SignIn> {
                 // email textfield
                 InputField(
                   controller: emailController,
-                  hintText: 'Email',
+                  width: 440,
+                  height: 80,
+                  maxLines: 1,
+                  maxLength: TextField.noMaxLength,
+                  autocorrect: false,
                   obscureText: false,
+                  align: TextAlign.left,
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  textStyle: const TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'REM',
+                      fontSize: 18),
+                  inputDecoration: InputDecoration(
+                      counterText: "",
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(8)),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey.shade400),
+                      ),
+                      fillColor: Colors.grey.shade200,
+                      filled: true,
+                      hintText: "Email",
+                      hintStyle: TextStyle(
+                          color: Colors.grey[400],
+                          fontFamily: 'REM',
+                          fontSize: 18),
+                    ),
                 ),
-                const SizedBox(height: 12),
+
                 // password textfield
                 InputField(
                   controller: passwordController,
-                  hintText: 'Password',
+                  width: 440,
+                  height: 80,
+                  maxLines: 1,
+                  maxLength: 12,
+                  autocorrect: false,
                   obscureText: true,
+                  align: TextAlign.left,
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  textStyle: const TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'REM',
+                      fontSize: 18),
+                  inputDecoration: InputDecoration(
+                      counterText: "",
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(8)),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey.shade400),
+                      ),
+                      fillColor: Colors.grey.shade200,
+                      filled: true,
+                      hintText: "Password",
+                      hintStyle: TextStyle(
+                          color: Colors.grey[400],
+                          fontFamily: 'REM',
+                          fontSize: 18),
+                    ),
                 ),
-                const SizedBox(height: 12),
-                // forgot password?
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   child: Row(
@@ -94,7 +146,7 @@ class _SignInState extends State<SignIn> {
                                       const ForgotPassword()));
                         },
                         child: Text(
-                          'Forgot Password?',
+                          "Forgot Password?",
                           style: TextStyle(color: Colors.grey[600]),
                         ),
                       ),
@@ -135,7 +187,6 @@ class _SignInState extends State<SignIn> {
                     ],
                   ),
                 ),
-
                 const SizedBox(height: 48),
 
                 // google + apple sign in buttons
@@ -146,7 +197,6 @@ class _SignInState extends State<SignIn> {
                     SquareTile(
                         onTap: () => GAuthProvider().signInWithGoogle(),
                         imagePath: 'assets/imgs/google.svg'),
-
                     const SizedBox(width: 24),
 
                     // apple button
@@ -155,6 +205,7 @@ class _SignInState extends State<SignIn> {
                   ],
                 ),
                 const SizedBox(height: 50),
+                
                 // not a member? register now
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

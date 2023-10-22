@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 import 'package:teens_next/app/authentication/components/components.dart';
-import 'package:teens_next/app/authentication/screens/user_profile.dart';
+import 'package:teens_next/app/screens/user_profile.dart';
 import 'package:teens_next/services/auth_service.dart';
 
 class PostDetailScreen extends StatefulWidget {
@@ -89,7 +89,12 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                   controller.open();
                 }
               },
-              child: const LargerProfileGradient(),
+              child: const Row(
+                children: [
+                  SizedBox(width: 16),
+                  LargerProfileGradient(width: 40, height: 40),
+                ],
+              ),
             );
           },
         ),
@@ -103,7 +108,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
         ),
         actions: [
           CircleTile(
-              icon: Icon(
+              icon: const Icon(
               Iconsax.search_normal,
               color: Colors.black,
               weight: 60,

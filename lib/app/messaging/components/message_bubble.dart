@@ -25,7 +25,7 @@ class MessageBubble extends StatelessWidget {
               child: DecoratedBox(
                 decoration: BoxDecoration(
                     color: isCurrentUser
-                        ? const Color.fromARGB(255, 177, 118, 205)
+                        ? const Color.fromARGB(255, 100, 105, 255)
                         : Colors.grey.shade100,
                     borderRadius: BorderRadius.circular(16)),
                 child: Padding(

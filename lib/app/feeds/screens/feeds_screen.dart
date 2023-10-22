@@ -1,16 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:expandable_search_bar/expandable_search_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:teens_next/app/authentication/authentication.dart';
 import 'package:teens_next/app/feeds/feeds.dart';
+import 'package:teens_next/app/feeds/screens/user_settings.dart';
 import 'package:teens_next/app/messaging/screens/contacts_list.dart';
-import 'package:teens_next/services/auth_service.dart';
-import 'package:teens_next/services/posting_service.dart';
+import 'package:teens_next/app/screens/user_profile.dart';
+import 'package:teens_next/services/services.dart';
 
 class FeedsScreen extends StatefulWidget {
   const FeedsScreen({super.key});
@@ -30,6 +31,8 @@ class _FeedsScreenState extends State<FeedsScreen> {
     authService.signOut();
   }
 
+  void toggleLike() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,10 +51,10 @@ class _FeedsScreenState extends State<FeedsScreen> {
                         MaterialPageRoute(
                             builder: (context) => const UserProfile()));
                   },
-                  leadingIcon: const Icon(Iconsax.profile_2user),
+                  leadingIcon: const Icon(Iconsax.profile_circle5),
                   child: const Center(
                     child: Text(
-                      "User profile",
+                      "Profile",
                       style: TextStyle(
                           decoration: TextDecoration.none,
                           fontFamily: 'Capriola',
@@ -71,6 +74,30 @@ class _FeedsScreenState extends State<FeedsScreen> {
                   leadingIcon: const Icon(Iconsax.logout_14),
                   child: const Center(
                     child: Text(
+                      "Log out",
+                      style: TextStyle(
+                          decoration: TextDecoration.none,
+                          fontFamily: 'Capriola',
+                          color: Colors.black,
+                          fontSize: 16),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            /*
+            Row(
+              children: [
+                MenuItemButton(
+                  onPressed: () {
+                    signOut();
+                  },
+                  leadingIcon: const Icon(
+                    Iconsax.logout_14,
+                    color: Colors.black,
+                  ),
+                  child: const Center(
+                    child: Text(
                       "Sign out",
                       style: TextStyle(
                           decoration: TextDecoration.none,
@@ -82,6 +109,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
                 ),
               ],
             )
+            */
           ],
           builder: (context, controller, child) {
             return GestureDetector(
@@ -92,7 +120,12 @@ class _FeedsScreenState extends State<FeedsScreen> {
                   controller.open();
                 }
               },
-              child: const LargerProfileGradient(),
+              child: const Row(
+                children: [
+                  SizedBox(width: 16),
+                  LargerProfileGradient(width: 40, height: 40),
+                ],
+              ),
             );
           },
         ),
@@ -105,6 +138,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
               fontSize: 24),
         ),
         actions: [
+          /*
           CircleTile(
             icon: const Icon(
               Iconsax.search_normal,
@@ -118,6 +152,20 @@ class _FeedsScreenState extends State<FeedsScreen> {
                   editTextController: searchController);
             },
           )
+          */
+          Padding(
+            padding: const EdgeInsets.only(right: 8),
+            child: IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const UserSettings()));
+              },
+              icon: const Icon(Iconsax.setting_2),
+              color: Colors.black,
+            ),
+          ),
         ],
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
@@ -125,6 +173,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
       body: Center(
         child: Column(
           children: [
+            /*
             Padding(
               padding: const EdgeInsets.all(8),
               child: Center(
@@ -137,6 +186,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
                 ),
               ),
             ),
+            */
             Expanded(child: _buildPostList()),
           ],
         ),
@@ -205,15 +255,9 @@ class _FeedsScreenState extends State<FeedsScreen> {
         }
 
         if (userSnapshot.connectionState == ConnectionState.waiting) {
-          return const Text(
-            "Loading",
-            style: TextStyle(
-              decoration: TextDecoration.none,
-              color: Colors.black,
-              fontFamily: 'Capriola',
-              fontSize: 16,
-            ),
-          );
+          return Center(
+              child: LoadingAnimationWidget.staggeredDotsWave(
+                  color: const Color.fromARGB(255, 100, 105, 255), size: 100));
         }
 
         Map<String, dynamic> userData =
@@ -246,7 +290,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
                   ),
                   IconButton(
                     onPressed: () {
-                      // likeCounter++;
+                      toggleLike();
                     },
                     padding: const EdgeInsets.only(right: 84),
                     icon: const Row(children: [
@@ -299,23 +343,17 @@ class _FeedsScreenState extends State<FeedsScreen> {
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Text(
-            "Loading",
-            style: TextStyle(
-              decoration: TextDecoration.none,
-              color: Colors.black,
-              fontFamily: 'Capriola',
-              fontSize: 16,
-            ),
-          );
+          return Center(
+              child: LoadingAnimationWidget.staggeredDotsWave(
+                  color: const Color.fromARGB(255, 100, 105, 255), size: 100));
         }
 
         // Check if the snapshot data is not null and contains documents
         if (snapshot.data != null && snapshot.data!.docs.isNotEmpty) {
           return ListView(
             children: snapshot.data!.docs
-              .map((document) => _buildPostItem(document))
-              .toList(),
+                .map((document) => _buildPostItem(document))
+                .toList(),
           );
         } else {
           // Handle the case where there are no posts

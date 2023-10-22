@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:teens_next/app/authentication/resources/get_gradient_colors.dart';
 
 class LargerProfileGradient extends StatelessWidget {
-  const LargerProfileGradient({super.key});
+  final double width;
+  final double height;
+
+  const LargerProfileGradient(
+      {super.key, required this.width, required this.height});
 
   @override
   Widget build(BuildContext context) {
@@ -24,30 +29,20 @@ class LargerProfileGradient extends StatelessWidget {
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Text(
-              "Loading",
-              style: TextStyle(
-                decoration: TextDecoration.none,
-                color: Colors.black,
-                fontFamily: 'Capriola',
-                fontSize: 16,
-              ),
-            );
+            return Center(
+                child: LoadingAnimationWidget.inkDrop(
+                    color: const Color.fromARGB(255, 100, 105, 255), size: width));
           }
 
-          return Row(
-            children: [
-              const SizedBox(width: 16),
-              Container(
-                height: 40,
-                width: 40,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: LinearGradient(
-                      colors: snapshot.data as List<Color>,
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft)),
-            ),]
+          return Container(
+            height: height,
+            width: width,
+            decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: LinearGradient(
+                    colors: snapshot.data as List<Color>,
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft)),
           );
         });
   }

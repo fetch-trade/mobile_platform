@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class StartButton extends StatelessWidget {
   const StartButton({Key? key, this.onPressed}) : super(key: key);
-  final onPressed;
+  final Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {

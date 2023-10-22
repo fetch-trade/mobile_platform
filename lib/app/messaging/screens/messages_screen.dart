@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:teens_next/app/messaging/components/message_bubble.dart';
 import 'package:teens_next/app/messaging/components/message_input_field.dart';
 import 'package:teens_next/services/messaging_service.dart';
@@ -40,6 +41,15 @@ class _MessagesScreenState extends State<MessagesScreen> {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
+        padding: const EdgeInsetsDirectional.only(bottom: 2),
+        leading: MaterialButton(
+            onPressed: () => Navigator.pop(context),
+            shape: const CircleBorder(),
+            child: const Icon(
+              CupertinoIcons.chevron_back,
+              color: Color.fromARGB(255, 100, 105, 255),
+            ),
+        ),
         middle: Text(widget.receiverUserName),
       ),
       child: Column(
@@ -63,7 +73,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
           )),
           IconButton(
             color: const Color.fromARGB(255, 100, 105, 255),
-            padding: const EdgeInsets.only(left: 20.0, right: 24.0),
+            padding: const EdgeInsets.only(left: 20, right: 24, bottom: 48),
             alignment: Alignment.centerRight,
             onPressed: sendMessage,
             icon: const Icon(
@@ -124,14 +134,11 @@ class _MessagesScreenState extends State<MessagesScreen> {
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Text(
-            "Loading",
-            style: TextStyle(
-              decoration: TextDecoration.none,
-              color: Colors.black,
-              fontFamily: 'Capriola',
-              fontSize: 24,
-            ),
+          return Center(
+            child: LoadingAnimationWidget.staggeredDotsWave(
+              color: const Color.fromARGB(255, 100, 105, 255), 
+              size: 100
+            )
           );
         }
 

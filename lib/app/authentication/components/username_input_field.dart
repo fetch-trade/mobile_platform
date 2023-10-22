@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class UsernameInputField extends StatelessWidget {
-  final controller;
+  final TextEditingController controller;
   final String hintText;
   final TextAlign textAlign;
   final double maxLength;
