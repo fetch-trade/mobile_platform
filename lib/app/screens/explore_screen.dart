@@ -22,7 +22,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
 
   final String apiKey = "hkhhV4H2q4UKTCrrF5Hygk4HDmckVq6q";
   final mapLocation = const LatLng(29.7388, -95.758003);
-  double currentZoom = 15;
+  double currentZoom = 16;
 
   void signOut() {
     final authService = Provider.of<AuthService>(context, listen: false);
@@ -128,11 +128,15 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   controller.open();
                 }
               },
-              child: const Row(
-                children: [
-                  SizedBox(width: 12),
-                  ProfileGradient(width: 44, height: 44),
-                ],
+              child: const SizedBox(
+                width: 56,
+                height: 44,
+                child: Row(
+                  children: [
+                    SizedBox(width: 12),
+                    ProfileGradient(width: 44, height: 44),
+                  ],
+                ),
               ),
             );
           },

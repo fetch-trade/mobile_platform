@@ -23,6 +23,7 @@ class EnterButton extends StatelessWidget {
             style: const TextStyle(
               decoration: TextDecoration.none,
               color: Colors.white,
+              fontFamily: 'Capriola',
               fontWeight: FontWeight.bold,
               fontSize: 16,
             ),

@@ -54,11 +54,10 @@ class AuthService extends ChangeNotifier {
           userColorOne: userColorOne,
           userColorTwo: userColorTwo);
 
-      // merge document if neccesary
       _firebaseFirestore
           .collection('users')
           .doc(userCredential.user!.uid)
-          .set(user.toMap(), SetOptions(merge: true));
+          .set(user.toMap());
 
       // create new document for user in users collection
       _firebaseFirestore
@@ -71,13 +70,6 @@ class AuthService extends ChangeNotifier {
       throw Exception(e.code);
     }
   }
-
-  // please look into the code directly below
-  /*
-  Future<UserCredential> fetchUserCredentials() async {
-
-  }
-  */
 
   // sign user out
   Future<void> signOut() async {

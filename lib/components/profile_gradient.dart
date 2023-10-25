@@ -1,6 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:teens_next/app/authentication/resources/get_gradient_colors.dart';
 
 class ProfileGradient extends StatelessWidget {
   final double width;
@@ -11,14 +12,15 @@ class ProfileGradient extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final gradientColors = GetGradientColors();
+    final firebaseFirestore = FirebaseFirestore.instance;
+    final currentUserId = FirebaseAuth.instance.currentUser?.uid;
 
     return FutureBuilder(
-        future: gradientColors.getCurrentUserColors(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
+        future: firebaseFirestore.collection('users').doc(currentUserId).get(),
+        builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> userSnapshot) {
+          if (userSnapshot.hasError) {
             return Text(
-              "Error${snapshot.error}",
+              "Error${userSnapshot.error}",
               style: const TextStyle(
                 decoration: TextDecoration.none,
                 color: Colors.black,
@@ -28,12 +30,17 @@ class ProfileGradient extends StatelessWidget {
             );
           }
 
-          if (snapshot.connectionState == ConnectionState.waiting) {
+          if (userSnapshot.connectionState == ConnectionState.waiting) {
             return Center(
                 child: LoadingAnimationWidget.inkDrop(
                     color: const Color.fromARGB(255, 100, 105, 255),
                     size: width));
           }
+
+          Map<String, dynamic> userData =
+            userSnapshot.data!.data() as Map<String, dynamic>;
+          Color userColorOne = Color(userData['user_color_one']);
+          Color userColorTwo = Color(userData['user_color_two']);
 
           return Container(
             height: height,
@@ -41,7 +48,7 @@ class ProfileGradient extends StatelessWidget {
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: LinearGradient(
-                    colors: snapshot.data as List<Color>,
+                    colors: [userColorOne, userColorTwo],
                     begin: Alignment.topRight,
                     end: Alignment.bottomLeft)),
           );

@@ -80,7 +80,7 @@ class _SignUpState extends State<SignUp> {
                     fontSize: 24,
                   ),
                 ),
-                const SizedBox(height: 48),
+                const SizedBox(height: 32),
 
                 // email textfield
                 InputField(
@@ -174,14 +174,14 @@ class _SignUpState extends State<SignUp> {
                         fontSize: 18),
                   ),
                 ),
-                const SizedBox(height: 24),
+                const SizedBox(height: 16),
 
                 // sign up button
                 EnterButton(
                   text: "Sign up",
                   onTap: signUserUp,
                 ),
-                const SizedBox(height: 48),
+                const SizedBox(height: 32),
 
                 // or continue with
                 Padding(
@@ -197,7 +197,7 @@ class _SignUpState extends State<SignUp> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: Text(
-                          'Or continue with',
+                          "Or continue with",
                           style: TextStyle(color: Colors.grey[700]),
                         ),
                       ),
@@ -234,14 +234,14 @@ class _SignUpState extends State<SignUp> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Already a member?',
+                      "Already a member?",
                       style: TextStyle(color: Colors.grey[700]),
                     ),
                     const SizedBox(width: 4),
                     GestureDetector(
                       onTap: widget.onTap,
                       child: const Text(
-                        'Sign in now',
+                        "Sign in now",
                         style: TextStyle(
                           color: Colors.blue,
                           fontWeight: FontWeight.bold,

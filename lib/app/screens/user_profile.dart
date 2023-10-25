@@ -15,7 +15,7 @@ class UserProfile extends StatefulWidget {
 
 class _UserProfileState extends State<UserProfile> {
   final TextEditingController searchController = TextEditingController();
-  final currentUser = FirebaseAuth.instance.currentUser!;
+  final currentUser = FirebaseAuth.instance.currentUser;
 
   void signOut() {
     final authService = Provider.of<AuthService>(context, listen: false);
@@ -79,7 +79,7 @@ class _UserProfileState extends State<UserProfile> {
           Padding(
             padding: const EdgeInsets.all(12),
             child: Text(
-              "@${currentUser.displayName}",
+              "@${currentUser?.displayName}",
               style: const TextStyle(
                   decoration: TextDecoration.none,
                   fontFamily: 'Capriola',

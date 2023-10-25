@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:teens_next/app/authentication/screens/auth_page.dart';
 
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({super.key});
@@ -9,12 +8,14 @@ class ForgotPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
+        elevation: 0,
         leading: IconButton(
-          icon: const Icon(CupertinoIcons.chevron_back),
-          onPressed: () {
-            Navigator.pop(context, const AuthPage());
-          },
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(
+            CupertinoIcons.chevron_back,
+            color: Color.fromARGB(255, 100, 105, 255),
+          ),
         ),
       ),
       body: const Align(

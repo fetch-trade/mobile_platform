@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: CupertinoTabScaffold(
           resizeToAvoidBottomInset: true,
           tabBar: CupertinoTabBar(
-            height: 55.0,
+            height: 56,
             activeColor: const Color.fromARGB(255, 100, 105, 255),
             items: const [
               BottomNavigationBarItem(

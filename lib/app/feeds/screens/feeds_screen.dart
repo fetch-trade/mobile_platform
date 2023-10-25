@@ -25,10 +25,10 @@ class _FeedsScreenState extends State<FeedsScreen> {
   final PostingService _postingService = PostingService();
   final TextEditingController searchController = TextEditingController();
 
-  void signOut() {
+  void signOut() async {
     final authService = Provider.of<AuthService>(context, listen: false);
 
-    authService.signOut();
+    await authService.signOut();
   }
 
   void toggleLike() {}
@@ -120,11 +120,15 @@ class _FeedsScreenState extends State<FeedsScreen> {
                   controller.open();
                 }
               },
-              child: const Row(
-                children: [
-                  SizedBox(width: 12),
-                  ProfileGradient(width: 44, height: 44),
-                ],
+              child: const SizedBox(
+                width: 56,
+                height: 44,
+                child: Row(
+                  children: [
+                    SizedBox(width: 12),
+                    ProfileGradient(width: 44, height: 44),
+                  ],
+                ),
               ),
             );
           },

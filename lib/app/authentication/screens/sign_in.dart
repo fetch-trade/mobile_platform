@@ -169,7 +169,7 @@ class _SignInState extends State<SignIn> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12.0),
                         child: Text(
-                          'Or continue with',
+                          "Or continue with",
                           style: TextStyle(color: Colors.grey[700]),
                         ),
                       ),
@@ -199,22 +199,21 @@ class _SignInState extends State<SignIn> {
                         onTap: () => {}, imagePath: 'assets/imgs/apple.svg'),
                   ],
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 48),
 
                 // not a member? register now
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Not a member?',
+                      "Not a member?",
                       style: TextStyle(color: Colors.grey[700]),
                     ),
                     const SizedBox(width: 4),
                     GestureDetector(
-                      // Error detected here
                       onTap: widget.onTap,
                       child: const Text(
-                        'Register now',
+                        "Register now",
                         style: TextStyle(
                           color: Colors.blue,
                           fontWeight: FontWeight.bold,
