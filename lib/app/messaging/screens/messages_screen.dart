@@ -39,9 +39,8 @@ class _MessagesScreenState extends State<MessagesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        padding: const EdgeInsetsDirectional.only(bottom: 2),
+    return Scaffold(
+      appBar: AppBar(
         leading: MaterialButton(
           onPressed: () => Navigator.pop(context),
           shape: const CircleBorder(),
@@ -50,9 +49,18 @@ class _MessagesScreenState extends State<MessagesScreen> {
             color: Color.fromARGB(255, 100, 105, 255),
           ),
         ),
-        middle: Text(widget.receiverUserName),
+        title: Text(widget.receiverUserName,
+          style: const TextStyle(
+            fontFamily: 'REM',
+            fontSize: 18,
+            color: Colors.black,
+            decoration: TextDecoration.none
+          ),
+        ),
+        backgroundColor: Colors.white,
+        elevation: 0,
       ),
-      child: Column(
+      body: Column(
         children: [
           Expanded(child: _buildMessageList()),
           _buildMessageInput(),
@@ -63,25 +71,27 @@ class _MessagesScreenState extends State<MessagesScreen> {
 
   Widget _buildMessageInput() {
     return Material(
-      child: Row(
-        children: [
-          Expanded(
-              child: MessageInputField(
-            controller: _messageController,
-            hintText: "Enter Message",
-            obscureText: false,
-          )),
-          IconButton(
-            color: const Color.fromARGB(255, 100, 105, 255),
-            padding: const EdgeInsets.only(left: 20, right: 24, bottom: 48),
-            alignment: Alignment.centerRight,
-            onPressed: sendMessage,
-            icon: const Icon(
-              CupertinoIcons.chevron_up_circle_fill,
-              size: 36,
-            ),
-          )
-        ],
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 36, left: 12),
+        child: Row(
+          children: [
+            Expanded(
+                child: MessageInputField(
+              controller: _messageController,
+              hintText: "Enter Message",
+              obscureText: false,
+            )),
+            IconButton(
+              color: const Color.fromARGB(255, 100, 105, 255),
+              alignment: Alignment.centerRight,
+              onPressed: sendMessage,
+              icon: const Icon(
+                CupertinoIcons.chevron_up_circle_fill,
+                size: 36,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -97,22 +107,18 @@ class _MessagesScreenState extends State<MessagesScreen> {
 
     return Container(
       alignment: alignment,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-            crossAxisAlignment:
-                (data['senderId'] == _firebaseAuth.currentUser!.uid)
-                    ? CrossAxisAlignment.end
-                    : CrossAxisAlignment.start,
-            mainAxisAlignment:
-                (data['senderId'] == _firebaseAuth.currentUser!.uid)
-                    ? MainAxisAlignment.end
-                    : MainAxisAlignment.start,
-            children: [
-              MessageBubble(
-                  text: data['message'], isCurrentUser: isCurrentUser),
-            ]),
-      ),
+      child: Column(
+          crossAxisAlignment:
+              (data['senderId'] == _firebaseAuth.currentUser!.uid)
+                  ? CrossAxisAlignment.end
+                  : CrossAxisAlignment.start,
+          mainAxisAlignment:
+              (data['senderId'] == _firebaseAuth.currentUser!.uid)
+                  ? MainAxisAlignment.end
+                  : MainAxisAlignment.start,
+          children: [
+            MessageBubble(text: data['message'], isCurrentUser: isCurrentUser),
+          ]),
     );
   }
 

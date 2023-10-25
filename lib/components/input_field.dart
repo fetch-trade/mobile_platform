@@ -38,6 +38,7 @@ class InputField extends StatelessWidget {
           autocorrect: true,
           textAlign: align,
           maxLength: maxLength,
+          style: textStyle,
           maxLines: maxLines,
           controller: controller,
           obscureText: obscureText,

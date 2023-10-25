@@ -130,24 +130,24 @@ class _ExploreScreenState extends State<ExploreScreen> {
               },
               child: const Row(
                 children: [
-                  SizedBox(width: 16),
-                  ProfileGradient(width: 40, height: 40),
+                  SizedBox(width: 12),
+                  ProfileGradient(width: 44, height: 44),
                 ],
               ),
             );
           },
         ),
-        title: Text(
+        title: const Text(
           "Explore",
           style: TextStyle(
               decoration: TextDecoration.none,
               fontFamily: 'Capriola',
-              color: Colors.grey[200],
+              color: Colors.black,
               fontSize: 24),
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 8),
+            padding: const EdgeInsets.only(right: 4),
             child: IconButton(
               onPressed: () {
                 Navigator.push(
@@ -178,6 +178,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
         ],
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
+        elevation: 0,
       ),
       body: Column(children: [
         Expanded(
@@ -206,7 +207,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     ],
                   ),
                   Positioned(
-                    bottom: 112,
+                    bottom: 116,
                     left: 18,
                     child: Container(
                       decoration: BoxDecoration(

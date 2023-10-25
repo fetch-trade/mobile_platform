@@ -1,9 +1,5 @@
-import 'package:expandable_search_bar/expandable_search_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
-import 'package:teens_next/app/authentication/components/components.dart';
-import 'package:teens_next/components/profile_gradient.dart';
 
 class ContactsList extends StatefulWidget {
   const ContactsList({super.key});
@@ -20,11 +16,12 @@ class _ContactsListState extends State<ContactsList> {
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-          leading: const Row(
-            children: [
-              SizedBox(width: 16),
-              ProfileGradient(width: 40, height: 40),
-            ],
+          leading: IconButton(
+            onPressed: () => Navigator.pop(context),
+            icon: const Icon(
+              CupertinoIcons.chevron_back,
+              color: Color.fromARGB(255, 100, 105, 255),
+            ),
           ),
           title: const Text(
             "Friends",
@@ -34,23 +31,9 @@ class _ContactsListState extends State<ContactsList> {
                 color: Colors.black,
                 fontSize: 24),
           ),
-          actions: [
-            CircleTile(
-              icon: const Icon(
-                Iconsax.search_normal,
-                color: Colors.black,
-                weight: 60,
-              ),
-              onTap: () {
-                ExpandableSearchBar(
-                    onTap: () => print(searchController.text.toString()),
-                    hintText: "Search something",
-                    editTextController: searchController);
-              },
-            )
-          ],
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
+          elevation: 0,
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,

@@ -26,26 +26,25 @@ class _UserProfileState extends State<UserProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          leading: MaterialButton(
-            onPressed: () => Navigator.pop(context),
-            shape: const CircleBorder(),
-            child: const Icon(
-              CupertinoIcons.chevron_back,
-              color: Color.fromARGB(255, 100, 105, 255),
-            ),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(
+            CupertinoIcons.chevron_back,
+            color: Color.fromARGB(255, 100, 105, 255),
           ),
-          title: const Text(
-            "User profile",
-            style: TextStyle(
-                decoration: TextDecoration.none,
-                fontFamily: 'Capriola',
-                color: Colors.black,
-                fontSize: 24),
-          ),
-          actions: [
-            /*
+        ),
+        title: const Text(
+          "User profile",
+          style: TextStyle(
+              decoration: TextDecoration.none,
+              fontFamily: 'Capriola',
+              color: Colors.black,
+              fontSize: 24),
+        ),
+        actions: [
+          /*
             CircleTile(
               icon: const Icon(
                 Iconsax.search_normal,
@@ -60,108 +59,125 @@ class _UserProfileState extends State<UserProfile> {
               },
             )
             */
-            IconButton(onPressed: signOut, icon: const Icon(Iconsax.logout_14))
-          ],
-          backgroundColor: Colors.white,
-          automaticallyImplyLeading: false,
-        ),
-        body: SingleChildScrollView(
-          child: Column(
+          IconButton(onPressed: signOut, icon: const Icon(Iconsax.logout_14))
+        ],
+        elevation: 0,
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: false,
+      ),
+      body: Column(
+        children: [
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: 24),
-                    child: ProfileGradient(width: 140, height: 140),
-                  ),
-                ],
-              ),
               Padding(
-                padding: const EdgeInsets.all(12),
-                child: Text(
-                  "@${currentUser.displayName}",
-                  style: const TextStyle(
-                      decoration: TextDecoration.none,
-                      fontFamily: 'Capriola',
-                      color: Colors.black,
-                      fontSize: 18),
-                ),
-              ),
-              SizedBox(
-                width: 440,
-                height: 500,
-                child: DefaultTabController(
-                    initialIndex: 0,
-                    length: 3,
-                    child: Scaffold(
-                      backgroundColor: Colors.white,
-                      appBar: AppBar(
-                        elevation: 0,
-                        toolbarHeight: 4,
-                        backgroundColor: Colors.white,
-                        automaticallyImplyLeading: false,
-                        bottom: const TabBar(
-                            indicatorColor: Color.fromARGB(255, 100, 105, 255),
-                            tabs: <Widget>[
-                              Tab(
-                                icon: Icon(
-                                  Iconsax.activity,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              Tab(
-                                icon: Icon(
-                                  Iconsax.note_25,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              Tab(
-                                icon: Icon(
-                                  Iconsax.profile_2user,
-                                  color: Colors.black,
-                                ),
-                              )
-                            ]),
-                      ),
-                      body: const TabBarView(
-                        children: <Widget>[
-                          Center(
-                            child: Text(
-                              "Posts",
-                              style: TextStyle(
-                                  decoration: TextDecoration.none,
-                                  fontFamily: 'Capriola',
-                                  color: Colors.black,
-                                  fontSize: 18),
-                            ),
-                          ),
-                          Center(
-                            child: Text(
-                              "Drafts",
-                              style: TextStyle(
-                                  decoration: TextDecoration.none,
-                                  fontFamily: 'Capriola',
-                                  color: Colors.black,
-                                  fontSize: 18),
-                            ),
-                          ),
-                          Center(
-                            child: Text(
-                              "Friends",
-                              style: TextStyle(
-                                  decoration: TextDecoration.none,
-                                  fontFamily: 'Capriola',
-                                  color: Colors.black,
-                                  fontSize: 18),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )),
+                padding: EdgeInsets.only(top: 24),
+                child: ProfileGradient(width: 140, height: 140),
               ),
             ],
           ),
-        ));
+          Padding(
+            padding: const EdgeInsets.all(12),
+            child: Text(
+              "@${currentUser.displayName}",
+              style: const TextStyle(
+                  decoration: TextDecoration.none,
+                  fontFamily: 'Capriola',
+                  color: Colors.black,
+                  fontSize: 18),
+            ),
+          ),
+          SingleChildScrollView(
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.width,
+              child: DefaultTabController(
+                  initialIndex: 0,
+                  length: 4,
+                  child: Scaffold(
+                    backgroundColor: Colors.white,
+                    appBar: AppBar(
+                      elevation: 0,
+                      toolbarHeight: 4,
+                      backgroundColor: Colors.white,
+                      automaticallyImplyLeading: false,
+                      bottom: const TabBar(
+                          indicatorColor: Color.fromARGB(255, 100, 105, 255),
+                          tabs: <Widget>[
+                            Tab(
+                              icon: Icon(
+                                Iconsax.activity,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Tab(
+                              icon: Icon(
+                                Iconsax.note_25,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Tab(
+                              icon: Icon(
+                                Iconsax.profile_2user,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Tab(
+                              icon:Icon(Iconsax.bookmark,
+                                color: Colors.black
+                              ),
+                            )
+                          ]),
+                    ),
+                    body: const TabBarView(
+                      children: <Widget>[
+                        Center(
+                          child: Text(
+                            "Posts",
+                            style: TextStyle(
+                                decoration: TextDecoration.none,
+                                fontFamily: 'Capriola',
+                                color: Colors.black,
+                                fontSize: 18),
+                          ),
+                        ),
+                        Center(
+                          child: Text(
+                            "Drafts",
+                            style: TextStyle(
+                                decoration: TextDecoration.none,
+                                fontFamily: 'Capriola',
+                                color: Colors.black,
+                                fontSize: 18),
+                          ),
+                        ),
+                        Center(
+                          child: Text(
+                            "Friends",
+                            style: TextStyle(
+                                decoration: TextDecoration.none,
+                                fontFamily: 'Capriola',
+                                color: Colors.black,
+                                fontSize: 18),
+                          ),
+                        ),
+                        Center(
+                          child: Text(
+                            "Saved",
+                            style: TextStyle(
+                                decoration: TextDecoration.none,
+                                fontFamily: 'Capriola',
+                                color: Colors.black,
+                                fontSize: 18),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

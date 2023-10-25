@@ -1,8 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:teens_next/app/authentication/components/components.dart';
-import 'package:teens_next/app/authentication/screens/phone_number.dart';
+// import 'package:teens_next/app/authentication/screens/phone_number.dart';
+import 'package:teens_next/app/screens/screens.dart';
 import 'package:teens_next/components/input_field.dart';
 
 class UserName extends StatefulWidget {
@@ -67,17 +70,17 @@ class _UserNameState extends State<UserName> {
           ),
           EnterButton(
               text: "Continue",
-              onTap: () {
+              onTap: () async {
                 // String userDisplayName = _nameController.text;
 
                 // look into this please
-                FirebaseAuth.instance.currentUser!
+                await FirebaseAuth.instance.currentUser!
                     .updateDisplayName(_nameController.text);
 
                 Navigator.push(
                     context,
                     CupertinoPageRoute(
-                        builder: (context) => const PhoneNumber()));
+                        builder: (context) => const HomeScreen()));
               })
         ],
       ),

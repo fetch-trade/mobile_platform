@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+// refactor this please
+
 class GetGradientColors {
   getCurrentUserColors() async {
     List<Color> colorList = List.empty(growable: true);
@@ -13,6 +15,24 @@ class GetGradientColors {
         await firebaseFirestore.collection('users').doc(currentUserUid).get();
 
     Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+
+    colorList = [
+      Color(data['user_color_one']! as int),
+      Color(data['user_color_two']! as int)
+    ];
+
+    return colorList;
+  }
+
+  getSpecifiedUserColors(String specifiedUserUid) async {
+    final firebaseFirestore = FirebaseFirestore.instance;
+
+    DocumentSnapshot snapshot =
+        await firebaseFirestore.collection('users').doc(specifiedUserUid).get();
+
+    Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+
+    List<Color> colorList = List.empty(growable: true);
 
     colorList = [
       Color(data['user_color_one']! as int),

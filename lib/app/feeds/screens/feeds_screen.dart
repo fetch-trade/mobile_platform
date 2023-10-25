@@ -38,7 +38,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
     return Scaffold(
       backgroundColor: Colors.grey[200]?.withOpacity(0.5),
       appBar: AppBar(
-        elevation: 1,
+        elevation: 0,
         leading: MenuAnchor(
           alignmentOffset: const Offset(14, 0),
           menuChildren: [
@@ -122,8 +122,8 @@ class _FeedsScreenState extends State<FeedsScreen> {
               },
               child: const Row(
                 children: [
-                  SizedBox(width: 16),
-                  ProfileGradient(width: 40, height: 40),
+                  SizedBox(width: 12),
+                  ProfileGradient(width: 44, height: 44),
                 ],
               ),
             );
@@ -154,7 +154,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
           )
           */
           Padding(
-            padding: const EdgeInsets.only(right: 8),
+            padding: const EdgeInsets.only(right: 4),
             child: IconButton(
               onPressed: () {
                 Navigator.push(
@@ -270,51 +270,67 @@ class _FeedsScreenState extends State<FeedsScreen> {
           padding: const EdgeInsets.all(4),
           child: Column(
             children: [
-              PostCard(
-                title: data['title'],
-                sender: data['name'],
-                body: data['message'],
-                userColors: [userColorOne, userColorTwo],
-                iconButtons: [
-                  IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                          builder: (context) => const NewComment(),
-                        ),
-                      );
-                    },
-                    padding: const EdgeInsets.only(right: 84),
-                    icon: const Icon(Iconsax.messages_2),
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      toggleLike();
-                    },
-                    padding: const EdgeInsets.only(right: 84),
-                    icon: const Row(children: [
-                      Icon(Iconsax.like_1),
-                      // SizedBox(width: 8),
-                      /*
-                      Text(
-                        likeCounter.toString(),
-                        style: const TextStyle(
-                          decoration: TextDecoration.none,
-                          fontFamily: 'Capriola',
-                          color: Colors.black,
-                          fontSize: 14
-                        ),
-                      )
-                      */
-                    ]),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    // need to change this icon to something more meaningful
-                    icon: const Icon(Iconsax.activity),
-                  )
-                ],
+              GestureDetector(
+                child: PostCard(
+                  title: data['title'],
+                  sender: "@${data['name']}",
+                  body: data['message'],
+                  userColors: [userColorOne, userColorTwo],
+                  iconButtons: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 36, right: 80, bottom: 16),
+                      child: IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                              builder: (context) =>
+                                  NewComment(postId: document.id),
+                            ),
+                          );
+                        },
+                        icon: const Icon(Iconsax.messages_2),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 80, bottom: 16),
+                      child: IconButton(
+                        onPressed: () {
+                          toggleLike();
+                        },
+                        icon: const Row(children: [
+                          Icon(Iconsax.like_1),
+                          // SizedBox(width: 8),
+                          /*
+                          Text(
+                            likeCounter.toString(),
+                            style: const TextStyle(
+                              decoration: TextDecoration.none,
+                              fontFamily: 'Capriola',
+                              color: Colors.black,
+                              fontSize: 14
+                            ),
+                          )
+                          */
+                        ]),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 16),
+                      child: IconButton(
+                        onPressed: () {},
+                        // need to change this icon to something more meaningful
+                        icon: const Icon(Iconsax.bookmark),
+                      ),
+                    )
+                  ],
+                ),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                          builder: (context) => PostDetailScreen(postId: document.id)));
+                },
               ),
             ],
           ),

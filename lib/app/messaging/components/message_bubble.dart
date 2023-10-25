@@ -13,7 +13,7 @@ class MessageBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
       child: LayoutBuilder(builder: (context, constraints) {
         return Row(
           children: [
@@ -27,12 +27,12 @@ class MessageBubble extends StatelessWidget {
                     color: isCurrentUser
                         ? const Color.fromARGB(255, 100, 105, 255)
                         : Colors.grey.shade100,
-                    borderRadius: BorderRadius.circular(16)),
+                    borderRadius: BorderRadius.circular(20)),
                 child: Padding(
-                  padding: const EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(8),
                   child: Text(
                     text,
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                         color: isCurrentUser ? Colors.white : Colors.black),
                   ),
                 ),

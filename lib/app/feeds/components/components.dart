@@ -1,2 +1,2 @@
-export 'comment.dart';
+export 'comment_card.dart';
 export 'post_card.dart';

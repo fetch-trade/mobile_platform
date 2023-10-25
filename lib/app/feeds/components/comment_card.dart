@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:teens_next/app/feeds/components/alt_user_gradient.dart';
 
-class PostCard extends StatelessWidget {
-  final String title;
+class CommentCard extends StatelessWidget {
   final String sender;
   final String? body;
   final List<Color> userColors;
-  final List<Widget> iconButtons;
+  final List<IconButton> iconButtons;
 
-  const PostCard(
+  const CommentCard(
       {super.key,
-      required this.title,
       required this.sender,
       required this.body,
       required this.iconButtons,
@@ -24,35 +22,20 @@ class PostCard extends StatelessWidget {
         direction: Axis.vertical,
         children: [
           Container(
-            padding: const EdgeInsets.all(4),
+            padding: const EdgeInsets.all(8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(6),
-                      child: AltUserGradient(
-                        userColors: userColors,
-                      ),
+                    AltUserGradient(
+                      userColors: userColors,
                     ),
-                    const SizedBox(width: 2),
+                    const SizedBox(width: 16),
                     Flexible(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            margin: const EdgeInsets.only(right: 8, top: 8),
-                            child: Text(
-                              title,
-                              softWrap: true,
-                              style: const TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'REM',
-                                  fontSize: 18),
-                            ),
-                          ),
                           const SizedBox(height: 4),
                           Container(
                             alignment: Alignment.centerLeft,
@@ -71,8 +54,8 @@ class PostCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Container(
-                  padding: const EdgeInsets.only(left: 28),
-                  margin: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.only(left: 38),
+                  margin: const EdgeInsets.all(12),
                   child: Text(
                     body!,
                     softWrap: true,
@@ -87,9 +70,9 @@ class PostCard extends StatelessWidget {
           ),
           Row(
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: iconButtons
+              Padding(
+                padding: const EdgeInsets.only(left: 64, top: 16, bottom: 16),
+                child: Row(children: iconButtons),
               ),
             ],
           ),
