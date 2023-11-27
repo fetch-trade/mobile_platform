@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 class EnterButton extends StatelessWidget {
   final Function()? onTap;
   final String text;
+  final Color color;
 
-  const EnterButton({super.key, required this.onTap, required this.text});
+  const EnterButton(
+      {super.key,
+      required this.onTap,
+      required this.text,
+      required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +19,7 @@ class EnterButton extends StatelessWidget {
         padding: const EdgeInsets.all(24),
         margin: const EdgeInsets.symmetric(horizontal: 24),
         decoration: BoxDecoration(
-          color: Colors.black,
+          color: color,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(
@@ -23,9 +28,9 @@ class EnterButton extends StatelessWidget {
             style: const TextStyle(
               decoration: TextDecoration.none,
               color: Colors.white,
-              fontFamily: 'Capriola',
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
+              fontFamily: 'Quicksand',
+              fontWeight: FontWeight.w600,
+              fontSize: 20,
             ),
           ),
         ),

@@ -68,6 +68,7 @@ class _PhoneNumberState extends State<PhoneNumber> {
           ),
           EnterButton(
               text: "Continue",
+              color: Colors.black,
               onTap: () {
                 // String userDisplayName = _nameController.text;
 

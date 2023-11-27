@@ -44,11 +44,10 @@ class _SignUpState extends State<SignUp> {
     try {
       await authService
           .signUpWithEmailAndPassword(
-              emailController.text, passwordController.text)
-          .then((value) {
-        Navigator.push(context,
-            CupertinoPageRoute(builder: (context) => const UserName()));
-      });
+              emailController.text, passwordController.text);
+
+      Navigator.pushAndRemoveUntil(context,
+          CupertinoPageRoute(builder: (context) => const UserName()), (route) => false);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
@@ -179,6 +178,7 @@ class _SignUpState extends State<SignUp> {
                 // sign up button
                 EnterButton(
                   text: "Sign up",
+                  color: Colors.black,
                   onTap: signUserUp,
                 ),
                 const SizedBox(height: 32),

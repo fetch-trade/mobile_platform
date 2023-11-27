@@ -5,7 +5,7 @@ class CommentCard extends StatelessWidget {
   final String sender;
   final String? body;
   final List<Color> userColors;
-  final List<IconButton> iconButtons;
+  final List<Widget> iconButtons;
 
   const CommentCard(
       {super.key,

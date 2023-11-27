@@ -16,7 +16,7 @@ class ProfileGradient extends StatelessWidget {
     final currentUserId = FirebaseAuth.instance.currentUser?.uid;
 
     return FutureBuilder(
-        future: firebaseFirestore.collection('users').doc(currentUserId).get(),
+        future: firebaseFirestore.collection('users').doc(currentUserId!).get(),
         builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> userSnapshot) {
           if (userSnapshot.hasError) {
             return Text(

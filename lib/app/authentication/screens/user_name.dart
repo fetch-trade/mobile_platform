@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:teens_next/app/authentication/components/components.dart';
-import 'package:teens_next/app/screens/screens.dart';
+import 'package:teens_next/app/authentication/screens/confirmation.dart';
 // import 'package:teens_next/app/authentication/screens/phone_number.dart';
 import 'package:teens_next/components/input_field.dart';
 
@@ -74,6 +74,7 @@ class _UserNameState extends State<UserName> {
           ),
           EnterButton(
               text: "Continue",
+              color: Colors.black,
               onTap: () async {
                 // String userDisplayName = _nameController.text;
                 if (_nameController.text.isNotEmpty) {
@@ -89,7 +90,7 @@ class _UserNameState extends State<UserName> {
                     Navigator.pushAndRemoveUntil(
                         context,
                         CupertinoPageRoute(
-                            builder: (context) => const HomeScreen()),
+                            builder: (context) => const Confirmation()),
                         (route) => false);
                   });
                 } else {

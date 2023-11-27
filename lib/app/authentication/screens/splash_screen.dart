@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:teens_next/app/authentication/components/splash_screen_scaffold.dart';
-import 'package:teens_next/app/authentication/screens/auth_page.dart';
+import 'package:teens_next/app/authentication/screens/auth_options.dart';
+// import 'package:teens_next/app/authentication/screens/auth_page.dart';
 import 'package:teens_next/components/components.dart';
+import 'dart:async';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -12,11 +14,24 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
+  void initState() {
+    super.initState();
+
+    // Add a delay for 2 seconds before navigating to the authentication page
+    Future.delayed(const Duration(seconds: 5), () {
+      Navigator.pushReplacement(
+        context,
+        CupertinoPageRoute(builder: (context) => const AuthOptions()),
+      );
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
+    return const CupertinoPageScaffold(
       child: SplashScreenScaffold(
         body: [
-          const Center(
+          Center(
             child: Logo(
               width: 300,
               height: 300,
@@ -46,13 +61,13 @@ class _SplashScreenState extends State<SplashScreen> {
           TermsAndConditions(
             onPressed: () {},
           ),
-          */
           StartButton(
             onPressed: () {
               Navigator.push(context,
                   CupertinoPageRoute(builder: (context) => const AuthPage()));
             },
           ),
+          */
         ],
       ),
     );

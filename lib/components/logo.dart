@@ -24,7 +24,7 @@ class Logo extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: SvgPicture.asset(
-          'assets/imgs/tn_logo.svg',
+          'assets/imgs/fetch_logo.svg',
           width: 300,
           height: 300,
         ),

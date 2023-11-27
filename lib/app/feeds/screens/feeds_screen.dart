@@ -25,7 +25,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
   final PostingService _postingService = PostingService();
   final TextEditingController searchController = TextEditingController();
 
-  void signOut() async {
+  Future<void> signOut() async {
     final authService = Provider.of<AuthService>(context, listen: false);
 
     await authService.signOut();
@@ -264,8 +264,21 @@ class _FeedsScreenState extends State<FeedsScreen> {
                   color: const Color.fromARGB(255, 100, 105, 255), size: 100));
         }
 
+        if (!userSnapshot.hasData || userSnapshot.data == null) {
+          return const Text(
+            "No data found.",
+            style: TextStyle(
+              decoration: TextDecoration.none,
+              color: Colors.black,
+              fontFamily: 'Capriola',
+              fontSize: 18,
+            ),
+          );
+        }
+
         Map<String, dynamic> userData =
             userSnapshot.data!.data() as Map<String, dynamic>;
+
         Color userColorOne = Color(userData['user_color_one']);
         Color userColorTwo = Color(userData['user_color_two']);
 
@@ -282,7 +295,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
                   userColors: [userColorOne, userColorTwo],
                   iconButtons: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 36, right: 80, bottom: 16),
+                      padding: const EdgeInsets.only(left: 36, right: 76, bottom: 16),
                       child: IconButton(
                         onPressed: () {
                           Navigator.push(
@@ -297,7 +310,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 80, bottom: 16),
+                      padding: const EdgeInsets.only(right: 76, bottom: 16),
                       child: IconButton(
                         onPressed: () {
                           toggleLike();

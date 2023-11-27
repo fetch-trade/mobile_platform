@@ -190,35 +190,42 @@ class PostDetailScreen extends StatelessWidget {
               body: data['comment_text'].toString(),
               userColors: [/* commenterColorOne, commenterColorTwo */],
               iconButtons: [
-                IconButton(
-                  onPressed: () {},
-                  padding: const EdgeInsets.only(right: 84),
-                  icon: const Icon(Iconsax.messages_2),
+                Padding(
+                  padding: const EdgeInsets.only(left: 36, right: 76, bottom: 16),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Iconsax.messages_2),
+                  ),
                 ),
-                IconButton(
-                  onPressed: () {
-                    // toggleLike();
-                  },
-                  padding: const EdgeInsets.only(right: 84),
-                  icon: const Row(children: [
-                    Icon(Iconsax.like_1),
-                    // SizedBox(width: 8),
-                    /*
-                        Text(
-                          likeCounter.toString(),
-                          style: const TextStyle(
-                            decoration: TextDecoration.none,
-                            fontFamily: 'Capriola',
-                            color: Colors.black,
-                            fontSize: 14
-                          ),
-                        )
-                        */
-                  ]),
+                Padding(
+                  padding: const EdgeInsets.only(right: 76, bottom: 16),
+                  child: IconButton(
+                    onPressed: () {
+                      // toggleLike();
+                    },
+                    icon: const Row(children: [
+                      Icon(Iconsax.like_1),
+                      // SizedBox(width: 8),
+                      /*
+                          Text(
+                            likeCounter.toString(),
+                            style: const TextStyle(
+                              decoration: TextDecoration.none,
+                              fontFamily: 'Capriola',
+                              color: Colors.black,
+                              fontSize: 14
+                            ),
+                          )
+                          */
+                    ]),
+                  ),
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Iconsax.bookmark),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 16),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Iconsax.bookmark),
+                  ),
                 )
               ],
             );

@@ -4,22 +4,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:teens_next/app/authentication/components/components.dart';
 import 'package:teens_next/app/authentication/screens/forgot_password.dart';
+import 'package:teens_next/app/screens/screens.dart';
 import 'package:teens_next/components/components.dart';
 import 'package:teens_next/providers/gauth_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:teens_next/services/auth_service.dart';
 
 // ignore: must_be_immutable
-class SignIn extends StatefulWidget {
-  final Function()? onTap;
-
-  const SignIn({super.key, required this.onTap});
+class Confirmation extends StatefulWidget {
+  const Confirmation({super.key});
 
   @override
-  State<SignIn> createState() => _SignInState();
+  State<Confirmation> createState() => _ConfirmationState();
 }
 
-class _SignInState extends State<SignIn> {
+class _ConfirmationState extends State<Confirmation> {
   // text editing controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -44,6 +43,11 @@ class _SignInState extends State<SignIn> {
         )),
       );
     }
+
+    Navigator.pushAndRemoveUntil(
+        context,
+        CupertinoPageRoute(builder: (context) => const HomeScreen()),
+        (route) => false);
   }
 
   @override
@@ -58,12 +62,11 @@ class _SignInState extends State<SignIn> {
               children: [
                 // create account for TeensNext!
                 const Text(
-                  "Sign in",
+                  "Confirm credentials",
                   style: TextStyle(
                     color: Colors.black,
-                    fontFamily: 'Quicksand',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 32,
+                    fontFamily: 'Capriola',
+                    fontSize: 24,
                   ),
                 ),
                 const SizedBox(height: 48),
@@ -143,10 +146,7 @@ class _SignInState extends State<SignIn> {
                         },
                         child: Text(
                           "Forgot Password?",
-                          style: TextStyle(
-                            color: Colors.grey[600],
-                            fontFamily: 'Quicksand'
-                          ),
+                          style: TextStyle(color: Colors.grey[600]),
                         ),
                       ),
                     ],
@@ -155,9 +155,9 @@ class _SignInState extends State<SignIn> {
                 const SizedBox(height: 24),
                 // sign in button
                 EnterButton(
-                  text: "Continue",
+                  text: "Sign in",
                   onTap: signUserIn,
-                  color: const Color(0xFFE33F5E),
+                  color: Colors.black,
                 ),
                 const SizedBox(height: 48),
                 // or continue with
@@ -167,14 +167,14 @@ class _SignInState extends State<SignIn> {
                     children: [
                       Expanded(
                         child: Divider(
-                          thickness: 0.8,
+                          thickness: 0.5,
                           color: Colors.grey[400],
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12.0),
                         child: Text(
-                          "OR",
+                          "Or continue with",
                           style: TextStyle(color: Colors.grey[700]),
                         ),
                       ),
@@ -205,28 +205,6 @@ class _SignInState extends State<SignIn> {
                   ],
                 ),
                 const SizedBox(height: 48),
-
-                // not a member? register now
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Not a member?",
-                      style: TextStyle(color: Colors.grey[700]),
-                    ),
-                    const SizedBox(width: 4),
-                    GestureDetector(
-                      onTap: widget.onTap,
-                      child: const Text(
-                        "Register now",
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 218, 44, 90),
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
-                )
               ],
             ),
           ),
