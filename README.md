@@ -1,4 +1,4 @@
-# fetch mobile platform
+# fetch for ios + android
 
 ### about
 
