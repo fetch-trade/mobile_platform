@@ -33,7 +33,7 @@ class ProfileGradient extends StatelessWidget {
           if (userSnapshot.connectionState == ConnectionState.waiting) {
             return Center(
                 child: LoadingAnimationWidget.inkDrop(
-                    color: const Color.fromARGB(255, 100, 105, 255),
+                    color: const Color.fromARGB(255, 218, 44, 90),
                     size: width));
           }
 

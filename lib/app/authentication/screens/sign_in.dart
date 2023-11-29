@@ -38,7 +38,8 @@ class _SignInState extends State<SignIn> {
           e.toString(),
           style: const TextStyle(
             decoration: TextDecoration.none,
-            fontFamily: 'Capriola',
+            fontFamily: 'Quicksand',
+            fontWeight: FontWeight.bold,
             fontSize: 12,
           ),
         )),
@@ -144,9 +145,7 @@ class _SignInState extends State<SignIn> {
                         child: Text(
                           "Forgot Password?",
                           style: TextStyle(
-                            color: Colors.grey[600],
-                            fontFamily: 'Quicksand'
-                          ),
+                              color: Colors.grey[600], fontFamily: 'Quicksand'),
                         ),
                       ),
                     ],
@@ -156,7 +155,9 @@ class _SignInState extends State<SignIn> {
                 // sign in button
                 EnterButton(
                   text: "Continue",
-                  onTap: signUserIn,
+                  onTap: () {
+                    signUserIn();
+                  },
                   color: const Color(0xFFE33F5E),
                 ),
                 const SizedBox(height: 48),

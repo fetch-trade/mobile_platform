@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:teens_next/components/profile_gradient.dart';
 import 'package:teens_next/services/auth_service.dart';
@@ -32,14 +32,15 @@ class _UserProfileState extends State<UserProfile> {
           onPressed: () => Navigator.pop(context),
           icon: const Icon(
             CupertinoIcons.chevron_back,
-            color: Color.fromARGB(255, 100, 105, 255),
+            color: Color.fromARGB(245, 218, 44, 93),
           ),
         ),
         title: const Text(
           "User profile",
           style: TextStyle(
               decoration: TextDecoration.none,
-              fontFamily: 'Capriola',
+              fontFamily: 'Quicksand',
+              fontWeight: FontWeight.w600,
               color: Colors.black,
               fontSize: 24),
         ),
@@ -59,7 +60,11 @@ class _UserProfileState extends State<UserProfile> {
               },
             )
             */
-          IconButton(onPressed: signOut, icon: const Icon(Iconsax.logout_14))
+          IconButton(
+            onPressed: signOut, 
+            icon: const Icon(LucideIcons.logOut),
+            color: Colors.black,  
+          )
         ],
         elevation: 0,
         backgroundColor: Colors.white,
@@ -93,7 +98,7 @@ class _UserProfileState extends State<UserProfile> {
               height: MediaQuery.of(context).size.width,
               child: DefaultTabController(
                   initialIndex: 0,
-                  length: 4,
+                  length: 3,
                   child: Scaffold(
                     backgroundColor: Colors.white,
                     appBar: AppBar(
@@ -102,28 +107,23 @@ class _UserProfileState extends State<UserProfile> {
                       backgroundColor: Colors.white,
                       automaticallyImplyLeading: false,
                       bottom: const TabBar(
-                          indicatorColor: Color.fromARGB(255, 100, 105, 255),
+                          indicatorColor: Color.fromARGB(255, 218, 44, 90),
                           tabs: <Widget>[
                             Tab(
                               icon: Icon(
-                                Iconsax.activity,
+                                LucideIcons.clipboardList,
                                 color: Colors.black,
                               ),
                             ),
                             Tab(
                               icon: Icon(
-                                Iconsax.note_25,
+                                LucideIcons.circleDashed,
                                 color: Colors.black,
                               ),
                             ),
                             Tab(
                               icon: Icon(
-                                Iconsax.profile_2user,
-                                color: Colors.black,
-                              ),
-                            ),
-                            Tab(
-                              icon:Icon(Iconsax.bookmark,
+                                LucideIcons.import,
                                 color: Colors.black
                               ),
                             )
@@ -133,12 +133,13 @@ class _UserProfileState extends State<UserProfile> {
                       children: <Widget>[
                         Center(
                           child: Text(
-                            "Posts",
+                            "Listings",
                             style: TextStyle(
                                 decoration: TextDecoration.none,
-                                fontFamily: 'Capriola',
+                                fontFamily: 'Quicksand',
+                                fontWeight: FontWeight.w600,
                                 color: Colors.black,
-                                fontSize: 18),
+                                fontSize: 20),
                           ),
                         ),
                         Center(
@@ -146,19 +147,10 @@ class _UserProfileState extends State<UserProfile> {
                             "Drafts",
                             style: TextStyle(
                                 decoration: TextDecoration.none,
-                                fontFamily: 'Capriola',
+                                fontFamily: 'Quicksand',
+                                fontWeight: FontWeight.w600,
                                 color: Colors.black,
-                                fontSize: 18),
-                          ),
-                        ),
-                        Center(
-                          child: Text(
-                            "Friends",
-                            style: TextStyle(
-                                decoration: TextDecoration.none,
-                                fontFamily: 'Capriola',
-                                color: Colors.black,
-                                fontSize: 18),
+                                fontSize: 20),
                           ),
                         ),
                         Center(
@@ -166,9 +158,10 @@ class _UserProfileState extends State<UserProfile> {
                             "Saved",
                             style: TextStyle(
                                 decoration: TextDecoration.none,
-                                fontFamily: 'Capriola',
+                                fontFamily: 'Quicksand',
+                                fontWeight: FontWeight.w600,
                                 color: Colors.black,
-                                fontSize: 18),
+                                fontSize: 20),
                           ),
                         ),
                       ],

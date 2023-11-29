@@ -3,14 +3,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:teens_next/app/feeds/feeds.dart';
-import 'package:teens_next/app/feeds/screens/user_settings.dart';
+// import 'package:teens_next/app/feeds/screens/user_settings.dart';
 import 'package:teens_next/app/messaging/screens/contacts_list.dart';
-import 'package:teens_next/app/screens/user_profile.dart';
-import 'package:teens_next/components/profile_gradient.dart';
+// import 'package:teens_next/app/screens/user_profile.dart';
+// import 'package:teens_next/components/profile_gradient.dart';
 import 'package:teens_next/services/services.dart';
 
 class FeedsScreen extends StatefulWidget {
@@ -38,9 +40,27 @@ class _FeedsScreenState extends State<FeedsScreen> {
     return Scaffold(
       backgroundColor: Colors.grey[200]?.withOpacity(0.5),
       appBar: AppBar(
+        toolbarHeight: 48,
         elevation: 0,
+        scrolledUnderElevation: 0.4,
+        title: SvgPicture.asset(
+            'assets/imgs/fetch_logo.svg',
+            height: 60,
+            width: 60,
+        ),
+        /*
+        const Text(
+          "Feeds",
+          style: TextStyle(
+              decoration: TextDecoration.none,
+              fontFamily: 'Capriola',
+              color: Colors.black,
+              fontSize: 24),
+        ),
+        */
+        /*
         leading: MenuAnchor(
-          alignmentOffset: const Offset(14, 0),
+          alignmentOffset: const Offset(16, 0),
           menuChildren: [
             Row(
               children: [
@@ -51,13 +71,13 @@ class _FeedsScreenState extends State<FeedsScreen> {
                         MaterialPageRoute(
                             builder: (context) => const UserProfile()));
                   },
-                  leadingIcon: const Icon(Iconsax.profile_circle5),
+                  leadingIcon: const Icon(LucideIcons.userCircle),
                   child: const Center(
                     child: Text(
                       "Profile",
                       style: TextStyle(
                           decoration: TextDecoration.none,
-                          fontFamily: 'Capriola',
+                          fontFamily: 'Quicksand',
                           color: Colors.black,
                           fontSize: 16),
                     ),
@@ -71,13 +91,13 @@ class _FeedsScreenState extends State<FeedsScreen> {
                   onPressed: () {
                     signOut();
                   },
-                  leadingIcon: const Icon(Iconsax.logout_14),
+                  leadingIcon: const Icon(LucideIcons.logOut),
                   child: const Center(
                     child: Text(
                       "Log out",
                       style: TextStyle(
                           decoration: TextDecoration.none,
-                          fontFamily: 'Capriola',
+                          fontFamily: 'Quicksand',
                           color: Colors.black,
                           fontSize: 16),
                     ),
@@ -119,28 +139,16 @@ class _FeedsScreenState extends State<FeedsScreen> {
                 } else {
                   controller.open();
                 }
-              },
-              child: const SizedBox(
-                width: 56,
-                height: 44,
-                child: Row(
-                  children: [
-                    SizedBox(width: 12),
-                    ProfileGradient(width: 44, height: 44),
-                  ],
-                ),
-              ),
+              }, 
+              child: const Align(
+                alignment: Alignment.topRight,
+                child: ProfileGradient(width: 60, height: 60),
+              ),    
             );
           },
         ),
-        title: const Text(
-          "Feeds",
-          style: TextStyle(
-              decoration: TextDecoration.none,
-              fontFamily: 'Capriola',
-              color: Colors.black,
-              fontSize: 24),
-        ),
+        */
+        /*
         actions: [
           /*
           CircleTile(
@@ -157,6 +165,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
             },
           )
           */
+
           Padding(
             padding: const EdgeInsets.only(right: 4),
             child: IconButton(
@@ -171,6 +180,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
             ),
           ),
         ],
+        */
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
       ),
@@ -196,13 +206,13 @@ class _FeedsScreenState extends State<FeedsScreen> {
         ),
       ),
       floatingActionButton: Padding(
-        padding: const EdgeInsets.only(right: 6, bottom: 66),
+        padding: const EdgeInsets.only(right: 8, bottom: 64),
         child: SpeedDial(
-          icon: Iconsax.edit,
+          icon: LucideIcons.plus,
           shape: ContinuousRectangleBorder(
               borderRadius: BorderRadius.circular(24)),
-          foregroundColor: Colors.black,
-          backgroundColor: const Color.fromARGB(255, 255, 247, 100),
+          foregroundColor: Colors.white,
+          backgroundColor: const Color.fromARGB(245, 218, 44, 93),
           overlayColor: Colors.white,
           overlayOpacity: 0.2,
           children: [

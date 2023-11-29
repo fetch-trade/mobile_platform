@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 import 'package:teens_next/app/feeds/screens/feeds_screen.dart';
 import 'package:teens_next/app/screens/screens.dart';
 
@@ -12,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _controller = PageController(
-    initialPage: 3,
+    initialPage: 3, // 3
   );
 
   var screens = [
@@ -21,7 +21,8 @@ class _HomeScreenState extends State<HomeScreen> {
     const NotificationsScreen(
       receiverUid: '',
       receiverUserEmail: '',
-    )
+    ),
+    const UserProfile()
   ];
 
   @override
@@ -32,22 +33,27 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return PageView(children: [
+    return PageView(
+      controller: _controller,
+      children: [
       CupertinoPageScaffold(
         child: CupertinoTabScaffold(
           resizeToAvoidBottomInset: true,
           tabBar: CupertinoTabBar(
-            height: 56,
-            activeColor: const Color.fromARGB(255, 100, 105, 255),
+            height: 60,
+            activeColor: const Color.fromARGB(255, 218, 44, 90),
             items: const [
               BottomNavigationBarItem(
-                icon: Icon(Iconsax.home_2),
+                icon: Icon(LucideIcons.galleryThumbnails),
               ),
               BottomNavigationBarItem(
-                icon: Icon(Iconsax.profile_2user)
+                icon: Icon(LucideIcons.compass)
               ),
               BottomNavigationBarItem(
-                icon: Icon(Iconsax.notification),
+                icon: Icon(LucideIcons.bellRing),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(LucideIcons.user2),
               ),
             ],
           ),

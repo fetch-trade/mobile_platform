@@ -129,10 +129,10 @@ class _AuthOptionsState extends State<AuthOptions> {
                   child: EnterButton(
                     onTap: () {
                       // Sign In button pressed
-                      Navigator.pushReplacement(
+                      Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SignIn(onTap: signUserIn),
+                          builder: (context) => const AuthPage(),
                         ),
                       );
                     },
@@ -150,7 +150,7 @@ class _AuthOptionsState extends State<AuthOptions> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SignUp(onTap: signUserUp),
+                          builder: (context) => const AuthPage(),
                         ),
                       );
                     },

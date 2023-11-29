@@ -31,7 +31,7 @@ class PostCard extends StatelessWidget {
                 Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(6),
+                      padding: const EdgeInsets.all(8),
                       child: AltUserGradient(
                         userColors: userColors,
                       ),

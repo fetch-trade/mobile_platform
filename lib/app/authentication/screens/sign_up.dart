@@ -1,10 +1,8 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:teens_next/app/authentication/components/components.dart';
-import 'package:teens_next/app/authentication/screens/user_name.dart';
 import 'package:teens_next/components/components.dart';
 import 'package:teens_next/providers/gauth_provider.dart';
 import 'package:teens_next/services/auth_service.dart';
@@ -32,7 +30,7 @@ class _SignUpState extends State<SignUp> {
         "Passwords do not match!",
         style: TextStyle(
           decoration: TextDecoration.none,
-          fontFamily: 'Capriola',
+          fontFamily: 'Quicksand',
           fontSize: 12,
         ),
       )));
@@ -45,15 +43,12 @@ class _SignUpState extends State<SignUp> {
       await authService
           .signUpWithEmailAndPassword(
               emailController.text, passwordController.text);
-
-      Navigator.pushAndRemoveUntil(context,
-          CupertinoPageRoute(builder: (context) => const UserName()), (route) => false);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
         e.toString(),
         style: const TextStyle(
-          fontFamily: 'Capriola',
+          fontFamily: 'Quicksand',
           fontSize: 12,
         ),
       )));
@@ -72,10 +67,11 @@ class _SignUpState extends State<SignUp> {
               children: [
                 // create account for TeensNext!
                 const Text(
-                  "New? Create an account!",
+                  "New? Sign up now!",
                   style: TextStyle(
                     color: Colors.black,
-                    fontFamily: 'Capriola',
+                    fontFamily: 'Quicksand',
+                    fontWeight: FontWeight.bold,
                     fontSize: 24,
                   ),
                 ),
@@ -177,8 +173,8 @@ class _SignUpState extends State<SignUp> {
 
                 // sign up button
                 EnterButton(
-                  text: "Sign up",
-                  color: Colors.black,
+                  text: "Continue",
+                  color: const Color.fromARGB(255, 218, 44, 90),
                   onTap: signUserUp,
                 ),
                 const SizedBox(height: 32),
@@ -243,7 +239,7 @@ class _SignUpState extends State<SignUp> {
                       child: const Text(
                         "Sign in now",
                         style: TextStyle(
-                          color: Colors.blue,
+                          color: Color.fromARGB(255, 218, 44, 90),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
