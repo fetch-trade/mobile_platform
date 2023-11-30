@@ -3,7 +3,4 @@
 ### about
 
 
-### stack
-
-
 ### getting started
