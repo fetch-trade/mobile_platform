@@ -3,7 +3,9 @@ import 'package:teens_next/app/authentication/screens/sign_in.dart';
 import 'package:teens_next/app/authentication/screens/sign_up.dart';
 
 class TogglePage extends StatefulWidget {
-  const TogglePage({super.key});
+  final String action;
+
+  const TogglePage({super.key, required this.action});
 
   @override
   State<TogglePage> createState() => _TogglePageState();
@@ -12,6 +14,15 @@ class TogglePage extends StatefulWidget {
 class _TogglePageState extends State<TogglePage> {
   // show login page at start
   bool showLoginPage = true;
+
+  @override
+  void initState() {
+    super.initState();
+
+    if (widget.action == 'signUp') {
+      showLoginPage = false;
+    }
+  }
 
   //toggle between login and register pages
   void togglePages() {

@@ -4,7 +4,9 @@ import 'package:teens_next/app/authentication/components/toggle_page.dart';
 import 'package:teens_next/app/screens/home_screen.dart';
 
 class AuthPage extends StatelessWidget {
-  const AuthPage({super.key});
+  final String action;
+
+  const AuthPage({super.key, required this.action});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class AuthPage extends StatelessWidget {
 
         //user is not signed in
         else {
-          return const TogglePage();
+          return TogglePage(action: action);
         }
       },
     ));

@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:provider/provider.dart';
@@ -28,6 +27,7 @@ class _UserProfileState extends State<UserProfile> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        /*
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
           icon: const Icon(
@@ -35,6 +35,7 @@ class _UserProfileState extends State<UserProfile> {
             color: Color.fromARGB(245, 218, 44, 93),
           ),
         ),
+        */
         title: const Text(
           "User profile",
           style: TextStyle(

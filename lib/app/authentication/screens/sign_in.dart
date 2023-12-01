@@ -8,6 +8,7 @@ import 'package:teens_next/components/components.dart';
 import 'package:teens_next/providers/gauth_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:teens_next/services/auth_service.dart';
+import 'package:animate_do/animate_do.dart';
 
 // ignore: must_be_immutable
 class SignIn extends StatefulWidget {
@@ -57,7 +58,9 @@ class _SignInState extends State<SignIn> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // create account for TeensNext!
+                const SizedBox(height: 60),
+
+                // sign in to existing account
                 const Text(
                   "Sign in",
                   style: TextStyle(
@@ -68,7 +71,104 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
                 const SizedBox(height: 48),
+                
+                Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Column(
+                    children: <Widget>[
+                      FadeInUp(
+                          duration: const Duration(milliseconds: 1800),
+                          child: Container(
+                            padding: const EdgeInsets.all(4),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(color: Colors.black),
+                                boxShadow: const [
+                                  BoxShadow(
+                                      color: Color.fromRGBO(143, 148, 251, .2),
+                                      blurRadius: 20,
+                                      offset: Offset(0, 10))
+                                ]),
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: const BoxDecoration(
+                                      border: Border(
+                                          bottom:
+                                              BorderSide(color: Colors.black))),
+                                  child: TextField(
+                                    controller: emailController,
+                                    decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                        hintText: "Email",
+                                        hintStyle:
+                                            TextStyle(
+                                              color: Colors.grey[700],
+                                              fontFamily: 'REM',
+                                              fontWeight: FontWeight.w200
+                                            )),
+                                  ),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.all(8),
+                                  child: TextField(
+                                    controller: passwordController,
+                                    obscureText: true,
+                                    decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                        hintText: "Password",
+                                        hintStyle:
+                                            TextStyle(
+                                              color: Colors.grey[700],
+                                              fontFamily: 'REM',
+                                              fontWeight: FontWeight.w200
+                                            )),
+                                  ),
+                                )
+                              ],
+                            ),
+                          )),
+                      const SizedBox(height: 8),
+                      FadeInUp(
+                          duration: const Duration(milliseconds: 1900),
+                          child: Container(
+                            height: 48,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: const Center(
+                              child: Text(
+                                "Login",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          )),
+                      FadeInUp(
+                          duration: const Duration(milliseconds: 2000),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                      builder: (context) =>
+                                          const ForgotPassword()));
+                            },
+                            child: Text("Forgot Password?",
+                                style: TextStyle(
+                                    color: Colors.grey[600])),
+                          )),
+                    ],
+                  ),
+                ),
+
+
+
                 // email textfield
+                /*
                 InputField(
                   controller: emailController,
                   width: 440,
@@ -129,28 +229,7 @@ class _SignInState extends State<SignIn> {
                         fontSize: 18),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              CupertinoPageRoute(
-                                  builder: (context) =>
-                                      const ForgotPassword()));
-                        },
-                        child: Text(
-                          "Forgot Password?",
-                          style: TextStyle(
-                              color: Colors.grey[600], fontFamily: 'Quicksand'),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                */
                 const SizedBox(height: 24),
                 // sign in button
                 EnterButton(
@@ -158,7 +237,7 @@ class _SignInState extends State<SignIn> {
                   onTap: () {
                     signUserIn();
                   },
-                  color: const Color(0xFFE33F5E),
+                  color: const Color.fromRGBO(227, 63, 94, 1),
                 ),
                 const SizedBox(height: 48),
                 // or continue with

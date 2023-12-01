@@ -50,6 +50,8 @@ dependencies:
   loading_animation_widget: ^1.2.0+4
   flutter_launcher_icons: ^0.13.1
   lucide_icons: ^0.257.0
+  unicons: ^2.1.1
+  animate_do: ^3.1.2
 
 flutter_launcher_icons: 
   android: 'launcher_icon'

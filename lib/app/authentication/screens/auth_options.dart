@@ -8,7 +8,6 @@ import 'package:teens_next/app/authentication/screens/screens.dart';
 import 'package:teens_next/app/authentication/screens/user_name.dart';
 import 'package:teens_next/services/auth_service.dart';
 
-
 class AuthOptions extends StatefulWidget {
   const AuthOptions({super.key});
 
@@ -20,6 +19,7 @@ class _AuthOptionsState extends State<AuthOptions> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
+  String authAction = "";
 
   // sign user in method
   void signUserIn() async {
@@ -42,6 +42,7 @@ class _AuthOptionsState extends State<AuthOptions> {
       );
     }
   }
+
   // sign user up method
   void signUserUp() async {
     if (passwordController.text != confirmPasswordController.text) {
@@ -60,12 +61,13 @@ class _AuthOptionsState extends State<AuthOptions> {
     final authService = Provider.of<AuthService>(context, listen: false);
 
     try {
-      await authService
-          .signUpWithEmailAndPassword(
-              emailController.text, passwordController.text);
+      await authService.signUpWithEmailAndPassword(
+          emailController.text, passwordController.text);
 
-      Navigator.pushAndRemoveUntil(context,
-          CupertinoPageRoute(builder: (context) => const UserName()), (route) => false);
+      Navigator.pushAndRemoveUntil(
+          context,
+          CupertinoPageRoute(builder: (context) => const UserName()),
+          (route) => false);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
@@ -129,10 +131,11 @@ class _AuthOptionsState extends State<AuthOptions> {
                   child: EnterButton(
                     onTap: () {
                       // Sign In button pressed
+                      authAction = "signIn";
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const AuthPage(),
+                          builder: (context) => AuthPage(action: authAction),
                         ),
                       );
                     },
@@ -147,10 +150,11 @@ class _AuthOptionsState extends State<AuthOptions> {
                     color: const Color(0xFFE33F5E),
                     onTap: () {
                       // Sign Up button pressed
+                      authAction = "signUp";
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const AuthPage(),
+                          builder: (context) => AuthPage(action: authAction),
                         ),
                       );
                     },
@@ -164,33 +168,3 @@ class _AuthOptionsState extends State<AuthOptions> {
     );
   }
 }
-
-
-
-
-        /*
-          const Align(
-            alignment: Alignment.topLeft,
-            child: Text(
-              "Welcome to fetch",
-              style: TextStyle(
-                color: Color(0xFFE33F5E),
-                fontFamily: 'Quicksand',
-                fontWeight: FontWeight.w900,
-                fontSize: 20 
-              ),
-            ),
-          ),
-          const Align(
-            alignment: Alignment.topLeft,
-            child: Text(
-              "The Ultimate exchange platform",
-              style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'Quicksand',
-                fontWeight: FontWeight.w700,
-                fontSize: 16 
-              ),
-            ),
-          ),
-        */
