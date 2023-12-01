@@ -147,7 +147,7 @@ class _AuthOptionsState extends State<AuthOptions> {
                   padding: const EdgeInsets.only(bottom: 48),
                   child: EnterButton(
                     text: "Sign Up",
-                    color: const Color(0xFFE33F5E),
+                    color: const Color.fromRGBO(227, 63, 94, 1),
                     onTap: () {
                       // Sign Up button pressed
                       authAction = "signUp";
