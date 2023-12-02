@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:teens_next/app/authentication/model/app_user.dart';
+import 'package:fetch/app/authentication/model/app_user.dart';
 
 class AuthService extends ChangeNotifier {
   // auth instance

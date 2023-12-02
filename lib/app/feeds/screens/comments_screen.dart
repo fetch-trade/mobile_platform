@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 // import 'package:teens_next/app/authentication/resources/get_gradient_colors.dart';
-import 'package:teens_next/app/feeds/feeds.dart';
+import 'package:fetch/app/feeds/feeds.dart';
 
 class PostDetailScreen extends StatelessWidget {
   final String? postId;

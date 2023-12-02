@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:teens_next/components/input_field.dart';
+import 'package:fetch/components/input_field.dart';
 
 class NewComment extends StatefulWidget {
   final String postId;

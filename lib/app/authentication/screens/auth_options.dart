@@ -3,10 +3,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:teens_next/app/authentication/components/enter_button.dart';
-import 'package:teens_next/app/authentication/screens/screens.dart';
-import 'package:teens_next/app/authentication/screens/user_name.dart';
-import 'package:teens_next/services/auth_service.dart';
+import 'package:fetch/app/authentication/components/enter_button.dart';
+import 'package:fetch/app/authentication/screens/screens.dart';
+import 'package:fetch/app/authentication/screens/user_name.dart';
+import 'package:fetch/services/auth_service.dart';
 
 class AuthOptions extends StatefulWidget {
   const AuthOptions({super.key});

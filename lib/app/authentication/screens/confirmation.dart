@@ -2,13 +2,13 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:teens_next/app/authentication/components/components.dart';
-import 'package:teens_next/app/authentication/screens/forgot_password.dart';
-import 'package:teens_next/app/screens/screens.dart';
-import 'package:teens_next/components/components.dart';
-import 'package:teens_next/providers/gauth_provider.dart';
+import 'package:fetch/app/authentication/components/components.dart';
+import 'package:fetch/app/authentication/screens/forgot_password.dart';
+import 'package:fetch/app/screens/screens.dart';
+import 'package:fetch/components/components.dart';
+import 'package:fetch/providers/gauth_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:teens_next/services/auth_service.dart';
+import 'package:fetch/services/auth_service.dart';
 
 // ignore: must_be_immutable
 class Confirmation extends StatefulWidget {

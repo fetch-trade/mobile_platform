@@ -3,9 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:teens_next/app/messaging/components/message_bubble.dart';
-import 'package:teens_next/app/messaging/components/message_input_field.dart';
-import 'package:teens_next/services/messaging_service.dart';
+import 'package:fetch/app/messaging/components/message_bubble.dart';
+import 'package:fetch/app/messaging/components/message_input_field.dart';
+import 'package:fetch/services/messaging_service.dart';
 
 class MessagesScreen extends StatefulWidget {
   final String receiverUserName;

@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:teens_next/firebase_options.dart';
+import 'package:fetch/firebase_options.dart';
 
 class GAuthProvider {
   Future<UserCredential> signInWithGoogle() async {

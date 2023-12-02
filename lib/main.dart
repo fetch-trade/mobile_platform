@@ -3,10 +3,10 @@ import 'package:firebase_core/firebase_core.dart';
 // import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:teens_next/app/authentication/screens/splash_screen.dart';
-import 'package:teens_next/firebase_options.dart';
+import 'package:fetch/app/authentication/screens/splash_screen.dart';
+import 'package:fetch/firebase_options.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:teens_next/services/auth_service.dart';
+import 'package:fetch/services/auth_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

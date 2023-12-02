@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:teens_next/app/feeds/screens/feeds_screen.dart';
-import 'package:teens_next/app/screens/screens.dart';
+import 'package:fetch/app/feeds/screens/feeds_screen.dart';
+import 'package:fetch/app/screens/screens.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

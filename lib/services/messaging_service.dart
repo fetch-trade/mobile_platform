@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:teens_next/app/messaging/model/message.dart';
+import 'package:fetch/app/messaging/model/message.dart';
 
 class MessagingService extends ChangeNotifier {
   // get instance of auth and firestore

@@ -4,10 +4,10 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:provider/provider.dart';
-import 'package:teens_next/app/feeds/screens/user_settings.dart';
-import 'package:teens_next/app/screens/user_profile.dart';
-import 'package:teens_next/components/profile_gradient.dart';
-import 'package:teens_next/services/auth_service.dart';
+import 'package:fetch/app/feeds/screens/user_settings.dart';
+import 'package:fetch/app/screens/user_profile.dart';
+import 'package:fetch/components/profile_gradient.dart';
+import 'package:fetch/services/auth_service.dart';
 
 class ExploreScreen extends StatefulWidget {
   const ExploreScreen({super.key});

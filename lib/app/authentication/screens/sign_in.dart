@@ -2,12 +2,12 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:teens_next/app/authentication/components/components.dart';
-import 'package:teens_next/app/authentication/screens/forgot_password.dart';
-import 'package:teens_next/components/components.dart';
-import 'package:teens_next/providers/gauth_provider.dart';
+import 'package:fetch/app/authentication/components/components.dart';
+import 'package:fetch/app/authentication/screens/forgot_password.dart';
+import 'package:fetch/components/components.dart';
+import 'package:fetch/providers/gauth_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:teens_next/services/auth_service.dart';
+import 'package:fetch/services/auth_service.dart';
 import 'package:animate_do/animate_do.dart';
 
 // ignore: must_be_immutable
@@ -71,7 +71,6 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
                 const SizedBox(height: 48),
-                
                 Padding(
                   padding: const EdgeInsets.all(24),
                   child: Column(

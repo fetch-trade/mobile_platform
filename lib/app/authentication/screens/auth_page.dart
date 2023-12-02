@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:teens_next/app/authentication/components/toggle_page.dart';
-import 'package:teens_next/app/screens/home_screen.dart';
+import 'package:fetch/app/authentication/components/toggle_page.dart';
+import 'package:fetch/app/screens/home_screen.dart';
 
 class AuthPage extends StatelessWidget {
   final String action;

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:teens_next/app/feeds/model/post.dart';
+import 'package:fetch/app/feeds/model/post.dart';
 
 class PostingService extends ChangeNotifier {
   final currentUser = FirebaseAuth.instance.currentUser!;

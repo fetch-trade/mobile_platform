@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:provider/provider.dart';
-import 'package:teens_next/components/profile_gradient.dart';
-import 'package:teens_next/services/auth_service.dart';
+import 'package:fetch/components/profile_gradient.dart';
+import 'package:fetch/services/auth_service.dart';
 
 class UserProfile extends StatefulWidget {
   const UserProfile({super.key});

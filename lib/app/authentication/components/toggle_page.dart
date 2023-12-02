@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:teens_next/app/authentication/screens/sign_in.dart';
-import 'package:teens_next/app/authentication/screens/sign_up.dart';
+import 'package:fetch/app/authentication/screens/sign_in.dart';
+import 'package:fetch/app/authentication/screens/sign_up.dart';
 
 class TogglePage extends StatefulWidget {
   final String action;

@@ -2,10 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:teens_next/app/authentication/components/components.dart';
-import 'package:teens_next/components/components.dart';
-import 'package:teens_next/providers/gauth_provider.dart';
-import 'package:teens_next/services/auth_service.dart';
+import 'package:fetch/app/authentication/components/components.dart';
+import 'package:fetch/components/components.dart';
+import 'package:fetch/providers/gauth_provider.dart';
+import 'package:fetch/services/auth_service.dart';
 
 class SignUp extends StatefulWidget {
   final Function()? onTap;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:teens_next/app/feeds/components/alt_user_gradient.dart';
+import 'package:fetch/app/feeds/components/alt_user_gradient.dart';
 
 class CommentCard extends StatelessWidget {
   final String sender;

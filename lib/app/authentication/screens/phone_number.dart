@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:teens_next/app/authentication/components/enter_button.dart';
-import 'package:teens_next/app/screens/home_screen.dart';
-import 'package:teens_next/components/input_field.dart';
+import 'package:fetch/app/authentication/components/enter_button.dart';
+import 'package:fetch/app/screens/home_screen.dart';
+import 'package:fetch/components/input_field.dart';
 
 class PhoneNumber extends StatefulWidget {
   const PhoneNumber({Key? key}) : super(key: key);

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:teens_next/app/authentication/components/splash_screen_scaffold.dart';
-import 'package:teens_next/app/authentication/screens/auth_options.dart';
-// import 'package:teens_next/app/authentication/screens/auth_page.dart';
-import 'package:teens_next/components/components.dart';
+import 'package:fetch/app/authentication/components/splash_screen_scaffold.dart';
+import 'package:fetch/app/authentication/screens/auth_options.dart';
+// import 'package:fetch/app/authentication/screens/auth_page.dart';
+import 'package:fetch/components/components.dart';
 import 'dart:async';
 
 class SplashScreen extends StatefulWidget {
