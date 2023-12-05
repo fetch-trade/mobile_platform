@@ -13,25 +13,25 @@ set the flutter path with these next steps:
 
 macOS
 
-	type `vi ~/.zshrc` to access your mac's bash profile in vim
+type `vi ~/.zshrc` to access your mac's bash profile in vim
 
-	press `i` to `INSERT` a new path variable
+press `i` to `INSERT` a new path variable
 
-	add `export PATH="$PATH:/Users/<username>/flutter/bin"` where <username> is replaced by the name of your computer
+add `export PATH="$PATH:/Users/<username>/flutter/bin"` where <username> is replaced by the name of your computer
 
-	press `esc` to exit editing mode and type in `:wq` to save a quit
+press `esc` to exit editing mode and type in `:wq` to save a quit
 
-	type in `source ~/.zshrc` to refresh the terminal window to accomodate the new changes to your bash profile  
+type in `source ~/.zshrc` to refresh the terminal window to accomodate the new changes to your bash profile  
 
 windows
 
-	follow this link: https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/ 
+follow this link: https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/ 
 
 install the dart sdk using:
 
-	`brew install dart-sdk`	(homebrew)
+`brew install dart-sdk`	(homebrew)
 
-	`choco install dart-sdk` (chocolatey)
+`choco install dart-sdk` (chocolatey)
 
 make sure xcode, android studio, and vscode are set up on your environment; if not, please google how to do so
 
