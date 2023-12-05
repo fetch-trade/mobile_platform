@@ -34,18 +34,17 @@ press `esc` to exit editing mode and type in `:wq` to save a quit
 
 type in `source ~/.zshrc` to refresh the terminal window to accomodate the new changes to your bash profile  
 
+install the dart sdk using `brew install dart-sdk`	(homebrew)
+
 #### windows
 
 follow this link: https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/ 
 
-install the dart sdk using:
+install the dart sdk using `choco install dart-sdk` (chocolatey)
 
-`brew install dart-sdk`	(homebrew)
 
-`choco install dart-sdk` (chocolatey)
-
-make sure xcode, android studio, and vscode are set up on your environment; if not, please google how to do so
-
+make sure xcode(mac only), android studio, and vscode are set up on your environment; if not, please google how to do so (note that the android
+ios emulators need to be set up to test the app)
 
 ### setting up local env
 
