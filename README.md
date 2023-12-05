@@ -11,7 +11,7 @@ install the flutter sdk using https://docs.flutter.dev/get-started/install/macos
 
 set the flutter path with these next steps:
 
-macOS
+##### macOS
 
 type `vi ~/.zshrc` to access your mac's bash profile in vim
 
@@ -23,7 +23,7 @@ press `esc` to exit editing mode and type in `:wq` to save a quit
 
 type in `source ~/.zshrc` to refresh the terminal window to accomodate the new changes to your bash profile  
 
-windows
+##### windows
 
 follow this link: https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/ 
 
