@@ -1,5 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:fetch/app/authentication/screens/forgot_password.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:fetch/app/authentication/components/components.dart';
@@ -75,9 +77,101 @@ class _SignUpState extends State<SignUp> {
                     fontSize: 24,
                   ),
                 ),
-                const SizedBox(height: 32),
+                const SizedBox(height: 40),
 
+                Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        padding: const EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: Colors.black),
+                        ),
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: const BoxDecoration(
+                                  border: Border(
+                                      bottom: BorderSide(color: Colors.black))),
+                              child: TextField(
+                                controller: emailController,
+                                decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: "Email",
+                                    hintStyle: TextStyle(
+                                        color: Colors.grey[700],
+                                        fontFamily: 'REM',
+                                        fontWeight: FontWeight.w200)),
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: const BoxDecoration(
+                                  border: Border(
+                                      bottom: BorderSide(color: Colors.black))),
+                              child: TextField(
+                                controller: passwordController,
+                                obscureText: true,
+                                decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: "Password",
+                                    hintStyle: TextStyle(
+                                        color: Colors.grey[700],
+                                        fontFamily: 'REM',
+                                        fontWeight: FontWeight.w200)),
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.all(8),
+                              child: TextField(
+                                controller: confirmPasswordController,
+                                obscureText: true,
+                                decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: "Confirm password",
+                                    hintStyle: TextStyle(
+                                        color: Colors.grey[700],
+                                        fontFamily: 'REM',
+                                        fontWeight: FontWeight.w200)),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Container(
+                        height: 48,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: const Center(
+                          child: Text(
+                            "Continue",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                  builder: (context) =>
+                                      const ForgotPassword()));
+                        },
+                        child: const Text(""),
+                      )
+                    ],
+                  ),
+                ),
                 // email textfield
+                /*
                 InputField(
                   controller: emailController,
                   width: 440,
@@ -169,7 +263,7 @@ class _SignUpState extends State<SignUp> {
                         fontSize: 18),
                   ),
                 ),
-                const SizedBox(height: 16),
+                */
 
                 // sign up button
                 EnterButton(
