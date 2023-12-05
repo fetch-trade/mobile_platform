@@ -1,17 +1,17 @@
 # fetch for ios + android
 
-### about
+## about
 
 
-### getting started
+## getting started
 
-#### flutter/dart sdk
+### flutter/dart sdk
 
 install the flutter sdk using https://docs.flutter.dev/get-started/install/macos
 
 set the flutter path with these next steps:
 
-##### macOS
+#### macOS
 
 type `vi ~/.zshrc` to access your mac's bash profile in vim
 
@@ -23,7 +23,7 @@ press `esc` to exit editing mode and type in `:wq` to save a quit
 
 type in `source ~/.zshrc` to refresh the terminal window to accomodate the new changes to your bash profile  
 
-##### windows
+#### windows
 
 follow this link: https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/ 
 
@@ -36,7 +36,7 @@ install the dart sdk using:
 make sure xcode, android studio, and vscode are set up on your environment; if not, please google how to do so
 
 
-#### setting up local env
+### setting up local env
 
 open a terminal and type in `git clone https://github.com/fetch-trade/mobile_platform.git` to clone using https or `git clone git@github.com:fetch-trade/mobile_platform.git` if ssh is set up on your machine (make sure to clone into a selected directory that's visible and easy accessible, i.e., `cd Documents` or `cd Desktop`)
 
@@ -44,4 +44,4 @@ once the repo finishes cloning, type `cd <directory name>/<directory name>/mobil
 
 type in code . to edit the files on vscode
 
-### contributing
+## contributing
