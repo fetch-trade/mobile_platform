@@ -42,6 +42,14 @@ open a terminal and type in `git clone https://github.com/fetch-trade/mobile_pla
 
 once the repo finishes cloning, type `cd <directory name>/<directory name>/mobile_platform` to access the folder locally
 
-type in code . to edit the files on vscode
+type in `code .` to edit the files on vscode
 
 ## contributing
+
+when committing changes to the code, create a new branch for either addressing an issue or simply have an endpoint to store your commit history
+
+for issues, format the branch name to be `FT-<issue #>` 
+
+for adding code outside of issues, format the name to be `<your first initial last name>` (no spaces, e.g., jadams)
+
+branches can be created using `git checkout <new-branch>` where `<new-branch>` follows the naming standards set above
