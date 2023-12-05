@@ -2,6 +2,17 @@
 
 ## about
 
+this app is a continuation of a former project started under the same members. the mobile platform is meant to be a tool to help users conduct 
+successful P2P trades of materials they own, similar to the types of business done on FB Marketplace. more on the concept here: https://drive.google.com/file/d/1iKXNV9993fM_z8t35Cv1QpSsAV65U0R9/view?usp=sharing 
+
+currently, the project utilizes the following technologies:
+
+	flutter
+	firebase storage
+	firestore
+	provider
+
+the repo is maintained by @enkyuan. thanks to @ethanMoloney for helping with the app's design. made with :heart: by the fetch team
 
 ## getting started
 
