@@ -47,7 +47,7 @@ ios emulators need to be set up to test the app)
 
 ### setting up local env
 
-open a terminal and type in `git clone https://github.com/fetch-trade/mobile_platform.git` to clone using https or `git clone git@github.com:fetch-trade/mobile_platform.git` if ssh is set up on your machine (make sure to clone into a selected directory that's visible and easy accessible, i.e., `cd Documents` or `cd Desktop`)
+open a terminal and type in `git clone https://github.com/fetch-trade/mobile_platform.git` to clone using https or `git clone git@github.com:fetch-trade/mobile_platform.git` if ssh is set up on your machine (make sure to clone into a directory that's visible and easily accessible, i.e., `cd Documents` or `cd Desktop`)
 
 once the repo finishes cloning, type `cd <directory name>/<directory name>/mobile_platform` to access the folder locally
 
