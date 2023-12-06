@@ -15,7 +15,7 @@ currently, the project utilizes the following technologies:
 
 ## getting started
 
-### flutter/dart sdk
+### installing flutter
 
 install the flutter sdk using https://docs.flutter.dev/get-started/install/macos
 
