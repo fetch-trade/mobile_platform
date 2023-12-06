@@ -37,7 +37,7 @@ install the dart sdk using `brew install dart-sdk`	(homebrew)
 
 #### windows
 
-follow this link: https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/ 
+follow this link: https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/ to add a flutter path
 
 install the dart sdk using `choco install dart-sdk` (chocolatey)
 
