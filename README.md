@@ -12,7 +12,6 @@ currently, the project utilizes the following technologies:
 	firestore
 	provider
 
-the repo is maintained by @enkyuan. thanks to @ethanMoloney for helping with the app's design. made with :heart: by the fetch team
 
 ## getting started
 
@@ -30,7 +29,7 @@ press `i` to `INSERT` a new path variable
 
 add `export PATH="$PATH:/Users/<username>/flutter/bin"` where <username> is replaced by the name of your computer
 
-press `esc` to exit editing mode and type in `:wq` to save a quit
+press `esc` to exit editing mode and type in `:wq` to save and quit
 
 type in `source ~/.zshrc` to refresh the terminal window to accomodate the new changes to your bash profile  
 
@@ -63,3 +62,7 @@ for issues, format the branch name to be `FT-<issue #>`
 for adding code outside of issues, format the name to be `<your first initial last name>` (no spaces, e.g., jadams)
 
 branches can be created using `git checkout <new-branch>` where `<new-branch>` follows the naming standards set above
+
+## credits
+
+the repo is maintained by @enkyuan. thanks to @ethanMoloney for helping with the app's design. made with :heart: by the fetch team
