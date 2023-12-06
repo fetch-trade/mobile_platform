@@ -45,7 +45,7 @@ install the dart sdk using `choco install dart-sdk` (chocolatey)
 make sure xcode(mac only), android studio, and vscode are set up on your environment; if not, please google how to do so (note that the android
 ios emulators need to be set up to test the app)
 
-### setting up local env
+### setting up the environment
 
 open a terminal and type in `git clone https://github.com/fetch-trade/mobile_platform.git` to clone using https or `git clone git@github.com:fetch-trade/mobile_platform.git` if ssh is set up on your machine (make sure to clone into a directory that's visible and easily accessible, i.e., `cd Documents` or `cd Desktop`)
 
