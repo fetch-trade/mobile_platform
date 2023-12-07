@@ -67,6 +67,8 @@ class _SignUpState extends State<SignUp> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const SizedBox(height: 40),
+                
                 // create account for TeensNext!
                 const Text(
                   "New? Sign up now!",
@@ -74,10 +76,9 @@ class _SignUpState extends State<SignUp> {
                     color: Colors.black,
                     fontFamily: 'Quicksand',
                     fontWeight: FontWeight.bold,
-                    fontSize: 24,
+                    fontSize: 32,
                   ),
                 ),
-                const SizedBox(height: 40),
 
                 Padding(
                   padding: const EdgeInsets.all(24),
@@ -142,31 +143,12 @@ class _SignUpState extends State<SignUp> {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 4),
-                      Container(
-                        height: 48,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: const Center(
-                          child: Text(
-                            "Continue",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
+                      const SizedBox(height: 20),
+                      Column(
+                        children: [
+
+                        ],
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              CupertinoPageRoute(
-                                  builder: (context) =>
-                                      const ForgotPassword()));
-                        },
-                        child: const Text(""),
-                      )
                     ],
                   ),
                 ),
@@ -271,7 +253,7 @@ class _SignUpState extends State<SignUp> {
                   color: const Color.fromARGB(255, 218, 44, 90),
                   onTap: signUserUp,
                 ),
-                const SizedBox(height: 32),
+                const SizedBox(height: 28),
 
                 // or continue with
                 Padding(

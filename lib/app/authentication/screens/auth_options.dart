@@ -35,7 +35,8 @@ class _AuthOptionsState extends State<AuthOptions> {
           e.toString(),
           style: const TextStyle(
             decoration: TextDecoration.none,
-            fontFamily: 'Capriola',
+            fontFamily: 'Quicksand',
+            fontWeight: FontWeight.w400,
             fontSize: 12,
           ),
         )),
@@ -73,7 +74,7 @@ class _AuthOptionsState extends State<AuthOptions> {
           content: Text(
         e.toString(),
         style: const TextStyle(
-          fontFamily: 'Capriola',
+          fontFamily: 'Quicksand',
           fontSize: 12,
         ),
       )));

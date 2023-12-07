@@ -57,7 +57,7 @@ class _SignInState extends State<SignIn> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 60),
+                const SizedBox(height: 40),
 
                 // sign in to existing account
                 const Text(
@@ -69,7 +69,7 @@ class _SignInState extends State<SignIn> {
                     fontSize: 32,
                   ),
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 24),
                 Padding(
                   padding: const EdgeInsets.all(24),
                   child: Column(
@@ -117,31 +117,22 @@ class _SignInState extends State<SignIn> {
                         ),
                       ),
                       const SizedBox(height: 8),
-                      Container(
-                        height: 48,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: const Center(
-                          child: Text(
-                            "Login",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              CupertinoPageRoute(
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                CupertinoPageRoute( 
                                   builder: (context) =>
                                       const ForgotPassword()));
-                        },
-                        child: Text("Forgot Password?",
-                            style: TextStyle(color: Colors.grey[600])),
-                      ),
+                            },
+                          child: Text("Forgot Password?",
+                              style: TextStyle(color: Colors.grey[600])),
+                          ),  
+                        ],
+                      )
                     ],
                   ),
                 ),
@@ -210,7 +201,7 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
                 */
-                const SizedBox(height: 24),
+                const SizedBox(height: 20),
                 // sign in button
                 EnterButton(
                   text: "Continue",
@@ -222,7 +213,7 @@ class _SignInState extends State<SignIn> {
                 const SizedBox(height: 48),
                 // or continue with
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: Row(
                     children: [
                       Expanded(
@@ -247,7 +238,7 @@ class _SignInState extends State<SignIn> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 48),
+                const SizedBox(height: 40),
 
                 // google + apple sign in buttons
                 Row(
@@ -264,7 +255,7 @@ class _SignInState extends State<SignIn> {
                         onTap: () => {}, imagePath: 'assets/imgs/apple.svg'),
                   ],
                 ),
-                const SizedBox(height: 48),
+                const SizedBox(height: 40),
 
                 // not a member? register now
                 Row(
