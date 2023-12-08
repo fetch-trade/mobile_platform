@@ -116,27 +116,28 @@ class _SignInState extends State<SignIn> {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 8),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                CupertinoPageRoute( 
-                                  builder: (context) =>
-                                      const ForgotPassword()));
-                            },
-                          child: Text("Forgot Password?",
-                              style: TextStyle(color: Colors.grey[600])),
-                          ),  
-                        ],
-                      )
                     ],
                   ),
                 ),
-
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [                         
+                    Align(
+                      alignment: Alignment.center,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            CupertinoPageRoute( 
+                                builder: (context) =>
+                                    const ForgotPassword()));
+                        },
+                        child: Text("Forgot Password?",
+                        style: TextStyle(color: Colors.grey[600])),
+                      ),  
+                    ),
+                  ],
+                ),
 
                 // email textfield
                 /*

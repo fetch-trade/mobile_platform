@@ -1,7 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:fetch/app/authentication/screens/forgot_password.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:fetch/app/authentication/components/components.dart';
@@ -79,7 +77,7 @@ class _SignUpState extends State<SignUp> {
                     fontSize: 32,
                   ),
                 ),
-
+                const SizedBox(height: 24),     
                 Padding(
                   padding: const EdgeInsets.all(24),
                   child: Column(
@@ -142,12 +140,6 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ],
                         ),
-                      ),
-                      const SizedBox(height: 20),
-                      Column(
-                        children: [
-
-                        ],
                       ),
                     ],
                   ),
@@ -246,14 +238,13 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
                 */
-
                 // sign up button
                 EnterButton(
                   text: "Continue",
                   color: const Color.fromARGB(255, 218, 44, 90),
                   onTap: signUserUp,
                 ),
-                const SizedBox(height: 28),
+                const SizedBox(height: 32),
 
                 // or continue with
                 Padding(
@@ -269,7 +260,7 @@ class _SignUpState extends State<SignUp> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: Text(
-                          "Or continue with",
+                          "OR",
                           style: TextStyle(color: Colors.grey[700]),
                         ),
                       ),
