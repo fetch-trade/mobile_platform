@@ -48,163 +48,35 @@ class _FeedsScreenState extends State<FeedsScreen> {
             height: 60,
             width: 60,
         ),
-        /*
-        const Text(
-          "Feeds",
-          style: TextStyle(
-              decoration: TextDecoration.none,
-              fontFamily: 'Capriola',
-              color: Colors.black,
-              fontSize: 24),
-        ),
-        */
-        /*
-        leading: MenuAnchor(
-          alignmentOffset: const Offset(16, 0),
-          menuChildren: [
-            Row(
-              children: [
-                MenuItemButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const UserProfile()));
-                  },
-                  leadingIcon: const Icon(LucideIcons.userCircle),
-                  child: const Center(
-                    child: Text(
-                      "Profile",
-                      style: TextStyle(
-                          decoration: TextDecoration.none,
-                          fontFamily: 'Quicksand',
-                          color: Colors.black,
-                          fontSize: 16),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                MenuItemButton(
-                  onPressed: () {
-                    signOut();
-                  },
-                  leadingIcon: const Icon(LucideIcons.logOut),
-                  child: const Center(
-                    child: Text(
-                      "Log out",
-                      style: TextStyle(
-                          decoration: TextDecoration.none,
-                          fontFamily: 'Quicksand',
-                          color: Colors.black,
-                          fontSize: 16),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            /*
-            Row(
-              children: [
-                MenuItemButton(
-                  onPressed: () {
-                    signOut();
-                  },
-                  leadingIcon: const Icon(
-                    Iconsax.logout_14,
-                    color: Colors.black,
-                  ),
-                  child: const Center(
-                    child: Text(
-                      "Sign out",
-                      style: TextStyle(
-                          decoration: TextDecoration.none,
-                          fontFamily: 'Capriola',
-                          color: Colors.black,
-                          fontSize: 16),
-                    ),
-                  ),
-                ),
-              ],
-            )
-            */
-          ],
-          builder: (context, controller, child) {
-            return GestureDetector(
-              onTap: () {
-                if (controller.isOpen) {
-                  controller.close();
-                } else {
-                  controller.open();
-                }
-              }, 
-              child: const Align(
-                alignment: Alignment.topRight,
-                child: ProfileGradient(width: 60, height: 60),
-              ),    
-            );
-          },
-        ),
-        */
-        /*
-        actions: [
-          /*
-          CircleTile(
-            icon: const Icon(
-              Iconsax.search_normal,
-              color: Colors.black,
-              weight: 60,
-            ),
-            onTap: () {
-              ExpandableSearchBar(
-                  onTap: () => print(searchController.text.toString()),
-                  hintText: "Search something",
-                  editTextController: searchController);
-            },
-          )
-          */
-
-          Padding(
-            padding: const EdgeInsets.only(right: 4),
-            child: IconButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const UserSettings()));
-              },
-              icon: const Icon(Iconsax.setting_2),
-              color: Colors.black,
-            ),
-          ),
-        ],
-        */
-        backgroundColor: Colors.white,
+                backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
       ),
-      body: Center(
-        child: Column(
-          children: [
-            /*
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: Center(
-                child: Text(
-                  "Logged in as: ${currentUser.displayName}",
-                  style: const TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'Capriola',
-                      fontSize: 12),
+      body: Stack(
+        children: [
+          Center(
+            child: Column(
+              children: [
+                Expanded(child: _buildPostList()),
+                StreamBuilder(
+                  stream: _postingService.getPosts(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(
+                        child: LoadingAnimationWidget.staggeredDotsWave(
+                          color: const Color.fromARGB(255, 100, 105, 255),
+                          size: 100,
+                        ),
+                      );
+                    } else {
+                      return const SizedBox.shrink(); // Empty container when not loading
+                    }
+                  },
                 ),
-              ),
+              ],
             ),
-            */
-            Expanded(child: _buildPostList()),
-          ],
-        ),
-      ),
+          )
+        ]
+      ), 
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(right: 8, bottom: 64),
         child: SpeedDial(
@@ -400,13 +272,15 @@ class _FeedsScreenState extends State<FeedsScreen> {
           );
         } else {
           // Handle the case where there are no posts
-          return const Text(
-            "No posts available",
-            style: TextStyle(
-              decoration: TextDecoration.none,
-              color: Colors.black,
-              fontFamily: 'Capriola',
-              fontSize: 16,
+          return const Center(child: 
+            Text(
+              "No posts available",
+              style: TextStyle(
+                decoration: TextDecoration.none,
+                color: Colors.black,
+                fontFamily: 'Capriola',
+                fontSize: 16,
+              ),
             ),
           );
         }

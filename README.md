@@ -27,7 +27,7 @@ type `vi ~/.zshrc` to access your mac's bash profile in vim
 
 press `i` to `INSERT` a new path variable
 
-add `export PATH="$PATH:/Users/<username>/flutter/bin"` where <username> is replaced by the name of your computer
+add `export PATH="$PATH:/Users/<username>/flutter/bin"` where `<username>` is replaced by the name of your computer
 
 press `esc` to exit editing mode and type in `:wq` to save and quit
 
