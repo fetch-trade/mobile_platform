@@ -69,6 +69,8 @@ for adding code outside of issues, format the name to be `<your first initial la
 
 branches can be created using `git checkout <new-branch>` where `<new-branch>` follows the naming standards set above
 
+create a pull request using the new branch to compare changes--this portion is hypothetical and a CI/CD workflow has not been introduced for this repo. more on approvin contributions later...
+
 ## credits
 
 the repo is maintained by @enkyuan. thanks to @ethanMoloney for helping with the app's design. made with :heart: by the fetch team
