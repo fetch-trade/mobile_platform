@@ -23,7 +23,7 @@ set the flutter path with the following steps:
 
 #### macOS
 
-type `vi ~/.zshrc` to access your mac's bash profile in vim
+type `vi ~/.zshrc` into your terminal, i.e., bash, zdsh, warp, or tmux, to access your mac's bash profile in vim
 
 press `i` to `INSERT` a new path variable
 
