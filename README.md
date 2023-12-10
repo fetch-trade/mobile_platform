@@ -47,11 +47,17 @@ ios emulators need to be set up to test the app)
 
 ### setting up the environment
 
+#### the basics
+
 open a terminal and type in `git clone https://github.com/fetch-trade/mobile_platform.git` to clone using https or `git clone git@github.com:fetch-trade/mobile_platform.git` if ssh is set up on your machine (make sure to clone into a directory that's visible and easily accessible, i.e., `Documents` or `desktop`)
 
 once the repo finishes cloning, type `cd <directory name>/<directory name>/mobile_platform` to access the folder locally
 
 type in `code .` to edit the files in vscode or `nvim .` to edit using neovim
+
+#### firebase configuration
+
+open your firebase dashboard and create a new project or use an existing one and connect it to this project. steps for firebase onboarding for flutter can be found at `https://firebase.google.com/docs/flutter/setup?platform=ios`; further steps for setup will be introduced after working out most of the app
 
 ## contributing
 
