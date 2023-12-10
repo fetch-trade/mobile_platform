@@ -10,7 +10,7 @@ currently, the project utilizes the following technologies:
 	flutter
 	firebase storage
 	firestore
-	provider
+    tomtom maps (deprecated)
 
 
 ## getting started
@@ -19,7 +19,7 @@ currently, the project utilizes the following technologies:
 
 install the flutter sdk using https://docs.flutter.dev/get-started/install/macos
 
-set the flutter path with these next steps:
+set the flutter path with the following steps:
 
 #### macOS
 
