@@ -51,7 +51,7 @@ open a terminal and type in `git clone https://github.com/fetch-trade/mobile_pla
 
 once the repo finishes cloning, type `cd <directory name>/<directory name>/mobile_platform` to access the folder locally
 
-type in `code .` to edit the files on vscode
+type in `code .` to edit the files in vscode or `nvim .` to edit using neovim
 
 ## contributing
 
