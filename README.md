@@ -42,7 +42,9 @@ follow this link: https://www.architectryan.com/2018/03/17/add-to-the-path-on-wi
 install the dart sdk using `choco install dart-sdk` (chocolatey)
 
 
-make sure xcode(mac only), android studio, and vscode are set up on your environment; if not, please google how to do so (note that the android
+run `flutter doctor` to have your machine check the setup and ensure all the necessary tools are enable. follow shell (terminal) instructions should an error occur.
+
+make sure xcode (macOS only), android studio, and vscode are set up on your environment; if not, please google how to do so (note that the android
 ios emulators need to be set up to test the app)
 
 ### setting up the environment
