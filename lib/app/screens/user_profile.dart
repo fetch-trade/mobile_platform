@@ -37,11 +37,11 @@ class _UserProfileState extends State<UserProfile> {
         ),
         */
         title: const Text(
-          "User profile",
+          "Profile",
           style: TextStyle(
               decoration: TextDecoration.none,
               fontFamily: 'Quicksand',
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w800,
               color: Colors.black,
               fontSize: 24),
         ),

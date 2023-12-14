@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:fetch/app/messaging/screens/messages_screen.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 
 class NotificationsScreen extends StatefulWidget {
   final String receiverUserEmail;
@@ -27,7 +28,10 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         automaticallyImplyLeading: false,
         middle: Text(
           "Notifications",
-          style: TextStyle(fontFamily: 'Capriola', fontSize: 24),
+          style: TextStyle(fontFamily: 'Quicksand', 
+            fontWeight: FontWeight.w800, 
+            fontSize: 24
+          ),
         ),
       ),
       child: _buildUserList(),
@@ -48,7 +52,10 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
     if (_auth.currentUser!.email != data['email']) {
       return Material(
         child: ListTile(
-          title: Text(data['name']),
+          title: Padding(
+            padding: EdgeInsets.only(left: 16),
+            child: Text(data['name'])
+          ),
           trailing: IconButton(
               onPressed: () {
                 Navigator.push(
@@ -59,11 +66,23 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                               receiverUid: data['uid'],
                             )));
               },
-              icon: const Icon(Iconsax.rotate_left)),
+              icon: const Icon(LucideIcons.forward)),
         ),
       );
     } else {
-      return Container();
+      return Container(
+        /*
+        child: Center(
+          child: Text(
+            "No notifications to display",
+            style: TextStyle(fontFamily: "REM", 
+              fontWeight: FontWeight.w400,
+              fontSize: 20
+            )
+          ),
+        )
+*/
+      );
     }
   }
 

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fetch/app/feeds/components/upper_tab_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -37,83 +38,92 @@ class _FeedsScreenState extends State<FeedsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[200]?.withOpacity(0.5),
-      appBar: AppBar(
-        toolbarHeight: 48,
-        elevation: 0,
-        scrolledUnderElevation: 0.4,
-        title: SvgPicture.asset(
-            'assets/imgs/fetch_logo.svg',
-            height: 60,
-            width: 60,
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        backgroundColor: Colors.grey[200]?.withOpacity(0.5),
+        appBar: AppBar(
+          toolbarHeight: 48,
+          elevation: 0,
+          scrolledUnderElevation: 0.4,
+          title: SvgPicture.asset(
+              'assets/imgs/fetch_logo.svg',
+              height: 60,
+              width: 60,
+          ),
+          backgroundColor: Colors.white,
+          automaticallyImplyLeading: false,
+          bottom: UpperTabBar() 
         ),
-                backgroundColor: Colors.white,
-        automaticallyImplyLeading: false,
-      ),
-      body: Stack(
-        children: [
-          Center(
-            child: Column(
-              children: [
-                Expanded(child: _buildPostList()),
-                StreamBuilder(
-                  stream: _postingService.getPosts(),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(
-                        child: LoadingAnimationWidget.staggeredDotsWave(
-                          color: const Color.fromARGB(255, 100, 105, 255),
-                          size: 100,
-                        ),
-                      );
-                    } else {
-                      return const SizedBox.shrink(); // Empty container when not loading
-                    }
-                  },
-                ),
-              ],
-            ),
-          )
-        ]
-      ), 
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(right: 8, bottom: 64),
-        child: SpeedDial(
-          icon: LucideIcons.plus,
-          shape: ContinuousRectangleBorder(
-              borderRadius: BorderRadius.circular(24)),
-          foregroundColor: Colors.white,
-          backgroundColor: const Color.fromARGB(245, 218, 44, 93),
-          overlayColor: Colors.white,
-          overlayOpacity: 0.2,
+        body: TabBarView(
           children: [
-            SpeedDialChild(
-                child: const Icon(Iconsax.message),
-                label: "New Message",
+            Stack(
+              children: [
+                Center(
+                  child: Column(
+                    children: [
+                      Expanded(child: _buildPostList()),
+                      StreamBuilder(
+                        stream: _postingService.getPosts(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState == ConnectionState.waiting) {
+                            return Center(
+                              child: LoadingAnimationWidget.staggeredDotsWave(
+                                color: const Color.fromARGB(255, 100, 105, 255),
+                                size: 100,
+                              ),
+                            );
+                          } else {
+                            return const SizedBox.shrink(); // Empty container when not loading
+                          }
+                        },
+                      ),
+                    ],
+                  ),
+                )
+              ]
+            ),
+            const Scaffold()
+          ]
+        ),
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.only(right: 8, bottom: 64),
+          child: SpeedDial(
+            icon: LucideIcons.plus,
+            shape: ContinuousRectangleBorder(
+                borderRadius: BorderRadius.circular(24)),
+            foregroundColor: Colors.white,
+            backgroundColor: const Color.fromARGB(245, 218, 44, 93),
+            overlayColor: Colors.white,
+            overlayOpacity: 0.2,
+            children: [
+              SpeedDialChild(
+                  child: const Icon(Iconsax.message),
+                  label: "New Message",
+                  labelStyle: const TextStyle(
+                      color: Colors.white, fontFamily: 'Capriola', fontSize: 12),
+                  foregroundColor: const Color.fromARGB(255, 100, 105, 255),
+                  labelBackgroundColor: const Color.fromARGB(255, 100, 105, 255),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => const ContactsList()));
+                  }),
+              SpeedDialChild(
+                child: const Icon(Iconsax.note),
+                label: "New Post",
                 labelStyle: const TextStyle(
                     color: Colors.white, fontFamily: 'Capriola', fontSize: 12),
                 foregroundColor: const Color.fromARGB(255, 100, 105, 255),
                 labelBackgroundColor: const Color.fromARGB(255, 100, 105, 255),
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                          builder: (context) => const ContactsList()));
-                }),
-            SpeedDialChild(
-              child: const Icon(Iconsax.note),
-              label: "New Post",
-              labelStyle: const TextStyle(
-                  color: Colors.white, fontFamily: 'Capriola', fontSize: 12),
-              foregroundColor: const Color.fromARGB(255, 100, 105, 255),
-              labelBackgroundColor: const Color.fromARGB(255, 100, 105, 255),
-              onTap: () {
-                Navigator.push(context,
-                    CupertinoPageRoute(builder: (context) => const NewPost()));
-              },
-            )
-          ],
+                  Navigator.push(context,
+                      CupertinoPageRoute(builder: (context) => const NewPost()));
+                },
+              )
+            ],
+          ),
         ),
       ),
     );

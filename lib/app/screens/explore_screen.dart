@@ -145,9 +145,11 @@ class _ExploreScreenState extends State<ExploreScreen> {
           "Explore",
           style: TextStyle(
               decoration: TextDecoration.none,
-              fontFamily: 'Capriola',
+              fontFamily: 'Quicksand',
+              fontWeight: FontWeight.w800,
               color: Colors.black,
-              fontSize: 24),
+              fontSize: 24
+          ),
         ),
         actions: [
           Padding(
