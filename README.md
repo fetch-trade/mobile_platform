@@ -25,7 +25,7 @@ set the flutter path with the following steps:
 
 type `vi ~/.zshrc` into your terminal, i.e., bash, zsh, warp, or tmux, to access your mac's bash profile in vim
 
-press <kbd>i</kbd>to `INSERT` a new path variable
+press <kbd>i</kbd> to `INSERT` a new path variable
 
 add `export PATH="$PATH:/Users/<username>/flutter/bin"` where `<username>` is replaced by the name of your computer
 
