@@ -29,7 +29,7 @@ press <kbd>i</kbd> to `INSERT` a new path variable
 
 add `export PATH="$PATH:/Users/<username>/flutter/bin"` where `<username>` is replaced by the name of your computer
 
-press `esc` to exit editing mode and type in `:wq` to save and quit
+press <kbd>esc</kbd> to exit editing mode and type in `:wq` to save and quit
 
 type in `source ~/.zshrc` to refresh the terminal window to accomodate the new changes to your bash profile  
 
