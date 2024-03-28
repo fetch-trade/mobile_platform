@@ -14,7 +14,7 @@ currently, the project utilizes the following technologies:
     flutter
     firebase storage
     firestore
-    tomtom maps (deprecated)
+    tomtom maps
 
 ## getting started
 
