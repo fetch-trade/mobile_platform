@@ -46,7 +46,7 @@ install the dart sdk using `choco install dart-sdk` (chocolatey)
 
 run `flutter doctor` to have your machine check the setup and ensure all the necessary tools are enable. follow shell (terminal) instructions should an error occur.
 
-make sure xcode (macOS only), android studio, and vscode are set up on your environment; if not, please google how to do so (note that android emulators are required to test the app)
+make sure android studio and vscode are set up on your environment; if not, please google how to do so (note that android emulators are required to test the app)
 
 ### setting up the environment
 
