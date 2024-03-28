@@ -1,17 +1,18 @@
 # fetch for ios + android
 
+![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
+
 ## about
 
-this app is a continuation of a former project started under the same members. the mobile platform is meant to be a tool to help users conduct 
-successful P2P trades of materials they own, similar to the types of business done on FB Marketplace. more on the concept here: https://drive.google.com/file/d/1iKXNV9993fM_z8t35Cv1QpSsAV65U0R9/view?usp=sharing 
+this app is a continuation of a former project started under the same members. the mobile platform is meant to be a tool to help users conduct
+successful P2P trades of materials they own, similar to the types of business done on FB Marketplace. more on the concept here: https://drive.google.com/file/d/1iKXNV9993fM_z8t35Cv1QpSsAV65U0R9/view?usp=sharing
 
 currently, the project utilizes the following technologies:
 
-	flutter
-	firebase storage
-	firestore
+    flutter
+    firebase storage
+    firestore
     tomtom maps (deprecated)
-
 
 ## getting started
 
@@ -31,16 +32,15 @@ add `export PATH="$PATH:/Users/<username>/flutter/bin"` where `<username>` is re
 
 press <kbd>esc</kbd> to exit editing mode and type in `:wq` to save and quit
 
-type in `source ~/.zshrc` to refresh the terminal window to accomodate the new changes to your bash profile  
+type in `source ~/.zshrc` to refresh the terminal window to accomodate the new changes to your bash profile
 
-install the dart sdk using `brew install dart-sdk`	(homebrew)
+install the dart sdk using `brew install dart-sdk` (homebrew)
 
 #### windows
 
 follow this link: https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/ to add a flutter path
 
 install the dart sdk using `choco install dart-sdk` (chocolatey)
-
 
 run `flutter doctor` to have your machine check the setup and ensure all the necessary tools are enable. follow shell (terminal) instructions should an error occur.
 
@@ -65,7 +65,7 @@ open your firebase dashboard and create a new project or use an existing one and
 
 when committing changes to the code, create a new branch for either addressing an issue or simply have an endpoint to store your commit history
 
-for issues, format the branch name to be `FT-<issue #>` 
+for issues, format the branch name to be `FT-<issue #>`
 
 for adding code outside of issues, format the name to be `<your first initial last name>` (no spaces, e.g., jadams)
 
