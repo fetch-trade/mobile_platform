@@ -9,7 +9,6 @@
 .history
 .svn/
 migrate_working_dir/
-/lib/api_keys.dart
 
 # IntelliJ related
 *.iml
@@ -43,3 +42,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Environment variables
+**/lib/api_keys.dart
