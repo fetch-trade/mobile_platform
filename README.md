@@ -1,10 +1,9 @@
 # fetch for ios + android
 
-![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
-
 <div id="badges">
   <a href="https://flutter.dev/"><img src="https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white" alt="Flutter Badge"/></a>
 </div>
+
 ## about
 
 this app is a continuation of a former project started under the same members. the mobile platform is meant to be a tool to help users conduct
