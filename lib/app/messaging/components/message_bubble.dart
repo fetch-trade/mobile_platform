@@ -5,10 +5,10 @@ class MessageBubble extends StatelessWidget {
   final bool isCurrentUser;
 
   const MessageBubble({
-    Key? key,
+    super.key,
     required this.text,
     required this.isCurrentUser,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
+// import 'package:iconsax/iconsax.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:fetch/app/messaging/screens/messages_screen.dart';
 import 'package:lucide_icons/lucide_icons.dart';
@@ -28,10 +28,10 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         automaticallyImplyLeading: false,
         middle: Text(
           "Notifications",
-          style: TextStyle(fontFamily: 'Quicksand', 
-            fontWeight: FontWeight.w800, 
-            fontSize: 24
-          ),
+          style: TextStyle(
+              fontFamily: 'Quicksand',
+              fontWeight: FontWeight.w800,
+              fontSize: 24),
         ),
       ),
       child: _buildUserList(),
@@ -53,9 +53,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
       return Material(
         child: ListTile(
           title: Padding(
-            padding: EdgeInsets.only(left: 16),
-            child: Text(data['name'])
-          ),
+              padding: EdgeInsets.only(left: 16), child: Text(data['name'])),
           trailing: IconButton(
               onPressed: () {
                 Navigator.push(
@@ -71,7 +69,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
       );
     } else {
       return Container(
-        /*
+          /*
         child: Center(
           child: Text(
             "No notifications to display",
@@ -82,7 +80,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           ),
         )
 */
-      );
+          );
     }
   }
 

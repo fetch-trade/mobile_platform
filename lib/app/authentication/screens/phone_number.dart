@@ -6,7 +6,7 @@ import 'package:fetch/app/screens/home_screen.dart';
 import 'package:fetch/components/input_field.dart';
 
 class PhoneNumber extends StatefulWidget {
-  const PhoneNumber({Key? key}) : super(key: key);
+  const PhoneNumber({super.key});
 
   @override
   State<PhoneNumber> createState() => _PhoneNumberState();

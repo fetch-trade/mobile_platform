@@ -8,6 +8,7 @@ import 'package:fetch/app/feeds/screens/user_settings.dart';
 import 'package:fetch/app/screens/user_profile.dart';
 import 'package:fetch/components/profile_gradient.dart';
 import 'package:fetch/services/auth_service.dart';
+import 'package:fetch/api_keys.dart';
 
 class ExploreScreen extends StatefulWidget {
   const ExploreScreen({super.key});
@@ -19,8 +20,6 @@ class ExploreScreen extends StatefulWidget {
 class _ExploreScreenState extends State<ExploreScreen> {
   // final TextEditingController searchController = TextEditingController();
   final MapController mapController = MapController();
-
-  final String apiKey = "hkhhV4H2q4UKTCrrF5Hygk4HDmckVq6q";
   final mapLocation = const LatLng(29.7388, -95.758003);
   double currentZoom = 16;
 
@@ -32,15 +31,15 @@ class _ExploreScreenState extends State<ExploreScreen> {
 
   void _zoomIn() {
     setState(() {
-      currentZoom = mapController.zoom + 1.0;
-      mapController.move(mapController.center, currentZoom);
+      currentZoom = mapController.camera.zoom + 1.0;
+      mapController.move(mapController.camera.center, currentZoom);
     });
   }
 
   void _zoomOut() {
     setState(() {
-      currentZoom = mapController.zoom - 1.0;
-      mapController.move(mapController.center, currentZoom);
+      currentZoom = mapController.camera.zoom - 1.0;
+      mapController.move(mapController.camera.center, currentZoom);
     });
   }
 
@@ -148,8 +147,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
               fontFamily: 'Quicksand',
               fontWeight: FontWeight.w800,
               color: Colors.black,
-              fontSize: 24
-          ),
+              fontSize: 24),
         ),
         actions: [
           Padding(
@@ -208,7 +206,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                         urlTemplate:
                             "https://api.tomtom.com/map/1/tile/basic/main/"
                             "{z}/{x}/{y}.png?key={apiKey}",
-                        additionalOptions: {"apiKey": apiKey},
+                        additionalOptions: {"apiKey": tomtomApiKey},
                       )
                     ],
                   ),
@@ -243,8 +241,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
           icon: Iconsax.box_search,
           shape: ContinuousRectangleBorder(
               borderRadius: BorderRadius.circular(24)),
-          foregroundColor: Colors.black,
-          backgroundColor: const Color.fromARGB(255, 255, 247, 100),
+          foregroundColor: Colors.white,
+          backgroundColor: const Color.fromARGB(245, 218, 44, 93),
           overlayColor: Colors.white,
           overlayOpacity: 0.2,
           children: [

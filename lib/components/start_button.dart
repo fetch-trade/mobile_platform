@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class StartButton extends StatelessWidget {
-  const StartButton({Key? key, this.onPressed}) : super(key: key);
+  const StartButton({super.key, this.onPressed});
   final Function()? onPressed;
 
   @override

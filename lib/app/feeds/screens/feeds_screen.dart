@@ -43,49 +43,45 @@ class _FeedsScreenState extends State<FeedsScreen> {
       child: Scaffold(
         backgroundColor: Colors.grey[200]?.withOpacity(0.5),
         appBar: AppBar(
-          toolbarHeight: 48,
-          elevation: 0,
-          scrolledUnderElevation: 0.4,
-          title: SvgPicture.asset(
+            toolbarHeight: 48,
+            elevation: 0,
+            scrolledUnderElevation: 0.4,
+            title: SvgPicture.asset(
               'assets/imgs/fetch_logo.svg',
               height: 60,
               width: 60,
-          ),
-          backgroundColor: Colors.white,
-          automaticallyImplyLeading: false,
-          bottom: UpperTabBar() 
-        ),
-        body: TabBarView(
-          children: [
-            Stack(
-              children: [
-                Center(
-                  child: Column(
-                    children: [
-                      Expanded(child: _buildPostList()),
-                      StreamBuilder(
-                        stream: _postingService.getPosts(),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState == ConnectionState.waiting) {
-                            return Center(
-                              child: LoadingAnimationWidget.staggeredDotsWave(
-                                color: const Color.fromARGB(255, 100, 105, 255),
-                                size: 100,
-                              ),
-                            );
-                          } else {
-                            return const SizedBox.shrink(); // Empty container when not loading
-                          }
-                        },
-                      ),
-                    ],
-                  ),
-                )
-              ]
             ),
-            const Scaffold()
-          ]
-        ),
+            backgroundColor: Colors.white,
+            automaticallyImplyLeading: false,
+            bottom: UpperTabBar()),
+        body: TabBarView(children: [
+          Stack(children: [
+            Center(
+              child: Column(
+                children: [
+                  Expanded(child: _buildPostList()),
+                  StreamBuilder(
+                    stream: _postingService.getPosts(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(
+                          child: LoadingAnimationWidget.staggeredDotsWave(
+                            color: const Color.fromARGB(255, 100, 105, 255),
+                            size: 100,
+                          ),
+                        );
+                      } else {
+                        return const SizedBox
+                            .shrink(); // Empty container when not loading
+                      }
+                    },
+                  ),
+                ],
+              ),
+            )
+          ]),
+          const Scaffold()
+        ]),
         floatingActionButton: Padding(
           padding: const EdgeInsets.only(right: 8, bottom: 64),
           child: SpeedDial(
@@ -101,9 +97,12 @@ class _FeedsScreenState extends State<FeedsScreen> {
                   child: const Icon(Iconsax.message),
                   label: "New Message",
                   labelStyle: const TextStyle(
-                      color: Colors.white, fontFamily: 'Capriola', fontSize: 12),
+                      color: Colors.white,
+                      fontFamily: 'Capriola',
+                      fontSize: 12),
                   foregroundColor: const Color.fromARGB(255, 100, 105, 255),
-                  labelBackgroundColor: const Color.fromARGB(255, 100, 105, 255),
+                  labelBackgroundColor:
+                      const Color.fromARGB(255, 100, 105, 255),
                   onTap: () {
                     Navigator.push(
                         context,
@@ -118,8 +117,10 @@ class _FeedsScreenState extends State<FeedsScreen> {
                 foregroundColor: const Color.fromARGB(255, 100, 105, 255),
                 labelBackgroundColor: const Color.fromARGB(255, 100, 105, 255),
                 onTap: () {
-                  Navigator.push(context,
-                      CupertinoPageRoute(builder: (context) => const NewPost()));
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                          builder: (context) => const NewPost()));
                 },
               )
             ],
@@ -187,7 +188,8 @@ class _FeedsScreenState extends State<FeedsScreen> {
                   userColors: [userColorOne, userColorTwo],
                   iconButtons: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 36, right: 76, bottom: 16),
+                      padding: const EdgeInsets.only(
+                          left: 36, right: 16, bottom: 16),
                       child: IconButton(
                         onPressed: () {
                           Navigator.push(
@@ -202,7 +204,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 76, bottom: 16),
+                      padding: const EdgeInsets.only(right: 16, bottom: 16),
                       child: IconButton(
                         onPressed: () {
                           toggleLike();
@@ -238,7 +240,8 @@ class _FeedsScreenState extends State<FeedsScreen> {
                   Navigator.push(
                       context,
                       CupertinoPageRoute(
-                          builder: (context) => PostDetailScreen(postId: document.id)));
+                          builder: (context) =>
+                              PostDetailScreen(postId: document.id)));
                 },
               ),
             ],
@@ -282,8 +285,8 @@ class _FeedsScreenState extends State<FeedsScreen> {
           );
         } else {
           // Handle the case where there are no posts
-          return const Center(child: 
-            Text(
+          return const Center(
+            child: Text(
               "No posts available",
               style: TextStyle(
                 decoration: TextDecoration.none,
