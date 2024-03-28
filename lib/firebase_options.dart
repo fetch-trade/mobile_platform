@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'api_keys.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -44,7 +45,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDiTBEDwm5exld7Szs0EunjCo0KlQPVj4E',
+    apiKey: firebaseWebKey,
     appId: '1:535275923261:web:0b55757c599da58c8d0754',
     messagingSenderId: '535275923261',
     projectId: 'teens-next-6c767',
@@ -54,7 +55,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAYK52PewzQbHi9_PQLYB_BgOFQFXswmhU',
+    apiKey: firebaseAndroidKey,
     appId: '1:535275923261:android:11f71443e03849ad8d0754',
     messagingSenderId: '535275923261',
     projectId: 'teens-next-6c767',
@@ -62,22 +63,24 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCimT0uMZv9xmHbaOfrKCWVWpCymxLDj8Q',
+    apiKey: firebaseIosKey,
     appId: '1:535275923261:ios:9e59c75396f59a008d0754',
     messagingSenderId: '535275923261',
     projectId: 'teens-next-6c767',
     storageBucket: 'teens-next-6c767.appspot.com',
-    iosClientId: '535275923261-g60k5ah5tsurpdrnkmohe65lmtootmb9.apps.googleusercontent.com',
+    iosClientId:
+        '535275923261-g60k5ah5tsurpdrnkmohe65lmtootmb9.apps.googleusercontent.com',
     iosBundleId: 'com.example.teensNext',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCimT0uMZv9xmHbaOfrKCWVWpCymxLDj8Q',
+    apiKey: firebaseMacosKey,
     appId: '1:535275923261:ios:368e4ef3fe9637d38d0754',
     messagingSenderId: '535275923261',
     projectId: 'teens-next-6c767',
     storageBucket: 'teens-next-6c767.appspot.com',
-    iosClientId: '535275923261-7d1qmrdd3uhqmn19bq7qmaf0p55fp0mr.apps.googleusercontent.com',
+    iosClientId:
+        '535275923261-7d1qmrdd3uhqmn19bq7qmaf0p55fp0mr.apps.googleusercontent.com',
     iosBundleId: 'com.example.teensNext.RunnerTests',
   );
 }
