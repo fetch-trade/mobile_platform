@@ -66,7 +66,6 @@ when first opening the project directory, be sure to run `flutter pub get` to fe
 
 ```
 lib
-├── api_keys.dart
 ├── app
 │   ├── authentication
 │   │   ├── authentication.dart
