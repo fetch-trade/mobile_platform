@@ -62,7 +62,13 @@ run `code .` to edit the files in vscode or `nvim .` to edit using neovim
 
 #### inital step
 
-when first opening the project directory, be sure to run `flutter pub get` to fetch dependencies. the following depicts the directory structure of this app:
+when first opening the project directory, be sure to run `flutter pub get` to fetch dependencies. create `api_keys.dart` in the root directory of lib and add personal API keys for firebase (highlighted below) and tomtom maps using the following naming convention:
+
+firebase + <platformName> + Key  ~  no spaces + camelCase
+
+e.g., firebaseIOSKey
+
+the following depicts the directory structure of this app:
 
 ```
 lib
