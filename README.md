@@ -14,7 +14,7 @@ currently, the project utilizes the following technologies:
     flutter
     firebase storage
     firestore
-    tomtom maps (deprecated)
+    tomtom maps
 
 ## getting started
 
@@ -60,7 +60,7 @@ run `code .` to edit the files in vscode or `nvim .` to edit using neovim
 
 #### firebase configuration
 
-open your firebase dashboard and create a new project or use an existing one and connect it to this project. steps for firebase onboarding for flutter can be found at https://firebase.google.com/docs/flutter/setup?platform=ios; further steps for setup will be introduced after working out most of the app
+open your firebase dashboard and create a new project or use an existing one and connect it to this project. steps for firebase onboarding for flutter can be found at https://firebase.google.com/docs/flutter/setup?platform=ios; further steps for setup will be introduced after working out more of the app
 
 ## contributing
 
