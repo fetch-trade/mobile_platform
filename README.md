@@ -149,7 +149,7 @@ lib
 20 directories, 62 files
 ```
 
-note that the code is primarily stored in `lib/`. make additions ONLY to the files within this folder (other files can be ignored unless required for a specific configuration).
+note that the code is primarily stored in `lib/`. make additions ONLY to the files within this folder (other files can be ignored unless required for a specific configuration)
 
 #### firebase configuration
 
