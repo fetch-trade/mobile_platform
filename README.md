@@ -66,7 +66,7 @@ when first opening the project directory, be sure to run `flutter pub get` to fe
 
 firebase + <platformName> + Key  ~  no spaces + camelCase
 
-e.g., firebaseIOSKey
+e.g., firebaseIosKey
 
 the following depicts the directory structure of this app:
 
