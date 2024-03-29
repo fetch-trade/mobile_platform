@@ -1,7 +1,9 @@
-# fetch for ios + android
+# fetch mobile
 
 <div id="badges">
   <a href="https://flutter.dev/"><img src="https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white" alt="Flutter Badge"/></a>
+  <a href="https://www.apple.com/ios/ios-17/"><img src="https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white" alt="iOS Badge"/></a>
+  <a href="https://www.android.com/"><img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android Badge"></a>
 </div>
 
 ## about
@@ -149,7 +151,7 @@ lib
 20 directories, 62 files
 ```
 
-note that the code is primarily stored in `lib/`. make additions ONLY to the files within this folder (other files can be ignored unless required for a specific configuration).
+note that the code is primarily stored in `lib/`. make additions ONLY to the files within this folder (other files can be ignored unless required for a specific configuration)
 
 #### firebase configuration
 
