@@ -58,6 +58,99 @@ once the repo finishes cloning, type `cd mobile_platform/` to access the folder 
 
 run `code .` to edit the files in vscode or `nvim .` to edit using neovim
 
+#### inital step
+
+when first opening the project directory, be sure to run `flutter pub get` to fetch dependencies. the following depicts the directory structure of this app:
+
+```
+lib
+├── api_keys.dart
+├── app
+│   ├── authentication
+│   │   ├── authentication.dart
+│   │   ├── components
+│   │   │   ├── circle_tile.dart
+│   │   │   ├── components.dart
+│   │   │   ├── enter_button.dart
+│   │   │   ├── splash_screen_scaffold.dart
+│   │   │   ├── toggle_page.dart
+│   │   │   └── username_input_field.dart
+│   │   ├── model
+│   │   │   └── app_user.dart
+│   │   ├── resources
+│   │   │   └── get_gradient_colors.dart
+│   │   └── screens
+│   │       ├── auth_options.dart
+│   │       ├── auth_page.dart
+│   │       ├── confirmation.dart
+│   │       ├── forgot_password.dart
+│   │       ├── phone_number.dart
+│   │       ├── screens.dart
+│   │       ├── sign_in.dart
+│   │       ├── sign_up.dart
+│   │       ├── splash_screen.dart
+│   │       └── user_name.dart
+│   ├── feeds
+│   │   ├── components
+│   │   │   ├── alt_user_gradient.dart
+│   │   │   ├── comment_card.dart
+│   │   │   ├── components.dart
+│   │   │   ├── post_card.dart
+│   │   │   └── upper_tab_bar.dart
+│   │   ├── feeds.dart
+│   │   ├── model
+│   │   │   ├── comment.dart
+│   │   │   └── post.dart
+│   │   ├── resources
+│   │   │   └── get_ids.dart
+│   │   └── screens
+│   │       ├── comments_screen.dart
+│   │       ├── feeds_screen.dart
+│   │       ├── new_comment.dart
+│   │       ├── new_post.dart
+│   │       ├── screens.dart
+│   │       └── user_settings.dart
+│   ├── messaging
+│   │   ├── components
+│   │   │   ├── components.dart
+│   │   │   ├── message_bubble.dart
+│   │   │   └── message_input_field.dart
+│   │   ├── messaging.dart
+│   │   ├── model
+│   │   │   └── message.dart
+│   │   └── screens
+│   │       ├── contacts_list.dart
+│   │       ├── messages_screen.dart
+│   │       └── screens.dart
+│   └── screens
+│       ├── explore_screen.dart
+│       ├── home_screen.dart
+│       ├── notifications_screen.dart
+│       ├── screens.dart
+│       └── user_profile.dart
+├── components
+│   ├── components.dart
+│   ├── input_field.dart
+│   ├── logo.dart
+│   ├── profile_gradient.dart
+│   ├── rectangular_tile.dart
+│   ├── square_tile.dart
+│   └── start_button.dart
+├── firebase_options.dart
+├── main.dart
+├── providers
+│   └── gauth_provider.dart
+└── services
+    ├── auth_service.dart
+    ├── messaging_service.dart
+    ├── posting_service.dart
+    └── services.dart
+
+20 directories, 62 files
+```
+
+note that the code is primarily stored in `lib/`. make additions ONLY to the files within this folder (other files can be ignored unless required for a specific configuration).
+
 #### firebase configuration
 
 open your firebase dashboard and create a new project or use an existing one and connect it to this project. steps for firebase onboarding for flutter can be found at https://firebase.google.com/docs/flutter/setup?platform=ios; further steps for setup will be introduced after working out more of the app
