@@ -2,6 +2,7 @@
 
 <div id="badges">
   <a href="https://flutter.dev/"><img src="https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white" alt="Flutter Badge"/></a>
+  <a href="https://www.apple.com/ios/ios-17/"><img src="https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white" alt="iOS Badge"/></a>
 </div>
 
 ## about
