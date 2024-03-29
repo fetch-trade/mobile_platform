@@ -94,11 +94,11 @@ class _AuthOptionsState extends State<AuthOptions> {
                 child: Padding(
                   padding: EdgeInsets.only(top: 120, left: 20),
                   child: Text(
-                    "Welcome to fetch",
+                    "Welcome to",
                     style: TextStyle(
                       color: Color(0xFFE33F5E),
                       fontFamily: 'Quicksand',
-                      fontWeight: FontWeight.w900,
+                      fontWeight: FontWeight.w700,
                       fontSize: 60,
                     ),
                   ),
@@ -107,13 +107,13 @@ class _AuthOptionsState extends State<AuthOptions> {
               Align(
                 alignment: Alignment.topLeft,
                 child: Padding(
-                  padding: EdgeInsets.only(top: 24, left: 20),
+                  padding: EdgeInsets.only(top: 8, left: 20),
                   child: Text(
-                    "The ultimate exchange platform",
+                    "the ultimate exchange platform",
                     style: TextStyle(
                       color: Colors.black,
                       fontFamily: 'Quicksand',
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w900,
                       fontSize: 36,
                     ),
                   ),

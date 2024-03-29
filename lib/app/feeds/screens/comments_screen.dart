@@ -191,14 +191,14 @@ class PostDetailScreen extends StatelessWidget {
               userColors: [/* commenterColorOne, commenterColorTwo */],
               iconButtons: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 36, right: 76, bottom: 16),
+                  padding: const EdgeInsets.only(left: 20, bottom: 16),
                   child: IconButton(
                     onPressed: () {},
                     icon: const Icon(Iconsax.messages_2),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 76, bottom: 16),
+                  padding: const EdgeInsets.only(right: 40, bottom: 16),
                   child: IconButton(
                     onPressed: () {
                       // toggleLike();
@@ -220,13 +220,6 @@ class PostDetailScreen extends StatelessWidget {
                     ]),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 16),
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Iconsax.bookmark),
-                  ),
-                )
               ],
             );
           }).toList(),
