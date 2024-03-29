@@ -74,6 +74,10 @@ branches can be created using `git checkout <new-branch>` where `<new-branch>` f
 
 create a pull request using the new branch to compare changes--this portion is hypothetical and a CI/CD workflow has not been introduced for this repo. more on public contributions later...
 
+### workflow
+
+when a contributor pushes changes to their branch, a review should be requested from others with higher contributions to the application. if the review is approved and the build functions, then those changes proceed to get merged along with the next batch of updates. that's the essence of the process for now...
+
 ## credits
 
 the repo is maintained by @enkyuan. thanks to @ethanMoloney for helping with the app's design. made with :heart: by the fetch team

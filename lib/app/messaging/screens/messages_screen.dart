@@ -49,13 +49,13 @@ class _MessagesScreenState extends State<MessagesScreen> {
             color: Color.fromARGB(255, 100, 105, 255),
           ),
         ),
-        title: Text(widget.receiverUserName,
+        title: Text(
+          widget.receiverUserName,
           style: const TextStyle(
-            fontFamily: 'REM',
-            fontSize: 18,
-            color: Colors.black,
-            decoration: TextDecoration.none
-          ),
+              fontFamily: 'REM',
+              fontSize: 18,
+              color: Colors.black,
+              decoration: TextDecoration.none),
         ),
         backgroundColor: Colors.white,
         elevation: 0,
